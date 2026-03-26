@@ -1,0 +1,12 @@
+:root{
+    --subTitle-button: #DFE3E8;
+    --text-primary: #111111;
+}
+
+#subNav {
+  cursor: grab;
+}
+
+#subNav.dragging {
+  cursor: grabbing;
+}
