@@ -36,3 +36,9 @@
 
   --animate-rolling: rolling 8s linear infinite;
 }
+
+@layer components {
+  .nav-bar {
+    @apply text-white text-[14px] px-2 py-1 bg-transparent border-none cursor-pointer;
+  }
+}
