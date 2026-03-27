@@ -32,7 +32,7 @@
       id="tabs-wrapper"
       class="sticky top-0 z-10 overflow-x-auto whitespace-nowrap border-b border-[#e5e5e5] bg-white/90 pl-[12px] py-2 scrollbar-hide"
     >
-      <div id="collection-tabs" class="inline-flex gap-[10px] pr-3"></div>
+      <ul id="navigationList"></ul>
     </div>
 
     <div class="w-full h-[565px] overflow-hidden">
@@ -67,13 +67,15 @@
     <div id="product-list" class="mt-6 grid grid-cols-2 gap-1 pb-10"></div>
 
     <script type="module">
+      import "../components/navigation/navigationButtons.js";
       import { collections } from "../data/collection.js";
+      import { createItem } from "../components/item/item.js";
 
       const params = new URLSearchParams(window.location.search);
       const slug = params.get("slug");
 
       const tabsWrapper = document.getElementById("tabs-wrapper");
-      const tabsContainer = document.getElementById("collection-tabs");
+      const navigationList = document.getElementById("navigationList");
       const banner = document.getElementById("collection-banner");
       const collectionName = document.getElementById("collection-name");
       const collectionDesc = document.getElementById("collection-desc");
@@ -83,7 +85,6 @@
       const fixedBarName = document.getElementById("fixed-bar-name");
       const fixedBarCount = document.getElementById("fixed-bar-count");
 
-      let selectedTab = null;
       let currentCollection = null;
 
       function getWishList() {
@@ -129,51 +130,44 @@
         );
       }
 
+      function syncCurrentTab() {
+        if (!navigationList) return;
+
+        const buttons = navigationList.querySelectorAll(".subnav-btn");
+        let selectedButton = null;
+
+        buttons.forEach(function (button) {
+          const href = button.getAttribute("href") || "";
+          const buttonUrl = new URL(href, window.location.origin);
+          const buttonSlug = buttonUrl.searchParams.get("slug");
+
+          button.classList.remove("bg-(--subTitle-button)");
+          button.classList.add("bg-white");
+
+          if (buttonSlug === slug) {
+            button.classList.remove("bg-white");
+            button.classList.add("bg-(--subTitle-button)");
+            selectedButton = button;
+          }
+        });
+
+        if (selectedButton) {
+          setTimeout(function () {
+            const buttonLeft = selectedButton.offsetLeft;
+            const buttonWidth = selectedButton.offsetWidth;
+            const wrapperWidth = tabsWrapper.offsetWidth;
+
+            tabsWrapper.scrollLeft =
+              buttonLeft - wrapperWidth / 2 + buttonWidth / 2;
+          }, 0);
+        }
+      }
+
       collections.forEach(function (collection) {
         if (collection.slug === slug) {
           currentCollection = collection;
         }
       });
-
-      collections.forEach(function (collection) {
-        const button = document.createElement("button");
-        button.textContent = collection.name;
-
-        const isSelected = collection.slug === slug;
-
-        button.style.backgroundColor = isSelected ? "#DFE3E8" : "transparent";
-        button.style.border = "1px solid #DFE3E8";
-        button.style.color = isSelected ? "#111111" : "#858585";
-        button.style.borderRadius = "20px";
-        button.style.padding = "0 12px";
-        button.style.height = "32px";
-        button.style.fontSize = "12px";
-        button.style.lineHeight = "32px";
-        button.style.fontFamily = "Arial, sans-serif";
-        button.style.whiteSpace = "nowrap";
-        button.style.cursor = "pointer";
-        button.style.fontWeight = "400";
-
-        if (isSelected) {
-          selectedTab = button;
-        }
-
-        button.addEventListener("click", function () {
-          location.href = "./collection-detail.html?slug=" + collection.slug;
-        });
-
-        tabsContainer.appendChild(button);
-      });
-
-      if (selectedTab) {
-        setTimeout(function () {
-          const tabLeft = selectedTab.offsetLeft;
-          const tabWidth = selectedTab.offsetWidth;
-          const wrapperWidth = tabsWrapper.offsetWidth;
-
-          tabsWrapper.scrollLeft = tabLeft - wrapperWidth / 2 + tabWidth / 2;
-        }, 0);
-      }
 
       function handleFixedBar() {
         const scrollY = window.scrollY;
@@ -224,47 +218,8 @@
           productList.appendChild(emptyMessage);
         } else {
           currentCollection.products.forEach(function (product) {
-            const item = document.createElement("div");
-            item.className = "cursor-pointer";
-
-            let imageHtml = "";
-
-            if (product.image) {
-              imageHtml =
-                '<img src="' +
-                product.image +
-                '" alt="' +
-                product.name +
-                '" class="w-full h-full object-cover" />';
-            } else {
-              imageHtml = '<div class="w-full h-full bg-gray-100"></div>';
-            }
-
-            let priceText = product.price;
-
-            if (product.status) {
-              priceText = priceText + " - " + product.status;
-            }
-
             const isActive = isWished(product.id);
-
-            item.innerHTML =
-              '<div class="w-full overflow-hidden bg-gray-100 aspect-[185/252]">' +
-              imageHtml +
-              "</div>" +
-              '<div class="flex items-start justify-between px-8 pt-[8px]">' +
-              "<div>" +
-              '<p style="font-size:10px; line-height:15px; color:#111111; font-family:Arial,sans-serif; font-weight:400;">' +
-              product.name +
-              "</p>" +
-              '<p style="font-size:10px; line-height:15px; color:#111111; font-family:Arial,sans-serif; font-weight:400;">' +
-              priceText +
-              "</p>" +
-              "</div>" +
-              '<button type="button" class="bookmark-button ml-2 shrink-0 leading-none" aria-label="찜하기">' +
-              createBookmarkSvg(isActive) +
-              "</button>" +
-              "</div>";
+            const item = createItem(product, isActive, createBookmarkSvg);
 
             item.addEventListener("click", function () {
               location.href =
@@ -304,6 +259,7 @@
         }
       }
 
+      syncCurrentTab();
       handleFixedBar();
     </script>
   </body>
