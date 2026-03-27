@@ -10,5 +10,29 @@
 }
 
 @theme {
-  --font-gentle: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+  --font-gentle:
+    "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+}
+
+@theme {
+  @keyframes rolling {
+    0%,
+    20% {
+      transform: translateY(0);
+    }
+    25%,
+    45% {
+      transform: translateY(-20%);
+    }
+    50%,
+    70% {
+      transform: translateY(-40%);
+    }
+    75%,
+    100% {
+      transform: translateY(-60%);
+    }
+  }
+
+  --animate-rolling: rolling 8s linear infinite;
 }
