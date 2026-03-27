@@ -1,0 +1,890 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GENTLE LION ADMIN</title>
+    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="../style.css" />
+    <script type="module" src="./navigation.js"></script>
+    <script type="module" src="./naviButtonEvent.js"></script>
+  </head>
+  <body class="font-gentle w-full min-h-screen">
+    <header class="border-b-2 border-(--border)">
+      <div class="flex justify-between m-4 items-center">
+        <h1 class="text-[18px] px-2 tracking-[0.15rem]">
+          GENTLE MONSTER ADMIN
+        </h1>
+        <button
+          id="navigationButton"
+          class="cursor-pointer p-2 z-11 hover:bg-white/50 duration-300 rounded-xl lg:hidden"
+        >
+          <svg
+            id="navMenu"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4 11.9922H19.9933"
+              stroke="black"
+              stroke-width="1.99917"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M4 6H19.9933"
+              stroke="black"
+              stroke-width="1.99917"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M4 17.9922H19.9933"
+              stroke="black"
+              stroke-width="1.99917"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <svg
+            id="navExit"
+            class="hidden"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M18 6L6 18"
+              stroke="black"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M6 6L18 18"
+              stroke="black"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <div
+      id="wrap"
+      class="fixed z-10 hidden left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 inset-0 w-full h-screen bg-black/20"
+    ></div>
+
+    <div class="lg:flex">
+      <aside
+        id="navigation"
+        class="fixed z-11 top-0 left-0 h-screen w-max bg-white transform -translate-x-full transition-transform duration-300 lg:translate-x-0 lg:static"
+      >
+        <nav>
+          <ul class="p-4 flex flex-col gap-1">
+            <li>
+              <button
+                class="p-4 w-full cursor-pointer data-[active=true]:hover:bg-black duration-100 hover:bg-black/10 bg-black text-white"
+                data-select="dashboard"
+                data-active="true"
+              >
+                <div class="flex items-center gap-3">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6 2H2.66667C2.29848 2 2 2.29848 2 2.66667V7.33333C2 7.70152 2.29848 8 2.66667 8H6C6.36819 8 6.66667 7.70152 6.66667 7.33333V2.66667C6.66667 2.29848 6.36819 2 6 2Z"
+                      stroke="currentColor"
+                      stroke-opacity="0.6"
+                      stroke-width="1.33333"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M13.3359 2H10.0026C9.63441 2 9.33594 2.29848 9.33594 2.66667V4.66667C9.33594 5.03486 9.63441 5.33333 10.0026 5.33333H13.3359C13.7041 5.33333 14.0026 5.03486 14.0026 4.66667V2.66667C14.0026 2.29848 13.7041 2 13.3359 2Z"
+                      stroke="currentColor"
+                      stroke-opacity="0.6"
+                      stroke-width="1.33333"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M13.3359 8H10.0026C9.63441 8 9.33594 8.29848 9.33594 8.66667V13.3333C9.33594 13.7015 9.63441 14 10.0026 14H13.3359C13.7041 14 14.0026 13.7015 14.0026 13.3333V8.66667C14.0026 8.29848 13.7041 8 13.3359 8Z"
+                      stroke="currentColor"
+                      stroke-opacity="0.6"
+                      stroke-width="1.33333"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M6 10.6641H2.66667C2.29848 10.6641 2 10.9625 2 11.3307V13.3307C2 13.6989 2.29848 13.9974 2.66667 13.9974H6C6.36819 13.9974 6.66667 13.6989 6.66667 13.3307V11.3307C6.66667 10.9625 6.36819 10.6641 6 10.6641Z"
+                      stroke="currentColor"
+                      stroke-opacity="0.6"
+                      stroke-width="1.33333"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <p class="tracking-[0.1rem]">DASHBOARD</p>
+                </div>
+              </button>
+            </li>
+            <li>
+              <button
+                class="p-4 w-full cursor-pointer data-[active=true]:hover:bg-black hover:bg-black/10 duration-100"
+                data-select="users"
+              >
+                <div class="flex items-center gap-3">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_207_869)">
+                      <path
+                        d="M10.6654 13.9905V12.6577C10.6654 11.9508 10.3845 11.2728 9.88466 10.7729C9.38477 10.273 8.70678 9.99219 7.99983 9.99219H4.00149C3.29454 9.99219 2.61655 10.273 2.11666 10.7729C1.61677 11.2728 1.33594 11.9508 1.33594 12.6577V13.9905"
+                        stroke="currentColor"
+                        stroke-opacity="0.6"
+                        stroke-width="1.33278"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M5.99368 7.33111C7.46583 7.33111 8.65924 6.1377 8.65924 4.66556C8.65924 3.19341 7.46583 2 5.99368 2C4.52154 2 3.32812 3.19341 3.32812 4.66556C3.32812 6.1377 4.52154 7.33111 5.99368 7.33111Z"
+                        stroke="currentColor"
+                        stroke-opacity="0.6"
+                        stroke-width="1.33278"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M14.6632 13.9976V12.6649C14.6628 12.0743 14.4662 11.5005 14.1044 11.0338C13.7425 10.567 13.2359 10.2336 12.6641 10.0859"
+                        stroke="currentColor"
+                        stroke-opacity="0.6"
+                        stroke-width="1.33278"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M10.6641 2.08594C11.2374 2.23274 11.7456 2.5662 12.1086 3.03375C12.4715 3.50129 12.6685 4.07633 12.6685 4.6682C12.6685 5.26006 12.4715 5.8351 12.1086 6.30264C11.7456 6.77019 11.2374 7.10365 10.6641 7.25045"
+                        stroke="currentColor"
+                        stroke-opacity="0.6"
+                        stroke-width="1.33278"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_207_869">
+                        <rect width="15.9933" height="15.9933" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+
+                  <p class="tracking-[0.1rem]">USERS</p>
+                </div>
+              </button>
+            </li>
+            <li>
+              <button
+                class="p-4 w-full cursor-pointer data-[active=true]:hover:bg-black hover:bg-black/10 duration-100"
+                data-select="products"
+              >
+                <div class="flex items-center gap-3">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_207_876)">
+                      <path
+                        d="M7.33111 14.4824C7.53372 14.5994 7.76355 14.661 7.9975 14.661C8.23145 14.661 8.46128 14.5994 8.66389 14.4824L13.3286 11.8169C13.531 11.7 13.6991 11.532 13.8161 11.3296C13.9331 11.1273 13.9948 10.8977 13.995 10.664V5.33291C13.9948 5.09919 13.9331 4.86964 13.8161 4.66729C13.6991 4.46494 13.531 4.29691 13.3286 4.18005L8.66389 1.5145C8.46128 1.39752 8.23145 1.33594 7.9975 1.33594C7.76355 1.33594 7.53372 1.39752 7.33111 1.5145L2.66639 4.18005C2.46398 4.29691 2.29586 4.46494 2.1789 4.66729C2.06194 4.86964 2.00024 5.09919 2 5.33291V10.664C2.00024 10.8977 2.06194 11.1273 2.1789 11.3296C2.29586 11.532 2.46398 11.7 2.66639 11.8169L7.33111 14.4824Z"
+                        stroke="currentColor"
+                        stroke-opacity="0.6"
+                        stroke-width="1.33278"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M8 14.6639V8"
+                        stroke="currentColor"
+                        stroke-opacity="0.6"
+                        stroke-width="1.33278"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M2.19531 4.66406L7.99956 7.99601L13.8038 4.66406"
+                        stroke="currentColor"
+                        stroke-opacity="0.6"
+                        stroke-width="1.33278"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M5 2.84375L10.9975 6.27565"
+                        stroke="currentColor"
+                        stroke-opacity="0.6"
+                        stroke-width="1.33278"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_207_876">
+                        <rect width="15.9933" height="15.9933" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+
+                  <p class="tracking-[0.1rem]">PRODUCTS</p>
+                </div>
+              </button>
+            </li>
+            <li>
+              <button
+                class="p-4 w-full cursor-pointer data-[active=true]:hover:bg-black hover:bg-black/10 duration-100"
+                data-select="newproducts"
+              >
+                <div class="flex items-center gap-3">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M3.32812 8H12.6576"
+                      stroke="currentColor"
+                      stroke-opacity="0.6"
+                      stroke-width="1.33278"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M8 3.32812V12.6576"
+                      stroke="currentColor"
+                      stroke-opacity="0.6"
+                      stroke-width="1.33278"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <p class="tracking-[0.1rem]">NEW PRODUCT</p>
+                </div>
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="p-4 flex-1">
+        <section class="" id="dashboardPage">
+          <h2 class="tracking-[0.15rem] text-[24px]">DASHBOARD</h2>
+          <p class="mt-2.75 text-xs text-(--text-gray)">
+            Overview of your admin panel
+          </p>
+
+          <div class="lg:flex lg:justify-between lg:gap-6">
+            <div class="border border-(--border) p-6.25 mt-8 w-full">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M15.9942 20.9897V18.9905C15.9942 17.9301 15.5729 16.9131 14.8231 16.1633C14.0733 15.4134 13.0563 14.9922 11.9958 14.9922H5.99833C4.93791 14.9922 3.92092 15.4134 3.17109 16.1633C2.42125 16.9131 2 17.9301 2 18.9905V20.9897"
+                  stroke="black"
+                  stroke-opacity="0.4"
+                  stroke-width="1.99917"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M8.99833 10.9967C11.2066 10.9967 12.9967 9.20655 12.9967 6.99833C12.9967 4.79012 11.2066 3 8.99833 3C6.79012 3 5 4.79012 5 6.99833C5 9.20655 6.79012 10.9967 8.99833 10.9967Z"
+                  stroke="black"
+                  stroke-opacity="0.4"
+                  stroke-width="1.99917"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M21.9909 20.9926V18.9934C21.9903 18.1075 21.6954 17.2469 21.1527 16.5467C20.6099 15.8466 19.85 15.3465 18.9922 15.125"
+                  stroke="black"
+                  stroke-opacity="0.4"
+                  stroke-width="1.99917"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M15.9922 3.125C16.8522 3.34521 17.6145 3.8454 18.1589 4.54672C18.7033 5.24804 18.9988 6.11059 18.9988 6.99839C18.9988 7.88619 18.7033 8.74874 18.1589 9.45005C17.6145 10.1514 16.8522 10.6516 15.9922 10.8718"
+                  stroke="black"
+                  stroke-opacity="0.4"
+                  stroke-width="1.99917"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <p class="mt-4 text-(--text-gray) tracking-[0.15rem] text-xs">
+                TOTAL USERS
+              </p>
+              <p class="mt-2 text-[30px]">1,234</p>
+            </div>
+            <div class="border border-(--border) p-6.25 mt-8 w-full">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10.9967 21.7197C11.3006 21.8952 11.6453 21.9876 11.9963 21.9876C12.3472 21.9876 12.6919 21.8952 12.9958 21.7197L19.9929 17.7214C20.2965 17.5461 20.5487 17.2941 20.7242 16.9905C20.8996 16.687 20.9921 16.3427 20.9925 15.9921V7.99545C20.9921 7.64487 20.8996 7.30055 20.7242 6.99703C20.5487 6.69351 20.2965 6.44146 19.9929 6.26617L12.9958 2.26784C12.6919 2.09237 12.3472 2 11.9963 2C11.6453 2 11.3006 2.09237 10.9967 2.26784L3.99958 6.26617C3.69597 6.44146 3.4438 6.69351 3.26835 6.99703C3.0929 7.30055 3.00036 7.64487 3 7.99545V15.9921C3.00036 16.3427 3.0929 16.687 3.26835 16.9905C3.4438 17.2941 3.69597 17.5461 3.99958 17.7214L10.9967 21.7197Z"
+                  stroke="black"
+                  stroke-opacity="0.4"
+                  stroke-width="1.99917"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M11.9922 21.988V11.9922"
+                  stroke="black"
+                  stroke-opacity="0.4"
+                  stroke-width="1.99917"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M3.28906 7L11.9954 11.9979L20.7018 7"
+                  stroke="black"
+                  stroke-opacity="0.4"
+                  stroke-width="1.99917"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M7.5 4.26562L16.4963 9.41348"
+                  stroke="black"
+                  stroke-opacity="0.4"
+                  stroke-width="1.99917"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+
+              <p class="mt-4 text-(--text-gray) tracking-[0.15rem] text-xs">
+                TOTAL USERS
+              </p>
+              <p class="mt-2 text-[30px]">567</p>
+            </div>
+            <div class="border border-(--border) p-6.25 mt-8 w-full">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M21.9917 7L13.4952 15.4965L8.49729 10.4985L2 16.9958"
+                  stroke="black"
+                  stroke-opacity="0.4"
+                  stroke-width="1.99917"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M15.9922 7H21.9897V12.9975"
+                  stroke="black"
+                  stroke-opacity="0.4"
+                  stroke-width="1.99917"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+
+              <p class="mt-4 text-(--text-gray) tracking-[0.15rem] text-xs">
+                MONTHLY GROWTH
+              </p>
+              <p class="mt-2 text-[30px]">+23%</p>
+            </div>
+          </div>
+          <div class="border border-(--border) p-6.25 mt-8">
+            <p class="text-[18px] tracking-[0.15rem]">RECENT ACTIVITY</p>
+
+            <ul class="mt-4 flex flex-col divide-y divide-(--border) gap-4">
+              <li class="lg:flex lg:items-center lg:justify-between">
+                <div class="lg:mb-3">
+                  <p class="mt-3 text-sm">New user registered</p>
+                  <p class="mt-0.75 text-(--text-gray) text-xs">
+                    Kim.sora@email.com
+                  </p>
+                </div>
+                <div class="">
+                  <p class="mt-2 text-(--text-gray) text-xs mb-3">
+                    2 minutes ago
+                  </p>
+                </div>
+              </li>
+              <li class="lg:flex lg:items-center lg:justify-between">
+                <div class="lg:mb-3">
+                  <p class="mt-3 text-sm">New user registered</p>
+                  <p class="mt-0.75 text-(--text-gray) text-xs">
+                    Kim.sora@email.com
+                  </p>
+                </div>
+                <div class="">
+                  <p class="mt-2 text-(--text-gray) text-xs mb-3">
+                    2 minutes ago
+                  </p>
+                </div>
+              </li>
+              <li class="lg:flex lg:items-center lg:justify-between">
+                <div class="lg:mb-3">
+                  <p class="mt-3 text-sm">New user registered</p>
+                  <p class="mt-0.75 text-(--text-gray) text-xs">
+                    Kim.sora@email.com
+                  </p>
+                </div>
+                <div class="">
+                  <p class="mt-2 text-(--text-gray) text-xs mb-3">
+                    2 minutes ago
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+        <section class="hidden" id="usersPage">
+          <h2 class="tracking-[0.15rem] text-[24px]">USER MANAGEMENT</h2>
+          <p class="mt-2.75 text-xs text-(--text-gray)">
+            View and manage user accounts
+          </p>
+          <div class="relative border border-(--border) mt-6">
+            <svg
+              class="absolute -translate-y-1/2 left-3 top-1/2"
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7.33111 12.6622C10.2754 12.6622 12.6622 10.2754 12.6622 7.33111C12.6622 4.38682 10.2754 2 7.33111 2C4.38682 2 2 4.38682 2 7.33111C2 10.2754 4.38682 12.6622 7.33111 12.6622Z"
+                stroke="black"
+                stroke-opacity="0.4"
+                stroke-width="1.33278"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M13.9905 13.9905L11.125 11.125"
+                stroke="black"
+                stroke-opacity="0.4"
+                stroke-width="1.33278"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+
+            <input
+              class="py-3 pl-10 lg:hidden w-full"
+              type="text"
+              placeholder="SEARCH..."
+            />
+            <input
+              class="py-3 pl-10 hidden lg:block w-full"
+              type="text"
+              placeholder="SEARCH BY NAME, EMAIL, OR ID..."
+            />
+          </div>
+          <div class="relative border border-(--border) mt-3 lg:hidden">
+            <select class="w-full p-3" name="" id="">
+              <option value="date">SORT BY DATE</option>
+              <option value="name">SORT BY NAME</option>
+              <option value="points">SORT BY POINTS</option>
+            </select>
+          </div>
+          <p class="mt-5.75 text-xs text-(--text-gray) mb-6.25">
+            SHOWING 8 OF 8 USERS
+          </p>
+          <table class="w-full hidden lg:block">
+            <thead>
+              <tr
+                class="text-left border border-(--border) border-b-2 text-xs text-(--text-gray) tracking-[0.1rem]"
+              >
+                <th class="py-4 px-6 w-1/9">USER ID</th>
+                <th class="py-4 px-6 w-2/9">NAME</th>
+                <th class="py-4 px-6 w-4/9">EMAIL</th>
+                <th class="py-4 px-6 w-1/9">POINTS</th>
+                <th class="py-4 px-6 w-1/9">JOIN DATE</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border border-(--border) text-sm">
+                <td class="py-4 px-6 text-(--text-gray)">U004</td>
+                <td class="py-4 px-6">최유진</td>
+                <td class="py-4 px-6 text-(--text-gray)">
+                  choi.yujin@email.com
+                </td>
+                <td class="py-4 px-6">9,200 P</td>
+                <td class="py-4 px-6 text-(--text-gray)">2024.03.12</td>
+              </tr>
+            </tbody>
+          </table>
+          <div
+            class="border border-(--border) p-4.25 flex flex-col gap-3 lg:hidden"
+          >
+            <div class="flex justify-between">
+              <div>
+                <p class="text-sm">최유진</p>
+                <p class="text-xs">choi.yujin@email.com</p>
+              </div>
+              <p class="text-(--text-gray) text-xs">U004</p>
+            </div>
+            <div class="flex justify-between border-t border-(--border)">
+              <div class="mt-1">
+                <p class="text-xs">POINTS</p>
+                <p class="text-(--text-gray) text-sm">9,200 P</p>
+              </div>
+              <div class="flex flex-col items-end mt-1">
+                <p class="text-(--text-gray) text-xs">JOINED</p>
+                <time class="text-sm" datetime="">2024.03.12</time>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="hidden" id="productsPage">
+          <div class="lg:flex lg:justify-between lg:items-center">
+            <div>
+                <h2 class="tracking-[0.15rem] text-[24px]">PRODUCT MANAGEMENT</h2>
+                <p class="mt-2.75 text-xs text-(--text-gray)">
+                  View and manage product listings
+                </p>
+            </div>
+            <button id="productNewProductBtn"
+              class="lg:w-50 lg:h-11 lg:mt-0 text-xs w-full h-8 bg-black text-white tracking-[0.1rem] mt-10 flex justify-center items-center gap-2"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3.32812 8H12.6576"
+                  stroke="white"
+                  stroke-width="1.33278"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M8 3.32812V12.6576"
+                  stroke="white"
+                  stroke-width="1.33278"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              NEW PRODUCT
+            </button>
+          </div>
+          <div class="lg:flex lg:w-full lg:gap-4 mt-6">
+              <div class="relative border border-(--border) lg:flex-1">
+                <svg
+                  class="absolute -translate-y-1/2 left-3 top-1/2"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M7.33111 12.6622C10.2754 12.6622 12.6622 10.2754 12.6622 7.33111C12.6622 4.38682 10.2754 2 7.33111 2C4.38682 2 2 4.38682 2 7.33111C2 10.2754 4.38682 12.6622 7.33111 12.6622Z"
+                    stroke="black"
+                    stroke-opacity="0.4"
+                    stroke-width="1.33278"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M13.9905 13.9905L11.125 11.125"
+                    stroke="black"
+                    stroke-opacity="0.4"
+                    stroke-width="1.33278"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                <input class="py-3 pl-10 w-full" type="text" placeholder="SEARCH..." />
+              </div>
+              <div class="relative border border-(--border) mt-3 lg:mt-0 lg:w-60">
+                <select class="w-full h-full p-3" name="" id="">
+                  <option value="date">ALL CATEGORIES</option>
+                  <option value="name">SUNGLASSES</option>
+                  <option value="points">EYEGLASSES</option>
+                </select>
+              </div>
+          </div>
+          <p class="mt-5.75 text-xs text-(--text-gray) mb-6.25">
+            SHOWING 6 OF 6 PRODUCTS
+          </p>
+          <div class="mt-6 flex flex-col border border-(--border) w-max">
+            <div>
+              <svg
+                width="343"
+                height="343"
+                viewBox="0 0 343 343"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+              >
+                <rect
+                  width="342.437"
+                  height="342.437"
+                  fill="url(#pattern0_207_1473)"
+                />
+                <defs>
+                  <pattern
+                    id="pattern0_207_1473"
+                    patternContentUnits="objectBoundingBox"
+                    width="1"
+                    height="1"
+                  >
+                    <use
+                      xlink:href="#image0_207_1473"
+                      transform="scale(0.0025)"
+                    />
+                  </pattern>
+                  <image
+                    id="image0_207_1473"
+                    width="400"
+                    height="400"
+                    preserveAspectRatio="none"
+                    xlink:href="data:image/jpeg;base64,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"
+                  />
+                </defs>
+              </svg>
+            </div>
+            <div class="p-4">
+              <p class="text-[10px] tracking-[0.1rem] text-(--text-gray)">
+                P001 · SUNGLASSES
+              </p>
+              <p class="text-base">FRAME SERIES #01</p>
+            </div>
+            <div class="flex justify-between p-4">
+              <div>
+                <p class="text-sm">₩298,000</p>
+                <p class="text-xs text-(--text-gray)">STOCK: 45</p>
+              </div>
+              <div>
+                <button class="p-1.75 border border-(--border)">
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_207_1488)">
+                      <path
+                        d="M5.99813 1.5H2.49958C2.23448 1.5 1.98023 1.60531 1.79277 1.79277C1.60531 1.98023 1.5 2.23448 1.5 2.49958V9.49667C1.5 9.76178 1.60531 10.016 1.79277 10.2035C1.98023 10.3909 2.23448 10.4963 2.49958 10.4963H9.49667C9.76178 10.4963 10.016 10.3909 10.2035 10.2035C10.3909 10.016 10.4963 9.76178 10.4963 9.49667V5.99813"
+                        stroke="black"
+                        stroke-width="0.999584"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M9.18734 1.31053C9.38617 1.1117 9.65584 1 9.93703 1C10.2182 1 10.4879 1.1117 10.6867 1.31053C10.8855 1.50936 10.9972 1.77903 10.9972 2.06022C10.9972 2.34141 10.8855 2.61108 10.6867 2.80991L6.18209 7.31503C6.06342 7.4336 5.9168 7.5204 5.75577 7.56742L4.31987 7.98725C4.27686 7.99979 4.23127 8.00055 4.18788 7.98943C4.14448 7.97831 4.10487 7.95573 4.07319 7.92405C4.04152 7.89238 4.01894 7.85277 4.00782 7.80937C3.9967 7.76597 3.99745 7.72039 4.01 7.67738L4.42982 6.24148C4.47706 6.08057 4.56403 5.93413 4.68272 5.81565L9.18734 1.31053Z"
+                        stroke="black"
+                        stroke-width="0.999584"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_207_1488">
+                        <rect width="11.995" height="11.995" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </button>
+                <button class="p-1.75 border border-(--border)">
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_207_1492)">
+                      <path
+                        d="M1.5 3H10.4963"
+                        stroke="black"
+                        stroke-width="0.999584"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M9.49709 3V9.99709C9.49709 10.4969 8.99729 10.9967 8.4975 10.9967H3.49958C2.99979 10.9967 2.5 10.4969 2.5 9.99709V3"
+                        stroke="black"
+                        stroke-width="0.999584"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M4 2.99917V1.99958C4 1.49979 4.49979 1 4.99958 1H6.99875C7.49854 1 7.99833 1.49979 7.99833 1.99958V2.99917"
+                        stroke="black"
+                        stroke-width="0.999584"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M5 5.5V8.49875"
+                        stroke="black"
+                        stroke-width="0.999584"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M7 5.5V8.49875"
+                        stroke="black"
+                        stroke-width="0.999584"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_207_1492">
+                        <rect width="11.995" height="11.995" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="hidden" id="newProductsPage">
+          <h2 class="tracking-[0.15rem] text-[24px]">NEW PRODUCT</h2>
+          <p class="mt-2.75 text-xs text-(--text-gray)">
+            Create a new product listing
+          </p>
+          <p class="mt-5.75 text-xs tracking-[0.1rem]">PRODUCT IMAGES</p>
+          <label
+            class="mt-3 w-27 h-27 border border-dashed border-(--border) flex items-center justify-center cursor-pointer"
+          >
+            <svg
+              width="44"
+              height="39"
+              viewBox="0 0 44 39"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M28.2438 12.4922V15.8241C28.2438 16.266 28.0682 16.6897 27.7558 17.0022C27.4434 17.3146 27.0196 17.4901 26.5778 17.4901H14.916C14.4741 17.4901 14.0504 17.3146 13.738 17.0022C13.4255 16.6897 13.25 16.266 13.25 15.8241V12.4922"
+                stroke="black"
+                stroke-opacity="0.4"
+                stroke-width="1.66597"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M24.908 6.66493L20.7431 2.5L16.5781 6.66493"
+                stroke="black"
+                stroke-opacity="0.4"
+                stroke-width="1.66597"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M20.7422 2.5V12.4958"
+                stroke="black"
+                stroke-opacity="0.4"
+                stroke-width="1.66597"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M5.88894 27.7116H6.98979V32.495C6.98979 33.004 6.87024 33.455 6.63113 33.848C6.39202 34.2386 6.05584 34.5464 5.6226 34.7713C5.18936 34.9938 4.68155 35.1051 4.09917 35.1051C3.51915 35.1051 3.01252 34.9938 2.57928 34.7713C2.14604 34.5464 1.80987 34.2386 1.57076 33.848C1.33165 33.455 1.21209 33.004 1.21209 32.495V27.7116H2.30939V32.4062C2.30939 32.7353 2.3816 33.0277 2.52601 33.2834C2.67279 33.5391 2.87994 33.7403 3.14746 33.8871C3.41498 34.0315 3.73221 34.1037 4.09917 34.1037C4.46848 34.1037 4.7869 34.0315 5.05442 33.8871C5.32431 33.7403 5.53027 33.5391 5.67232 33.2834C5.81673 33.0277 5.88894 32.7353 5.88894 32.4062V27.7116ZM9.08514 34.9844V27.7116H11.6775C12.2433 27.7116 12.712 27.8146 13.0837 28.0206C13.4554 28.2266 13.7336 28.5083 13.9182 28.8658C14.1029 29.2209 14.1952 29.621 14.1952 30.0661C14.1952 30.5135 14.1017 30.916 13.9147 31.2734C13.73 31.6286 13.4507 31.9103 13.0766 32.1186C12.7049 32.3246 12.2374 32.4276 11.6739 32.4276H9.89125V31.4972H11.5745C11.932 31.4972 12.222 31.4356 12.4445 31.3125C12.6671 31.187 12.8304 31.0166 12.9346 30.8011C13.0387 30.5857 13.0908 30.3407 13.0908 30.0661C13.0908 29.7914 13.0387 29.5476 12.9346 29.3345C12.8304 29.1214 12.6659 28.9545 12.441 28.8338C12.2184 28.7131 11.9249 28.6527 11.5603 28.6527H10.1824V34.9844H9.08514ZM15.9816 34.9844V27.7116H17.0789V34.0398H20.3744V34.9844H15.9816ZM28.1604 31.348C28.1604 32.1245 28.0184 32.7921 27.7343 33.3509C27.4502 33.9072 27.0608 34.3357 26.566 34.6364C26.0735 34.9347 25.5136 35.0838 24.8863 35.0838C24.2565 35.0838 23.6943 34.9347 23.1995 34.6364C22.7071 34.3357 22.3188 33.906 22.0347 33.3473C21.7506 32.7886 21.6086 32.1222 21.6086 31.348C21.6086 30.5715 21.7506 29.9051 22.0347 29.3487C22.3188 28.79 22.7071 28.3615 23.1995 28.0632C23.6943 27.7625 24.2565 27.6122 24.8863 27.6122C25.5136 27.6122 26.0735 27.7625 26.566 28.0632C27.0608 28.3615 27.4502 28.79 27.7343 29.3487C28.0184 29.9051 28.1604 30.5715 28.1604 31.348ZM27.0738 31.348C27.0738 30.7562 26.9779 30.2578 26.7861 29.853C26.5967 29.4458 26.3363 29.138 26.0049 28.9297C25.6758 28.719 25.3029 28.6136 24.8863 28.6136C24.4672 28.6136 24.0932 28.719 23.7641 28.9297C23.435 29.138 23.1746 29.4458 22.9829 29.853C22.7935 30.2578 22.6988 30.7562 22.6988 31.348C22.6988 31.9399 22.7935 32.4394 22.9829 32.8466C23.1746 33.2514 23.435 33.5592 23.7641 33.7699C24.0932 33.9782 24.4672 34.0824 24.8863 34.0824C25.3029 34.0824 25.6758 33.9782 26.0049 33.7699C26.3363 33.5592 26.5967 33.2514 26.7861 32.8466C26.9779 32.4394 27.0738 31.9399 27.0738 31.348ZM30.2815 34.9844H29.1167L31.7339 27.7116H33.0017L35.6189 34.9844H34.4541L32.398 29.0327H32.3412L30.2815 34.9844ZM30.4768 32.1364H34.2552V33.0597H30.4768V32.1364ZM39.5235 34.9844H37.1691V27.7116H39.5981C40.3107 27.7116 40.9227 27.8572 41.434 28.1484C41.9454 28.4373 42.3372 28.8527 42.6095 29.3949C42.8841 29.9347 43.0214 30.5821 43.0214 31.3374C43.0214 32.0949 42.8829 32.746 42.6059 33.2905C42.3313 33.835 41.9336 34.254 41.4127 34.5476C40.8919 34.8388 40.2622 34.9844 39.5235 34.9844ZM38.2664 34.0256H39.4632C40.0171 34.0256 40.4776 33.9214 40.8445 33.7131C41.2115 33.5024 41.4861 33.1982 41.6684 32.8004C41.8507 32.4003 41.9419 31.9126 41.9419 31.3374C41.9419 30.7668 41.8507 30.2827 41.6684 29.8849C41.4885 29.4872 41.2198 29.1854 40.8623 28.9794C40.5048 28.7734 40.0609 28.6705 39.5306 28.6705H38.2664V34.0256Z"
+                fill="black"
+                fill-opacity="0.4"
+              />
+            </svg>
+
+            <input type="file" accept="image/*" class="hidden" />
+          </label>
+
+          <p class="mt-5.75 text-xs tracking-[0.1rem]">PRODUCT NAME</p>
+          <input
+            class="w-full border border-(--border) p-3 mt-2"
+            type="text"
+            placeholder="e.g., FRAME SERIES #01"
+          />
+
+          <div class="lg:flex lg:gap-6">
+              <div class="w-full">
+                  <p class="text-xs tracking-[0.1rem] mt-6" for="">CATEGORY</p>
+                  <input class="w-full border border-(--border) p-3 mt-2" type="text" />
+              </div>
+    
+              <div class="w-full">
+                  <p class="text-xs tracking-[0.1rem] mt-6" for="">PRICE (KRW)</p>
+                  <input
+                    class="w-full border border-(--border) p-3 mt-2"
+                    type="number"
+                    placeholder="0"
+                  />
+              </div>
+          </div>
+
+          <p class="text-xs tracking-[0.1rem] mt-6" for="">STOCK QUANTITY</p>
+          <input
+            class="w-full border border-(--border) p-3 mt-2"
+            type="number"
+            placeholder="0"
+          />
+
+          <p class="text-xs tracking-[0.1rem] mt-6" for="">DESCRIPTION</p>
+          <textarea
+            class="w-full border border-(--border) p-3 mt-2 h-30"
+            placeholder="Enter product description..."
+          ></textarea>
+
+          <div class="lg:flex lg:gap-4 lg:mt-12 lg:justify-end">
+              <button
+                class="text-xs w-full lg:w-52.5 h-8 bg-black text-white tracking-[0.1rem] mt-10 lg:mt-0"
+              >
+                CREATE PRODUCT
+              </button>
+              <button
+                class="text-xs w-full lg:w-52.5 h-8 border border-(--border) tracking-[0.1rem] mt-3 lg:mt-0"
+              >
+                CANCEL
+              </button>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="../../main.js"></script>
+  </body>
+</html>
