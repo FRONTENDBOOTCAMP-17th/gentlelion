@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>컬렉션 상세</title>
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body class="bg-white">
+    <div
+      id="fixed-bar"
+      class="fixed top-0 left-0 z-20 hidden h-[56px] w-full border-b border-[#e5e5e5] bg-[rgba(243,244,246,0.9)]"
+    >
+      <div class="flex h-full items-center justify-between px-5">
+        <div class="flex items-center gap-2">
+          <p
+            id="fixed-bar-name"
+            class="text-[12px] leading-[17px] text-[#111111]"
+          ></p>
+          <p
+            id="fixed-bar-count"
+            class="text-[12px] leading-[17px] text-[#858585]"
+          ></p>
+        </div>
+        <button type="button" class="text-[12px] leading-[17px] text-[#111111]">
+          필터
+        </button>
+      </div>
+    </div>
+
+    <div
+      id="tabs-wrapper"
+      class="sticky top-0 z-10 overflow-x-auto whitespace-nowrap border-b border-[#e5e5e5] bg-white/90 pl-[12px] py-2 scrollbar-hide"
+    >
+      <div id="collection-tabs" class="inline-flex gap-[10px] pr-3"></div>
+    </div>
+
+    <div class="w-full h-[565px] overflow-hidden">
+      <img
+        id="collection-banner"
+        src=""
+        alt="컬렉션 배너"
+        class="w-full h-full object-cover"
+      />
+    </div>
+
+    <div class="px-6 pt-6">
+      <h1
+        id="collection-name"
+        class="text-[12px] leading-[17px] font-normal text-[#111111]"
+      ></h1>
+
+      <p
+        id="collection-desc"
+        class="pt-[17px] text-[12px] leading-[17px] text-[#111111]"
+      ></p>
+
+      <a
+        id="collection-story"
+        href="#"
+        class="mt-4 inline-block text-[12px] leading-4 text-[#111111] underline"
+      >
+        스토리 보기↗
+      </a>
+    </div>
+
+    <div id="product-list" class="mt-6 grid grid-cols-2 gap-1 pb-10"></div>
+
+    <script type="module">
+      import { collections } from "../data/collection.js";
+
+      const params = new URLSearchParams(window.location.search);
+      const slug = params.get("slug");
+
+      const tabsWrapper = document.getElementById("tabs-wrapper");
+      const tabsContainer = document.getElementById("collection-tabs");
+      const banner = document.getElementById("collection-banner");
+      const collectionName = document.getElementById("collection-name");
+      const collectionDesc = document.getElementById("collection-desc");
+      const collectionStory = document.getElementById("collection-story");
+      const productList = document.getElementById("product-list");
+      const fixedBar = document.getElementById("fixed-bar");
+      const fixedBarName = document.getElementById("fixed-bar-name");
+      const fixedBarCount = document.getElementById("fixed-bar-count");
+
+      let selectedTab = null;
+      let currentCollection = null;
+
+      function getWishList() {
+        const savedData = localStorage.getItem("wishList");
+
+        if (savedData) {
+          return JSON.parse(savedData);
+        }
+
+        return [];
+      }
+
+      function saveWishList(wishList) {
+        localStorage.setItem("wishList", JSON.stringify(wishList));
+      }
+
+      function isWished(productId) {
+        const wishList = getWishList();
+        let result = false;
+
+        wishList.forEach(function (item) {
+          if (String(item) === String(productId)) {
+            result = true;
+          }
+        });
+
+        return result;
+      }
+
+      function createBookmarkSvg(isActive) {
+        if (isActive) {
+          return (
+            '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="24" viewBox="0 0 16 24" fill="none">' +
+            '<path d="M0.6 3.6H15.4V20.7253L8.38236 14.9221L8 14.6059L7.61764 14.9221L0.6 20.7253V3.6Z" fill="#111111" stroke="#111111" stroke-width="1.2"/>' +
+            "</svg>"
+          );
+        }
+
+        return (
+          '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="24" viewBox="0 0 16 24" fill="none">' +
+          '<path d="M8.38236 14.9221L8 14.6059L7.61764 14.9221L0.6 20.7253V3.6H15.4V20.7253L8.38236 14.9221Z" stroke="#111111" stroke-width="1.2"/>' +
+          "</svg>"
+        );
+      }
+
+      collections.forEach(function (collection) {
+        if (collection.slug === slug) {
+          currentCollection = collection;
+        }
+      });
+
+      collections.forEach(function (collection) {
+        const button = document.createElement("button");
+        button.textContent = collection.name;
+
+        const isSelected = collection.slug === slug;
+
+        button.style.backgroundColor = isSelected ? "#DFE3E8" : "transparent";
+        button.style.border = "1px solid #DFE3E8";
+        button.style.color = isSelected ? "#111111" : "#858585";
+        button.style.borderRadius = "20px";
+        button.style.padding = "0 12px";
+        button.style.height = "32px";
+        button.style.fontSize = "12px";
+        button.style.lineHeight = "32px";
+        button.style.fontFamily = "Arial, sans-serif";
+        button.style.whiteSpace = "nowrap";
+        button.style.cursor = "pointer";
+        button.style.fontWeight = "400";
+
+        if (isSelected) {
+          selectedTab = button;
+        }
+
+        button.addEventListener("click", function () {
+          location.href = "./collection-detail.html?slug=" + collection.slug;
+        });
+
+        tabsContainer.appendChild(button);
+      });
+
+      if (selectedTab) {
+        setTimeout(function () {
+          const tabLeft = selectedTab.offsetLeft;
+          const tabWidth = selectedTab.offsetWidth;
+          const wrapperWidth = tabsWrapper.offsetWidth;
+
+          tabsWrapper.scrollLeft = tabLeft - wrapperWidth / 2 + tabWidth / 2;
+        }, 0);
+      }
+
+      function handleFixedBar() {
+        const scrollY = window.scrollY;
+
+        if (scrollY > 80) {
+          fixedBar.classList.remove("hidden");
+          tabsWrapper.style.top = "56px";
+        } else {
+          fixedBar.classList.add("hidden");
+          tabsWrapper.style.top = "0px";
+        }
+      }
+
+      window.addEventListener("scroll", handleFixedBar);
+
+      if (!currentCollection) {
+        collectionName.textContent = "존재하지 않는 컬렉션입니다.";
+        collectionDesc.textContent = "";
+        collectionStory.style.display = "none";
+      } else {
+        collectionName.textContent = currentCollection.name;
+        collectionDesc.textContent = currentCollection.desc;
+        fixedBarName.textContent = currentCollection.name;
+        fixedBarCount.textContent =
+          "(" + currentCollection.products.length + ")";
+
+        if (currentCollection.banner) {
+          banner.src = currentCollection.banner;
+          banner.style.display = "block";
+        } else {
+          banner.style.display = "none";
+        }
+
+        if (currentCollection.storyUrl) {
+          collectionStory.href = currentCollection.storyUrl;
+          collectionStory.style.display = "inline-block";
+        } else {
+          collectionStory.style.display = "none";
+        }
+
+        if (currentCollection.products.length === 0) {
+          const emptyMessage = document.createElement("p");
+          emptyMessage.textContent = "준비 중인 상품입니다.";
+          emptyMessage.style.fontSize = "12px";
+          emptyMessage.style.lineHeight = "17px";
+          emptyMessage.style.color = "#858585";
+          emptyMessage.style.padding = "0 24px";
+          productList.appendChild(emptyMessage);
+        } else {
+          currentCollection.products.forEach(function (product) {
+            const item = document.createElement("div");
+            item.className = "cursor-pointer";
+
+            let imageHtml = "";
+
+            if (product.image) {
+              imageHtml =
+                '<img src="' +
+                product.image +
+                '" alt="' +
+                product.name +
+                '" class="w-full h-full object-cover" />';
+            } else {
+              imageHtml = '<div class="w-full h-full bg-gray-100"></div>';
+            }
+
+            let priceText = product.price;
+
+            if (product.status) {
+              priceText = priceText + " - " + product.status;
+            }
+
+            const isActive = isWished(product.id);
+
+            item.innerHTML =
+              '<div class="w-full overflow-hidden bg-gray-100 aspect-[185/252]">' +
+              imageHtml +
+              "</div>" +
+              '<div class="flex items-start justify-between px-8 pt-[8px]">' +
+              "<div>" +
+              '<p style="font-size:10px; line-height:15px; color:#111111; font-family:Arial,sans-serif; font-weight:400;">' +
+              product.name +
+              "</p>" +
+              '<p style="font-size:10px; line-height:15px; color:#111111; font-family:Arial,sans-serif; font-weight:400;">' +
+              priceText +
+              "</p>" +
+              "</div>" +
+              '<button type="button" class="bookmark-button ml-2 shrink-0 leading-none" aria-label="찜하기">' +
+              createBookmarkSvg(isActive) +
+              "</button>" +
+              "</div>";
+
+            item.addEventListener("click", function () {
+              location.href =
+                "./product-detail.html?collectionSlug=" +
+                currentCollection.slug +
+                "&productId=" +
+                product.id;
+            });
+
+            const bookmarkButton = item.querySelector(".bookmark-button");
+
+            bookmarkButton.addEventListener("click", function (event) {
+              event.stopPropagation();
+
+              const wishList = getWishList();
+              const nextWishList = [];
+              let alreadyWished = false;
+
+              wishList.forEach(function (wishId) {
+                if (String(wishId) === String(product.id)) {
+                  alreadyWished = true;
+                } else {
+                  nextWishList.push(wishId);
+                }
+              });
+
+              if (!alreadyWished) {
+                nextWishList.push(product.id);
+              }
+
+              saveWishList(nextWishList);
+              bookmarkButton.innerHTML = createBookmarkSvg(!alreadyWished);
+            });
+
+            productList.appendChild(item);
+          });
+        }
+      }
+
+      handleFixedBar();
+    </script>
+  </body>
+</html>
