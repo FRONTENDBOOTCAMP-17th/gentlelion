@@ -8,12 +8,24 @@
     <link rel="stylesheet" href="../components/style.css" />
   </head>
   <body class="bg-white">
-    <div class="px-4 py-6">
-      <h1 class="text-xl font-bold mb-6">컬렉션</h1>
-      <ul id="navigationList" class="grid grid-cols-2 gap-4"></ul>
+    <div class="pt-6">
+      <h1
+        class="px-6 mb-6 text-[12px] leading-[17px] font-normal text-[#111111]"
+      >
+        컬렉션
+      </h1>
+
+      <div
+        class="overflow-x-auto whitespace-nowrap pl-[12px] pb-2 scrollbar-hide"
+      >
+        <ul id="navigationList"></ul>
+      </div>
     </div>
 
     <script type="module" src="/src/main.js"></script>
-    <script type="module" src="/src/components/navigation/navigationButtons.js"></script>
+    <script
+      type="module"
+      src="/src/components/navigation/navigationButtons.js"
+    ></script>
   </body>
 </html>
