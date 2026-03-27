@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>상품 상세</title>
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body class="bg-white">
+    <div class="px-4 py-4 border-b border-gray-200 bg-white">
+      <a
+        id="back-link"
+        href="./collection.html"
+        class="text-sm text-[#111111] underline"
+      >
+        컬렉션으로 돌아가기
+      </a>
+    </div>
+
+    <div
+      id="image-box"
+      class="w-full h-[420px] md:h-[520px] overflow-hidden bg-gray-100"
+    >
+      <img
+        id="product-image"
+        src=""
+        alt="상품 이미지"
+        class="w-full h-full object-cover"
+      />
+    </div>
+
+    <div class="px-4 py-8">
+      <p id="product-collection" class="text-sm text-gray-500 mb-2"></p>
+      <h1 id="product-name" class="text-base font-medium mb-3"></h1>
+      <p id="product-price" class="text-sm text-[#111111] mb-2"></p>
+      <p id="product-status" class="text-sm text-gray-500 mb-6"></p>
+
+      <div class="border-t border-gray-200 pt-6">
+        <p class="text-sm text-[#111111] leading-6">상품 상세 페이지입니다.</p>
+      </div>
+    </div>
+
+    <script type="module">
+      import { collections } from "../data/collection.js";
+
+      const params = new URLSearchParams(window.location.search);
+      const collectionSlug = params.get("collectionSlug");
+      const productId = params.get("productId");
+
+      const backLink = document.getElementById("back-link");
+      const imageBox = document.getElementById("image-box");
+      const productImage = document.getElementById("product-image");
+      const productCollection = document.getElementById("product-collection");
+      const productName = document.getElementById("product-name");
+      const productPrice = document.getElementById("product-price");
+      const productStatus = document.getElementById("product-status");
+
+      let currentCollection = null;
+      let currentProduct = null;
+
+      collections.forEach(function (collection) {
+        if (collection.slug === collectionSlug) {
+          currentCollection = collection;
+        }
+      });
+
+      if (currentCollection) {
+        currentCollection.products.forEach(function (product) {
+          if (String(product.id) === String(productId)) {
+            currentProduct = product;
+          }
+        });
+      }
+
+      if (!currentCollection || !currentProduct) {
+        productCollection.textContent = "";
+        productName.textContent = "존재하지 않는 상품입니다.";
+        productPrice.textContent = "";
+        productStatus.textContent = "";
+        productImage.style.display = "none";
+      } else {
+        backLink.href =
+          "./collection-detail.html?slug=" + currentCollection.slug;
+
+        productCollection.textContent = currentCollection.name;
+        productName.textContent = currentProduct.name;
+        productPrice.textContent = currentProduct.price;
+
+        if (currentProduct.status) {
+          productStatus.textContent = currentProduct.status;
+        } else {
+          productStatus.textContent = "";
+        }
+
+        if (currentProduct.image) {
+          productImage.src = currentProduct.image;
+          productImage.alt = currentProduct.name;
+          productImage.style.display = "block";
+        } else {
+          productImage.style.display = "none";
+        }
+      }
+    </script>
+  </body>
+</html>
