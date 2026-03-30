@@ -90,4 +90,27 @@
   .utility-bar.is-active .cart path {
     @apply stroke-black;
   }
+  .utility-bar.is-login-page .nav-bar,
+  .utility-bar.is-login-page .nav-bar-list,
+  .utility-bar.is-login-page .rolling-list {
+    @apply text-black;
+  }
+
+  .utility-bar.is-login-page rect {
+    fill: #111;
+  }
+
+  .utility-bar.is-login-page svg circle,
+  .utility-bar.is-login-page svg [stroke] {
+    stroke: #111;
+  }
+
+  .utility-bar.is-login-page .logo-item svg path {
+    fill: #111;
+  }
+
+  .utility-bar.is-login-page svg,
+  .utility-bar.is-login-page svg circle {
+    stroke: #111;
+  }
 }
