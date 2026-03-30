@@ -47,6 +47,18 @@
   .rolling-list {
     @apply text-white text-[13px];
   }
+
+  /* product 페이지 css 추가 */
+  .nav-bar-product {
+    @apply text-black text-[14px] px-2 py-1 bg-transparent border-none cursor-pointer;
+  }
+  .nav-bar-product-list {
+    @apply mt-3 text-nowrap first:mt-9 text-black text-[13px] leading-4.25;
+  }
+  .rolling-product-list {
+    @apply text-black text-[13px];
+  }
+
   .utility-bar.is-scrolled .nav-bar,
   .utility-bar.is-scrolled .nav-bar-list,
   .utility-bar.is-scrolled .rolling-list {
