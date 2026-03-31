@@ -6,11 +6,12 @@
     <title>회원가입</title>
     <link rel="stylesheet" href="../../style.css" />
     <link rel="stylesheet" href="../style.css" />
+    <script type="module" src="./eyeIcon.js"></script>
   </head>
   <body class="bg-[#F3F4F6]">
     <div class="header relative">
       <ul
-        class="utility-bar is-login-page top-0 left-0 w-full h-22.5 flex items-center px-15 max-h-[392px] list-none m-0 bg-[#F3F4F6] transition-all duration-300 max-md:justify-between max-md:px-3 max-md:h-14"
+        class="utility-bar is-login-page top-0 left-0 w-full h-22.5 flex items-center px-15 max-h-98 list-none m-0 bg-[#F3F4F6] transition-all duration-300 max-md:justify-between max-md:px-3 max-md:h-14"
       >
         <div class="flex items-center max-md:hidden">
           <li class="menu-item group relative">
@@ -363,21 +364,16 @@
     >
       <div class="w-full">
         <div class="h-14 flex items-center mb-4 md:justify-center">
-          <h1 class="text-[18px] font-medium uppercase md:text-center">
-            로그인 / 계정 생성
-          </h1>
+          <h1 class="text-[18px] uppercase md:text-center">계정 생성하기</h1>
         </div>
 
         <p class="text-[13px] leading-[1.6] text-[#111] mb-8">
-          이메일 주소를 입력하시면 이전에 생성된 계정이 있는지 확인해
-          드리겠습니다. 또는 비회원으로도 계속 진행하실 수 있습니다.
+          아래 필드에 정보를 입력하여 걔정을 생성하고 특별한 서비스를
+          만나보세요.
         </p>
 
         <form id="loginForm" class="space-y-6">
           <div class="space-y-1.5">
-            <div class="text-[11px] text-[#858585] text-right">
-              *필수 입력 항목
-            </div>
             <div class="relative">
               <input
                 type="email"
@@ -391,9 +387,65 @@
           <div class="space-y-1.5">
             <div class="relative">
               <input
-                type="email"
-                id="emailInput"
-                placeholder="이메일 주소*"
+                type="password"
+                id="passwordInput"
+                placeholder="비밀번호*"
+                required
+                class="w-full h-13 px-3 bg-white border border-white rounded-lg text-[13px] outline-none focus:border-black transition-all placeholder-[#858585]"
+              />
+              <div
+                class="toggle-button inline-flex absolute top-1/2 -translate-y-1/2 left-auto right-3 cursor-pointer"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="eye-icon w-5 h-5"
+                >
+                  <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" />
+                  <path
+                    fill-rule="evenodd"
+                    d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 010-1.113zM17.25 12a5.25 5.25 0 11-10.5 0 5.25 5.25 0 0110.5 0z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="space-y-1.5">
+            <div class="relative">
+              <input
+                type="password"
+                id="passwordCheck"
+                placeholder="비밀번호 확인*"
+                required
+                class="w-full h-13 px-3 bg-white border border-white rounded-lg text-[13px] outline-none focus:border-black transition-all placeholder-[#858585]"
+              />
+              <div
+                class="toggle-button inline-flex absolute top-1/2 -translate-y-1/2 left-auto right-3 cursor-pointer"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="eye-icon w-5 h-5"
+                >
+                  <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" />
+                  <path
+                    fill-rule="evenodd"
+                    d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 010-1.113zM17.25 12a5.25 5.25 0 11-10.5 0 5.25 5.25 0 0110.5 0z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="space-y-1.5">
+            <div class="relative">
+              <input
+                type="text"
+                id="firstName"
+                placeholder="성*"
                 required
                 class="w-full h-13 px-3 bg-white border border-white rounded-lg text-[13px] outline-none focus:border-black transition-all placeholder-[#858585]"
               />
@@ -402,9 +454,9 @@
           <div class="space-y-1.5">
             <div class="relative">
               <input
-                type="email"
-                id="emailInput"
-                placeholder="이메일 주소*"
+                type="text"
+                id="lastName"
+                placeholder="이름*"
                 required
                 class="w-full h-13 px-3 bg-white border border-white rounded-lg text-[13px] outline-none focus:border-black transition-all placeholder-[#858585]"
               />
@@ -413,35 +465,179 @@
           <div class="space-y-1.5">
             <div class="relative">
               <input
-                type="email"
-                id="emailInput"
-                placeholder="이메일 주소*"
+                type="text"
+                id="phoneNumber"
+                placeholder="전화번호*"
                 required
                 class="w-full h-13 px-3 bg-white border border-white rounded-lg text-[13px] outline-none focus:border-black transition-all placeholder-[#858585]"
               />
             </div>
           </div>
-          <div class="space-y-1.5">
-            <div class="relative">
-              <input
-                type="email"
-                id="emailInput"
-                placeholder="이메일 주소*"
-                required
-                class="w-full h-13 px-3 bg-white border border-white rounded-lg text-[13px] outline-none focus:border-black transition-all placeholder-[#858585]"
-              />
-            </div>
+
+          <div class="flex items-center mb-4">
+            <input
+              type="checkbox"
+              id="custom-checkbox"
+              class="peer appearance-none w-4 h-4 border rounded-xs bg-white checked:bg-white focus:ring-1 cursor-pointer"
+              checked
+            />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="13"
+              height="10"
+              viewBox="0 0 13 10"
+              fill="none"
+              class="pointer-events-none absolute opacity-0 peer-checked:opacity-100 transition-all"
+            >
+              <rect
+                width="11.2502"
+                height="1.2"
+                transform="matrix(0.707155 -0.707059 0.707155 0.707059 3.24219 8.77734)"
+                fill="#111111"
+              ></rect>
+              <rect
+                width="5.5"
+                height="1.2"
+                transform="matrix(0.707155 0.707059 -0.707155 0.707059 1.04883 4.8877)"
+                fill="#111111"
+              ></rect>
+            </svg>
+            <label for="default-checkbox" class="select-none ms-2 text-[13px]"
+              >모두 동의하기</label
+            >
           </div>
-          <div class="space-y-1.5">
-            <div class="relative">
+          <div class="flex items-center">
+            <input
+              type="checkbox"
+              id="custom-checkbox"
+              class="peer appearance-none w-4 h-4 border rounded-xs bg-white checked:bg-white focus:ring-1 cursor-pointer"
+              checked
+            />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="13"
+              height="10"
+              viewBox="0 0 13 10"
+              fill="none"
+              class="pointer-events-none absolute opacity-0 peer-checked:opacity-100 transition-all"
+            >
+              <rect
+                width="11.2502"
+                height="1.2"
+                transform="matrix(0.707155 -0.707059 0.707155 0.707059 3.24219 8.77734)"
+                fill="#111111"
+              ></rect>
+              <rect
+                width="5.5"
+                height="1.2"
+                transform="matrix(0.707155 0.707059 -0.707155 0.707059 1.04883 4.8877)"
+                fill="#111111"
+              ></rect>
+            </svg>
+            <label for="checked-checkbox" class="select-none ms-2 text-[13px]"
+              >젠틀몬스터의 <a href="" class="underline">이용약관</a>에
+              동의합니다.(필수)</label
+            >
+          </div>
+          <div class="flex items-center">
+            <input
+              type="checkbox"
+              id="custom-checkbox"
+              class="peer appearance-none w-4 h-4 border rounded-xs bg-white checked:bg-white focus:ring-1 cursor-pointer"
+              checked
+            />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="13"
+              height="10"
+              viewBox="0 0 13 10"
+              fill="none"
+              class="pointer-events-none absolute opacity-0 peer-checked:opacity-100 transition-all"
+            >
+              <rect
+                width="11.2502"
+                height="1.2"
+                transform="matrix(0.707155 -0.707059 0.707155 0.707059 3.24219 8.77734)"
+                fill="#111111"
+              ></rect>
+              <rect
+                width="5.5"
+                height="1.2"
+                transform="matrix(0.707155 0.707059 -0.707155 0.707059 1.04883 4.8877)"
+                fill="#111111"
+              ></rect>
+            </svg>
+            <label for="checked-checkbox" class="select-none ms-2 text-[13px]"
+              >만 14세 이상입니다.(필수)</label
+            >
+          </div>
+          <div class="flex items-center">
+            <input
+              type="checkbox"
+              id="custom-checkbox"
+              class="peer appearance-none w-4 h-4 border rounded-xs bg-white checked:bg-white focus:ring-1 cursor-pointer"
+              checked
+            />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="13"
+              height="10"
+              viewBox="0 0 13 10"
+              fill="none"
+              class="pointer-events-none absolute opacity-0 peer-checked:opacity-100 transition-all"
+            >
+              <rect
+                width="11.2502"
+                height="1.2"
+                transform="matrix(0.707155 -0.707059 0.707155 0.707059 3.24219 8.77734)"
+                fill="#111111"
+              ></rect>
+              <rect
+                width="5.5"
+                height="1.2"
+                transform="matrix(0.707155 0.707059 -0.707155 0.707059 1.04883 4.8877)"
+                fill="#111111"
+              ></rect>
+            </svg>
+            <label for="checked-checkbox" class="select-none ms-2 text-[13px]"
+              >젠틀몬스터 뉴스레터를 받고 싶습니다.(선택)</label
+            >
+          </div>
+          <div class="flex items-center">
+            <div class="relative flex items-center justify-center w-4 h-4">
               <input
-                type="email"
-                id="emailInput"
-                placeholder="이메일 주소*"
-                required
-                class="w-full h-13 px-3 bg-white border border-white rounded-lg text-[13px] outline-none focus:border-black transition-all placeholder-[#858585]"
+                type="checkbox"
+                id="custom-checkbox"
+                class="peer appearance-none w-4 h-4 border rounded-xs bg-white checked:bg-white focus:ring-1 cursor-pointer"
+                checked
               />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="13"
+                height="10"
+                viewBox="0 0 13 10"
+                fill="none"
+                class="pointer-events-none absolute opacity-0 peer-checked:opacity-100 transition-all"
+              >
+                <rect
+                  width="11.2502"
+                  height="1.2"
+                  transform="matrix(0.707155 -0.707059 0.707155 0.707059 3.24219 8.77734)"
+                  fill="#111111"
+                ></rect>
+                <rect
+                  width="5.5"
+                  height="1.2"
+                  transform="matrix(0.707155 0.707059 -0.707155 0.707059 1.04883 4.8877)"
+                  fill="#111111"
+                ></rect>
+              </svg>
             </div>
+            <label for="checked-checkbox" class="select-none ms-2 text-[13px]"
+              >젠틀몬스터 뉴스레터 수신을 위한
+              <a href="" class="underline">개인정보 수집 및 이용</a>에
+              동의합니다.(선택)</label
+            >
           </div>
 
           <button
