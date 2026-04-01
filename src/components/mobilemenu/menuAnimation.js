@@ -1,6 +1,7 @@
-const button = document.getElementById("menuButton");
+const button = document.getElementById("menu-btn");
 const menu = document.getElementById("mobileMenu");
 const menuItems = menu.querySelectorAll(".menu-animate");
+const header = document.querySelector(".header");
 
 menuItems.forEach((item) => {
   item.classList.add(
@@ -58,17 +59,3 @@ function handleResize(e) {
 
 handleResize(mediaQuery);
 mediaQuery.addEventListener("change", handleResize);
-
-//메뉴 버튼 위치 이동 이벤트
-const line1 = document.getElementById("line1");
-const line2 = document.getElementById("line2");
-
-button.addEventListener("click", () => {
-  line1.classList.toggle("translate-y-[2.5px]");
-  line1.classList.toggle("rotate-45");
-
-  line2.classList.toggle("-translate-y-[2.5px]");
-  line2.classList.toggle("-rotate-45");
-
-  header.classList.toggle("is-active");
-});
