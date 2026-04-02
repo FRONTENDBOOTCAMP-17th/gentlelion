@@ -3,165 +3,153 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>login / register</title>
-    <link rel="stylesheet" href="../../style.css" />
-    <link rel="stylesheet" href="../style.css" />
+    <title>header</title>
   </head>
-  <body class="bg-[#F3F4F6] text-[#111] antialiased">
-    <div class="header relative">
+  <body>
+    <div class="header relative z-110">
       <ul
-        class="utility-bar is-login-page top-0 left-0 w-full h-22.5 flex items-center px-15 max-h-98 list-none m-0 bg-[#F3F4F6] transition-all duration-300 max-md:justify-between max-md:px-3 max-md:h-14"
+        class="utility-bar fixed top-0 left-0 w-full h-22.5 flex items-center px-15 list-none m-0 bg-transparent transition-all duration-300 max-md:justify-between max-md:px-3 max-md:h-14"
       >
         <div class="flex items-center max-md:hidden">
           <li class="menu-item group relative">
             <button class="nav-bar hidden min-[1240px]:block">선글라스</button>
-            <div
-              class="absolute left-0 top-full z-100 w-auto min-w-30 grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-in-out group-hover:grid-rows-[1fr] bg-[#F3F4F6]"
+            <ul
+              class="absolute left-0 top-full z-100 w-auto min-w-30 max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out group-hover:max-h-125 group-hover:opacity-100"
             >
-              <ul class="overflow-hidden">
-                <li class="nav-bar-list">
-                  <a href="">전체보기</a>
-                </li>
-                <li class="nav-bar-list">
-                  <a href="">2026 컬렉션</a>
-                </li>
-                <li class="nav-bar-list">
-                  <a href="">서킷 컬렉션</a>
-                </li>
-                <li class="nav-bar-list">
-                  <a href="">FALL 컬렉션</a>
-                </li>
-                <li class="nav-bar-list">
-                  <a href="">볼드 컬렉션</a>
-                </li>
-                <li class="nav-bar-list">
-                  <a href="">베스트셀러</a>
-                </li>
-                <li class="nav-bar-list">
-                  <a href="">포켓 컬렉션</a>
-                </li>
-                <li class="nav-bar-list">
-                  <a href="">2025 컬렉션</a>
-                </li>
-                <li class="nav-bar-list">
-                  <a href="">틴트 렌즈</a>
-                </li>
-                <li class="nav-bar-list">
-                  <a href="">선물</a>
-                </li>
-              </ul>
-            </div>
+              <li class="nav-bar-list">
+                <a href="">전체보기</a>
+              </li>
+              <li class="nav-bar-list">
+                <a href="">2026 컬렉션</a>
+              </li>
+              <li class="nav-bar-list">
+                <a href="">서킷 컬렉션</a>
+              </li>
+              <li class="nav-bar-list">
+                <a href="">FALL 컬렉션</a>
+              </li>
+              <li class="nav-bar-list">
+                <a href="">볼드 컬렉션</a>
+              </li>
+              <li class="nav-bar-list">
+                <a href="">베스트셀러</a>
+              </li>
+              <li class="nav-bar-list">
+                <a href="">포켓 컬렉션</a>
+              </li>
+              <li class="nav-bar-list">
+                <a href="">2025 컬렉션</a>
+              </li>
+              <li class="nav-bar-list">
+                <a href="">틴트 렌즈</a>
+              </li>
+              <li class="nav-bar-list">
+                <a href="">선물</a>
+              </li>
+            </ul>
           </li>
           <li class="menu-item group relative">
             <button class="nav-bar hidden min-[1240px]:block">안경</button>
-            <div
-              class="absolute left-0 top-full z-100 w-auto min-w-30 grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-in-out group-hover:grid-rows-[1fr] bg-[#F3F4F6]"
+            <ul
+              class="absolute left-0 top-full z-100 w-auto min-w-30 max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out group-hover:max-h-125 group-hover:opacity-100"
             >
-              <ul class="overflow-hidden">
-                <li class="nav-bar-list">
-                  <a href="">전체보기</a>
-                </li>
-                <li class="nav-bar-list">
-                  <a href="">2026 컬렉션</a>
-                </li>
-                <li class="nav-bar-list">
-                  <a href="">FALL 컬렉션</a>
-                </li>
-                <li class="nav-bar-list">
-                  <a href="">볼드 컬렉션</a>
-                </li>
-                <li class="nav-bar-list">
-                  <a href="">베스트셀러</a>
-                </li>
-                <li class="nav-bar-list">
-                  <a href="">포켓 컬렉션</a>
-                </li>
-                <li class="nav-bar-list">
-                  <a href="">2025 옵티컬</a>
-                </li>
-                <li class="nav-bar-list">
-                  <a href="">블루 라이트</a>
-                </li>
-                <li class="nav-bar-list">
-                  <a href="">틴트 렌즈</a>
-                </li>
-                <li class="nav-bar-list">
-                  <a href="">선물</a>
-                </li>
-              </ul>
-            </div>
+              <li class="nav-bar-list">
+                <a href="">전체보기</a>
+              </li>
+              <li class="nav-bar-list">
+                <a href="">2026 컬렉션</a>
+              </li>
+              <li class="nav-bar-list">
+                <a href="">FALL 컬렉션</a>
+              </li>
+              <li class="nav-bar-list">
+                <a href="">볼드 컬렉션</a>
+              </li>
+              <li class="nav-bar-list">
+                <a href="">베스트셀러</a>
+              </li>
+              <li class="nav-bar-list">
+                <a href="">포켓 컬렉션</a>
+              </li>
+              <li class="nav-bar-list">
+                <a href="">2025 옵티컬</a>
+              </li>
+              <li class="nav-bar-list">
+                <a href="">블루 라이트</a>
+              </li>
+              <li class="nav-bar-list">
+                <a href="">틴트 렌즈</a>
+              </li>
+              <li class="nav-bar-list">
+                <a href="">선물</a>
+              </li>
+            </ul>
           </li>
           <li class="menu-item group relative">
             <button class="nav-bar hidden min-[1240px]:block">컬렉션</button>
-            <div
-              class="absolute left-0 top-full z-100 w-auto min-w-30 grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-in-out group-hover:grid-rows-[1fr] bg-[#F3F4F6]"
+            <ul
+              class="absolute left-0 top-full z-100 w-auto min-w-30 max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out group-hover:max-h-125 group-hover:opacity-100"
             >
-              <ul class="overflow-hidden">
-                <li class="nav-bar-list">
-                  <a href="">서킷</a>
-                </li>
-                <li class="nav-bar-list">
-                  <a href="">2026 컬렉션</a>
-                </li>
-                <li class="nav-bar-list">
-                  <a href="">2025 FALL</a>
-                </li>
-                <li class="nav-bar-list">
-                  <a href="">2025 볼드</a>
-                </li>
-                <li class="nav-bar-list">
-                  <a href="">포켓</a>
-                </li>
-                <li class="nav-bar-list">
-                  <a href="">메종 마르지엘라</a>
-                </li>
-                <li class="nav-bar-list">
-                  <a href="">2025 컬렉션</a>
-                </li>
-                <li class="nav-bar-list">
-                  <a href="">철권 8</a>
-                </li>
-                <li class="nav-bar-list">
-                  <a href="">뮈글러</a>
-                </li>
-                <li class="nav-bar-list">
-                  <a href="">젠틀 살롱</a>
-                </li>
-              </ul>
-            </div>
+              <li class="nav-bar-list">
+                <a href="">서킷</a>
+              </li>
+              <li class="nav-bar-list">
+                <a href="">2026 컬렉션</a>
+              </li>
+              <li class="nav-bar-list">
+                <a href="">2025 FALL</a>
+              </li>
+              <li class="nav-bar-list">
+                <a href="">2025 볼드</a>
+              </li>
+              <li class="nav-bar-list">
+                <a href="">포켓</a>
+              </li>
+              <li class="nav-bar-list">
+                <a href="">메종 마르지엘라</a>
+              </li>
+              <li class="nav-bar-list">
+                <a href="">2025 컬렉션</a>
+              </li>
+              <li class="nav-bar-list">
+                <a href="">철권 8</a>
+              </li>
+              <li class="nav-bar-list">
+                <a href="">뮈글러</a>
+              </li>
+              <li class="nav-bar-list">
+                <a href="">젠틀 살롱</a>
+              </li>
+            </ul>
           </li>
           <li class="menu-item group relative hidden md:max-[1240px]:block">
             <button class="nav-bar">구매하기</button>
-            <div
-              class="absolute left-0 top-full z-100 w-auto min-w-30 grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-in-out group-hover:grid-rows-[1fr] bg-[#F3F4F6]"
+            <ul
+              class="absolute left-0 top-full z-100 w-auto min-w-30 max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out group-hover:max-h-125 group-hover:opacity-100"
             >
-              <ul class="overflow-hidden">
-                <li class="nav-bar-list">
-                  <a href="">선글라스</a>
-                </li>
-                <li class="nav-bar-list">
-                  <a href="">안경</a>
-                </li>
-                <li class="nav-bar-list">
-                  <a href="">컬렉션</a>
-                </li>
-              </ul>
-            </div>
+              <li class="nav-bar-list">
+                <a href="">선글라스</a>
+              </li>
+              <li class="nav-bar-list">
+                <a href="">안경</a>
+              </li>
+              <li class="nav-bar-list">
+                <a href="">컬렉션</a>
+              </li>
+            </ul>
           </li>
           <li class="menu-item group relative hidden md:block">
             <button class="nav-bar">더 알아보기</button>
-            <div
-              class="absolute left-0 top-full z-100 w-auto min-w-30 grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-in-out group-hover:grid-rows-[1fr] bg-[#F3F4F6]"
+            <ul
+              class="absolute left-0 top-full z-100 w-auto min-w-30 max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out group-hover:max-h-125 group-hover:opacity-100"
             >
-              <ul class="overflow-hidden">
-                <li class="nav-bar-list">
-                  <a href="">스토리</a>
-                </li>
-                <li class="nav-bar-list">
-                  <a href="">서비스</a>
-                </li>
-              </ul>
-            </div>
+              <li class="nav-bar-list">
+                <a href="">스토리</a>
+              </li>
+              <li class="nav-bar-list">
+                <a href="">서비스</a>
+              </li>
+            </ul>
           </li>
         </div>
 
@@ -295,18 +283,25 @@
                 viewBox="0 0 24 24"
                 fill="none"
                 class=""
+                data-sentry-element="svg"
+                data-sentry-component="SearchIcon"
+                data-sentry-source-file="SearchIcon.tsx"
               >
                 <path
                   d="M10.5 15.6C13.8689 15.6 16.6 12.8689 16.6 9.5C16.6 6.13106 13.8689 3.4 10.5 3.4C7.13106 3.4 4.4 6.13106 4.4 9.5C4.4 12.8689 7.13106 15.6 10.5 15.6Z"
                   stroke="white"
                   stroke-width="1.2"
                   stroke-miterlimit="10"
+                  data-sentry-element="path"
+                  data-sentry-source-file="SearchIcon.tsx"
                 ></path>
                 <path
                   d="M14 14L20 21"
                   stroke="white"
                   stroke-width="1.2"
                   stroke-miterlimit="10"
+                  data-sentry-element="path"
+                  data-sentry-source-file="SearchIcon.tsx"
                 ></path>
               </svg>
             </button>
@@ -351,16 +346,23 @@
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                data-sentry-element="svg"
+                data-sentry-component="ShoppingBagIcon"
+                data-sentry-source-file="ShoppingBagIcon.tsx"
               >
                 <path
                   d="M4.6 6.6H19.4V20.9H4.6V6.6Z"
-                  stroke="black"
+                  stroke="white"
                   stroke-width="1.2"
+                  data-sentry-element="path"
+                  data-sentry-source-file="ShoppingBagIcon.tsx"
                 ></path>
                 <path
                   d="M15.2988 5.9998C15.2988 3.68021 13.8219 1.7998 12 1.7998C10.1781 1.7998 8.70117 3.68021 8.70117 5.9998"
-                  stroke="black"
+                  stroke="white"
                   stroke-width="1.2"
+                  data-sentry-element="path"
+                  data-sentry-source-file="ShoppingBagIcon.tsx"
                 ></path>
               </svg>
             </button>
@@ -368,118 +370,5 @@
         </li>
       </ul>
     </div>
-    <section
-      class="flex-1 flex flex-col items-center justify-center w-full max-w-162 mx-auto px-4 py-12"
-    >
-      <div class="w-full">
-        <div class="h-14 flex items-center mb-4 md:justify-center">
-          <h1 class="text-[18px] font-medium uppercase md:text-center">
-            로그인 / 계정 생성
-          </h1>
-        </div>
-
-        <p class="text-[13px] leading-[1.6] text-[#111] mb-8">
-          이메일 주소를 입력하시면 이전에 생성된 계정이 있는지 확인해
-          드리겠습니다. 또는 비회원으로도 계속 진행하실 수 있습니다.
-        </p>
-
-        <form id="loginForm" class="space-y-6">
-          <div class="space-y-1.5">
-            <div class="text-[11px] text-[#858585] text-right">
-              *필수 입력 항목
-            </div>
-            <div class="relative">
-              <input
-                type="email"
-                id="emailInput"
-                placeholder="이메일 주소*"
-                required
-                class="w-full h-13 px-3 bg-white border border-white rounded-lg text-[13px] outline-none focus:border-black transition-all placeholder-[#858585]"
-              />
-            </div>
-          </div>
-
-          <button
-            type="submit"
-            class="w-full h-13 bg-[#111] text-white text-[13px] rounded-lg uppercase font-medium transition-colors"
-          >
-            계속하기
-          </button>
-          <button
-            class="w-full h-13 bg-[#858585] text-white text-[13px] rounded-lg uppercase font-medium transition-colors"
-          >
-            다른 옵션 보기
-          </button>
-        </form>
-
-        <div class="mt-16">
-          <button
-            class="w-full h-13 border border-[#ababab] text-[13px] rounded-lg uppercase text-[#111] hover:bg-white transition-all"
-          >
-            주문 추적하기
-          </button>
-        </div>
-      </div>
-    </section>
-    <footer class="">
-      <div class="lg:flex justify-between items-center">
-        <ul
-          class="px-6 text-[12px] mt-21.5 mb-15 md:mb-14 md:mt-16.5 lg:mb-4.25 lg:mt-21 flex flex-col lg:flex-row lg:px-15 gap-4"
-        >
-          <li><a href="">문의하기</a></li>
-          <li><a href="">고객 서비스</a></li>
-          <li><a href="">스토어 찾기</a></li>
-          <li><a href="">법적 고지</a></li>
-          <li><a href="">개인정보 처리방침</a></li>
-          <li><a href="">구독하기</a></li>
-          <li class="hidden lg:block relative group">
-            <a href="">소셜</a>
-            <div
-              class="absolute -top-50 mt-2 w-max bg-white opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-out"
-            >
-              <ul class="flex flex-col gap-1.5">
-                <li><a href="">Weibo</a></li>
-                <li><a href="">카카오톡</a></li>
-                <li><a href="">Wechat</a></li>
-                <li><a href="">X</a></li>
-                <li><a href="">유튜브</a></li>
-                <li><a href="">페이스북</a></li>
-                <li><a href="">틱톡</a></li>
-                <li><a href="">인스타그램</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="hidden md:block"><a href="">국가 : South Korea</a></li>
-        </ul>
-        <div class="border-t border-(--border) lg:hidden">
-          <p class="px-6 text-[10.8px] mt-12.25">
-            젠틀몬스터의 공식 소셜 계정을 팔로우하고 다양한 콘텐츠를 만나보세요.
-          </p>
-          <ul
-            class="px-6 flex gap-[clamp(10px,4vw,24px)] text-[12px] mt-9 flex-wrap"
-          >
-            <li><a href="">인스타그램</a></li>
-            <li><a href="">틱톡</a></li>
-            <li><a href="">페이스북</a></li>
-            <li><a href="">유튜브</a></li>
-            <li><a href="">X</a></li>
-            <li><a href="">WeChat</a></li>
-            <li><a href="">카카오톡</a></li>
-            <li><a href="">Weibo</a></li>
-          </ul>
-        </div>
-        <div class="px-6 lg:px-15">
-          <p class="text-[10.9px] font-bold mt-12">© 2026 GENTLE LION</p>
-        </div>
-      </div>
-      <div class="px-6 lg:px-15">
-        <p class="text-[8.9px] text-(--text-gray) mt-4.25 mb-6.5">
-          상호명: 멋쟁이사자처럼 대표: 나성영 contact@likelion.net 사업자 번호:
-          264-88-01106 통신판매업 신고번호: 2022-서울종로-1534 주소: 서울 종로구
-          종로3길 17, 광화문D타워 D1동 16층, 17층 Copyright © 2024
-          멋쟁이사자처럼 All rights reserved.
-        </p>
-      </div>
-    </footer>
   </body>
 </html>
