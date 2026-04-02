@@ -1,9 +1,11 @@
 import "./style.css";
 
-//스크롤 이벤트
+// 스크롤 이벤트
 const header = document.querySelector(".utility-bar");
 
 const handleScroll = () => {
+  if (!header) return;
+
   if (window.scrollY > 785.33) {
     header.classList.add("is-scrolled");
   } else {
@@ -11,19 +13,23 @@ const handleScroll = () => {
   }
 };
 
-window.addEventListener("scroll", handleScroll);
+if (header) {
+  window.addEventListener("scroll", handleScroll);
+}
 
-//메뉴 버튼 이벤트
+// 메뉴 버튼 이벤트
 const btn = document.getElementById("menu-btn");
 const line1 = document.getElementById("line1");
 const line2 = document.getElementById("line2");
 
-btn.addEventListener("click", () => {
-  line1.classList.toggle("translate-y-[2.5px]");
-  line1.classList.toggle("rotate-45");
+if (btn && line1 && line2 && header) {
+  btn.addEventListener("click", () => {
+    line1.classList.toggle("translate-y-[2.5px]");
+    line1.classList.toggle("rotate-45");
 
-  line2.classList.toggle("-translate-y-[2.5px]");
-  line2.classList.toggle("-rotate-45");
+    line2.classList.toggle("-translate-y-[2.5px]");
+    line2.classList.toggle("-rotate-45");
 
-  header.classList.toggle("is-active");
-});
+    header.classList.toggle("is-active");
+  });
+}

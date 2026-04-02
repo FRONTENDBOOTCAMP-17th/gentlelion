@@ -400,26 +400,48 @@
 
       <!-- 배너 + 제목/설명 섹션 -->
       <section id="collection-special-visual" class="relative overflow-hidden">
-        <!-- 배너 이미지 -->
-        <div
-          id="collection-banner-wrap"
-          class="w-full overflow-hidden"
-          style="aspect-ratio: 64/30; display: none"
-        >
-          <img
-            id="collection-banner"
-            src=""
-            alt="컬렉션 배너"
-            class="w-full h-full object-cover"
-            style="min-height: 200px"
-          />
-        </div>
-        <style>
-          @media (max-width: 768px) {
-            #collection-banner-wrap {
-              aspect-ratio: 3/4 !important;
-            }
-          }
+      <!-- 배너 이미지 -->
+<div
+  id="collection-banner-wrap"
+  style="display: none; width: 100%; overflow: hidden; background: #f3f4f6"
+>
+  <img
+    id="collection-banner"
+    src=""
+    alt="컬렉션 배너"
+    style="width: 100%; height: 100%; display: block; object-fit: cover"
+  />
+</div>
+
+<style>
+  @media (min-width: 769px) {
+    #collection-banner-wrap {
+      aspect-ratio: 64 / 30;
+    }
+
+    #collection-banner {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+@media (max-width: 768px) {
+  #collection-banner-wrap {
+    aspect-ratio: 1080 / 1566;
+  }
+
+  #collection-banner {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 42%;
+    display: block;
+  }
+}
+</style>
+</style>
         </style>
 
         <!-- 컬렉션 제목 + 설명 -->
@@ -447,7 +469,7 @@
       </section>
 
       <!-- 상품 목록 -->
-      <section class="px-[68px] pt-[52px] pb-[52px] max-md:px-0 max-md:pt-6">
+      <section class="px-[80px] pt-[52px] pb-[52px] max-md:px-0 max-md:pt-6">
         <div id="product-list" class="flex flex-col"></div>
       </section>
 
@@ -589,7 +611,8 @@
             productList.appendChild(emptyMessage);
           } else {
             const inner = document.createElement("div");
-            inner.className = "product-list-inner grid grid-cols-2";
+            inner.className =
+              "product-list-inner grid grid-cols-3 gap-x-[106px] max-md:grid-cols-2 max-md:gap-x-0";
 
             products.forEach(function (product) {
               const isActive = isWished(product.id);
