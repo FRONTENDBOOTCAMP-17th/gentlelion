@@ -26,46 +26,77 @@
         max-height: 600px;
       }
       .acc-icon {
-        transition: transform 0.3s ease;
         display: inline-block;
         font-size: 16px;
         line-height: 1;
       }
 
-      /* ── 모바일 이미지 슬라이더 ── */
-      .mobile-slider-wrap {
-        overflow: hidden;
+      /* ── 데스크탑 PDP 이미지 컨테이너 ──
+         공홈: pdp-thumb inner = w-[1080px] h-[1080px] 고정 + overflow:hidden
+         실제 보이는 크기(846px)로 crop됨 → 1:1 비율 유지
+      */
+      .pdp-img-container {
         position: relative;
         width: 100%;
-        aspect-ratio: 1 / 1;
+        padding-top: 100%; /* 1:1 */
+        overflow: hidden;
+        background: #f3f4f6;
+      }
+      .pdp-img-container img {
+        /* 공홈처럼 이미지를 중앙 crop */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 130%; /* 이미지가 컨테이너보다 크게 → crop 효과 */
+        height: 130%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+      }
+
+      /* ── 모바일 슬라이더 ── */
+      .mobile-slider-wrap {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 344 / 478;
+        overflow: hidden;
         background: #f3f4f6;
         cursor: grab;
         user-select: none;
+        -webkit-user-select: none;
+        touch-action: pan-y;
       }
       .mobile-slider-wrap.grabbing {
         cursor: grabbing;
       }
       .mobile-slider-track {
-        display: flex;
-        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
         height: 100%;
+        display: flex;
         transition: transform 0.3s ease;
         will-change: transform;
+        touch-action: pan-y;
       }
       .mobile-slide {
+        flex: 0 0 100%;
         min-width: 100%;
+        width: 100%;
         height: 100%;
-        flex-shrink: 0;
+        overflow: hidden;
       }
       .mobile-slide img {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
+        object-position: center;
+        transform: scale(1.12);
         display: block;
         pointer-events: none;
-        draggable: false;
       }
-      /* 슬라이더 바 - 공홈: 8×1px 직사각형, border-radius:0 */
+      /* 슬라이더 바: 8×1px 직사각형 */
       .slider-dots {
         display: flex;
         justify-content: center;
@@ -79,26 +110,36 @@
         border-radius: 0;
         background: rgba(28, 26, 26, 0.25);
         cursor: pointer;
-        transition: background 0.2s;
+        transition: background-color 0.2s;
       }
       .slider-dot.active {
-        background: rgb(28, 26, 26);
+        background-color: rgb(28, 26, 26);
       }
 
-      /* ── 데스크탑 레이아웃 ── */
+      /* ── 데스크탑 (769px+) ──
+         공홈 실측: thumbnail=846px, info=423px, total=2545px
+         thumbnail≈33%, info≈17% → 하지만 flex로 구현
+         공홈: product-thumbnail은 flex-grow, product-info는 fixed width
+      */
       @media (min-width: 769px) {
-        .mobile-slider-wrap {
-          display: none !important;
-        }
+        .mobile-slider-wrap,
         .slider-dots {
           display: none !important;
         }
-        .product-thumbnail {
-          width: 63%;
+        .desktop-thumb-box {
           display: block;
         }
+        .product-top {
+          display: flex;
+          flex-direction: row;
+        }
+        .product-thumbnail {
+          flex: 1;
+          min-width: 0;
+        }
         .product-info {
-          width: 37%;
+          flex-shrink: 0;
+          width: 423px;
         }
         .product-info-box {
           position: sticky;
@@ -109,30 +150,19 @@
           width: 327px;
           box-sizing: content-box;
         }
-        .desktop-thumb-box {
-          display: block;
-        }
-        .mobile-info-wrap {
-          display: none !important;
-        }
-        .desktop-info-wrap {
-          display: block !important;
-        }
       }
 
-      /* ── 모바일 레이아웃 ── */
+      /* ── 모바일 (768px 이하) ── */
       @media (max-width: 768px) {
+        .desktop-thumb-box {
+          display: none !important;
+        }
         .product-top {
           flex-direction: column !important;
         }
-        .product-thumbnail {
-          width: 100% !important;
-        }
+        .product-thumbnail,
         .product-info {
           width: 100% !important;
-        }
-        .desktop-thumb-box {
-          display: none !important;
         }
         .product-info-box {
           position: static !important;
@@ -140,21 +170,25 @@
           width: 100% !important;
           box-sizing: border-box;
         }
-        .desktop-info-wrap {
-          display: none !important;
-        }
-        .mobile-info-wrap {
-          display: block !important;
-        }
       }
 
-      /* 색상칩 활성 언더라인 */
-      .chip-underline {
-        display: block;
+      /* 유사한 프레임 이미지 (1:1 crop) */
+      .similar-img-wrap {
+        position: relative;
         width: 100%;
-        height: 1px;
-        background: #111;
-        margin-top: 2px;
+        padding-top: 138.1%; /* 상품카드와 동일 비율 */
+        overflow: hidden;
+        background: #f3f4f6;
+      }
+      .similar-img-wrap img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
       }
     </style>
   </head>
@@ -729,15 +763,11 @@
         // ── 데스크탑 수직 나열 ──
         images.forEach((src, i) => {
           const wrap = document.createElement("div");
-          // 공홈 실제 비율: 344:478
-          wrap.style.cssText =
-            "width:100%;overflow:hidden;aspect-ratio:344/478;background:#F3F4F6;";
+          wrap.className = "pdp-img-container"; // CSS에서 1:1 비율 처리
           const img = document.createElement("img");
           img.src = src;
           img.alt = currentProduct.name;
           img.loading = i === 0 ? "eager" : "lazy";
-          img.style.cssText =
-            "width:100%;height:100%;object-fit:cover;display:block;";
           wrap.appendChild(img);
           desktopBox.appendChild(wrap);
         });
@@ -791,7 +821,7 @@
         if (isSoldOut) {
           cartBtn.textContent = "알림 받기";
           cartBtn.style.cssText =
-            "width:100%;height:48px;background:white;color:#111111;border:1px solid #111111;border-radius:8px;font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;";
+            "width:100%;height:48px;background:#111111;color:#ffffff;border:none;border-radius:8px;font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;";
         }
         cartBtn.addEventListener("click", () => {
           alert(
@@ -827,14 +857,11 @@
             a.style.cssText =
               "display:block;text-decoration:none;cursor:pointer;";
             const imgWrap = document.createElement("div");
-            imgWrap.style.cssText =
-              "width:100%;aspect-ratio:344/478;overflow:hidden;background:#F3F4F6;";
+            imgWrap.className = "similar-img-wrap"; // CSS 클래스로 1:1 처리
             const img = document.createElement("img");
             img.src = (p.images && p.images[0]) || p.image || "";
             img.alt = p.name;
             img.loading = "lazy";
-            img.style.cssText =
-              "width:100%;height:100%;object-fit:cover;display:block;";
             imgWrap.appendChild(img);
             const info = document.createElement("div");
             info.style.cssText = "padding:8px 0 0;";
