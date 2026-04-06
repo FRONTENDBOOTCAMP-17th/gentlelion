@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>62번 이슈 컴포넌트</title>
+    <link rel="stylesheet" href="../../src/components/style.css" />
+    <script type="module" src="../../src/main.js"></script>
+    <script type="module" src="./components/order/index.js"></script>
+  </head>
+  <body class="font-gentle bg-(--bg)">
+    <!-- 목록 페이지 헤더 -->
+
+    <header
+      class="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4 p-8"
+    >
+      <h1 class="text-[24px] font-bold">주문 관리</h1>
+      <div class="flex gap-4 h-11">
+        <div class="relative">
+          <input
+            id="search"
+            class="border border-(--admin-border) rounded-lg h-11 w-[256px] pl-10"
+            type="text"
+            placeholder="주문 검색..."
+          />
+          <svg
+            class="absolute -translate-y-1/2 top-1/2 left-1.5"
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M9.15979 15.8216C12.839 15.8216 15.8215 12.8391 15.8215 9.15991C15.8215 5.48073 12.839 2.49817 9.15979 2.49817C5.48061 2.49817 2.49805 5.48073 2.49805 9.15991C2.49805 12.8391 5.48061 15.8216 9.15979 15.8216Z"
+              stroke="#99A1AF"
+              stroke-width="1.66543"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M17.4869 17.4871L13.9062 13.9064"
+              stroke="#99A1AF"
+              stroke-width="1.66543"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+      </div>
+    </header>
+
+    <main class="p-8">
+      <!-- 주문 관리 테이블 -->
+      <table class="w-full">
+        <thead>
+          <tr class="text-[12px] text-(--admin-gray)">
+            <td class="py-5">주문번호</td>
+            <td class="py-5">사용자 ID</td>
+            <td class="py-5">수령인</td>
+            <td class="py-5">금액</td>
+            <td class="py-5">주문일시</td>
+            <td class="py-5">작업</td>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <!-- 페이지 번호 및 텍스트 -->
+      <div class="flex flex-col text-center gap-4">
+        <div id="listButtonComponents" class="flex gap-1 justify-center">
+          <button
+            class="text-[14px] py-2 px-3.75 border border-(--admin-border) rounded-lg"
+            data-set="1"
+          >
+            1
+          </button>
+        </div>
+        <p class="text-(--admin-page) text-[14px]">
+          총 <span id="orderListTotal"></span>건 중
+          <span id="orderListNum">1-20</span>건 표시
+        </p>
+      </div>
+    </main>
+  </body>
+</html>
