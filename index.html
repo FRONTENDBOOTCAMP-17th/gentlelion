@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>gentlelion</title>
     <script type="module" src="./src/main.js"></script>
+    <script type="module" src="./src/components/video/mainVideo.js"></script>
+    <script type="module" src="./src/components/slide/mainSlide.js"></script>
   </head>
   <body>
     <div class="header relative z-110">
@@ -372,120 +374,325 @@
       </ul>
     </div>
 
-    <div class="main-video">
+    <div class="main-video relative h-[784.55px] w-full">
       <video
-        class="w-full h-[784.55px] object-cover mobile:scale-[101%]"
+        id="main-video-player"
+        class="w-full h-full object-cover mobile:scale-[101%]"
         autoplay=""
         playsinline=""
-        poster="https://gm-prd-resource.gentlemonster.com/main/banner/816842143951433302/8518da77-5641-44f3-b1c3-02529ed52feb/main_pc_3840_1980.jpg"
         preload="metadata"
       >
         <source
-          src="https://gm-prd-resource.gentlemonster.com/main/banner/816842143951433302/79761a11-80a4-4080-9eec-fc5780dc5d5f/main_pc_1920_990.mp4"
+          id="video-source"
+          src="https://gm-prd-resource.gentlemonster.com/main/banner/798372671433820827/6fc4e780-c8ce-48bd-a8dd-3abff6ab7f8d/main_pc_1920*990.mp4"
           type="video/mp4"
-        />
-        <img
-          alt="Video thumbnail"
-          fetchpriority="high"
-          width="1920"
-          height="990"
-          decoding="async"
-          data-nimg="1"
-          class="w-full h-full object-cover mobile:scale-[101%]"
-          src="https://gm-prd-resource.gentlemonster.com/main/banner/816842143951433302/8518da77-5641-44f3-b1c3-02529ed52feb/main_pc_3840_1980.jpg"
-          style="color: transparent"
         />
         <p>Your browser does not support HTML video playback.</p>
       </video>
-      <div>
-        <h2>새롭게 선보이는 젠틀몬스터 신제품</h2>
-        <span>더보기</span>
+      <img
+        id="main-image-player"
+        class="absolute inset-0 w-full h-full object-cover hidden"
+        src=""
+        alt="Campaign Image"
+      />
+      <div
+        class="absolute bottom-12 left-1/2 -translate-x-1/2 w-120 flex gap-2 z-10"
+      >
+        <div
+          class="progress-bg flex-1 h-0.5 bg-white/30 relative overflow-hidden"
+        >
+          <div
+            class="progress-fill absolute h-full bg-white w-0 transition-none"
+          ></div>
+        </div>
+        <div
+          class="progress-bg flex-1 h-0.5 bg-white/30 relative overflow-hidden"
+        >
+          <div
+            class="progress-fill absolute h-full bg-white w-0 transition-none"
+          ></div>
+        </div>
+        <div
+          class="progress-bg flex-1 h-0.5 bg-white/30 relative overflow-hidden"
+        >
+          <div
+            class="progress-fill absolute h-full bg-white w-0 transition-none"
+          ></div>
+        </div>
+        <div
+          class="progress-bg flex-1 h-0.5 bg-white/30 relative overflow-hidden"
+        >
+          <div
+            class="progress-fill absolute h-full bg-white w-0 transition-none"
+          ></div>
+        </div>
+        <div
+          class="progress-bg flex-1 h-0.5 bg-white/30 relative overflow-hidden"
+        >
+          <div
+            class="progress-fill absolute h-full bg-white w-0 transition-none"
+          ></div>
+        </div>
       </div>
-      <div>
-        <h2>TOP 20 베스트셀러</h2>
-        <span>더보기</span>
+      <div
+        class="absolute inset-0 bottom-30 flex flex-col items-center justify-end text-white pointer-events-none"
+      >
+        <h2 id="video-title" class="text-[24px] leading-7 mb-8"></h2>
+        <div class="button-group flex gap-4 justify-center pointer-events-auto">
+          <button
+            class="border text-[11px] border-white rounded-[25px] px-6 py-2"
+          >
+            구매하기
+          </button>
+          <button
+            class="campaignBtn border text-[11px] border-white rounded-[25px] px-6 py-2"
+          >
+            캠페인 보기
+          </button>
+        </div>
       </div>
-      <div>
-        <h2>새롭게 선보이는 젠틀몬스터 신제품</h2>
-        <span>더보기</span>
-      </div>
-      <div>
-        <h2>TOP 20 베스트셀러</h2>
-        <span>더보기</span>
-      </div>
-      <div>
-        <h2>새롭게 선보이는 젠틀몬스터 신제품</h2>
-        <span>더보기</span>
-      </div>
-      <div>
-        <h2>TOP 20 베스트셀러</h2>
-        <span>더보기</span>
-      </div>
-      <div>
-        <h2>새롭게 선보이는 젠틀몬스터 신제품</h2>
-        <span>더보기</span>
-      </div>
-      <div>
-        <h2>TOP 20 베스트셀러</h2>
-        <span>더보기</span>
-      </div>
-      <div>
-        <h2>새롭게 선보이는 젠틀몬스터 신제품</h2>
-        <span>더보기</span>
-      </div>
-      <div>
-        <h2>TOP 20 베스트셀러</h2>
-        <span>더보기</span>
-      </div>
-      <div>
-        <h2>새롭게 선보이는 젠틀몬스터 신제품</h2>
-        <span>더보기</span>
-      </div>
-      <div>
-        <h2>TOP 20 베스트셀러</h2>
-        <span>더보기</span>
-      </div>
-      <div>
-        <h2>새롭게 선보이는 젠틀몬스터 신제품</h2>
-        <span>더보기</span>
-      </div>
-      <div>
-        <h2>TOP 20 베스트셀러</h2>
-        <span>더보기</span>
-      </div>
-      <div>
-        <h2>새롭게 선보이는 젠틀몬스터 신제품</h2>
-        <span>더보기</span>
-      </div>
-      <div>
-        <h2>TOP 20 베스트셀러</h2>
-        <span>더보기</span>
-      </div>
-      <div>
-        <h2>새롭게 선보이는 젠틀몬스터 신제품</h2>
-        <span>더보기</span>
-      </div>
-      <div>
-        <h2>TOP 20 베스트셀러</h2>
-        <span>더보기</span>
-      </div>
-      <div>
-        <h2>새롭게 선보이는 젠틀몬스터 신제품</h2>
-        <span>더보기</span>
-      </div>
-      <div>
-        <h2>TOP 20 베스트셀러</h2>
-        <span>더보기</span>
-      </div>
-      <div>
-        <h2>새롭게 선보이는 젠틀몬스터 신제품</h2>
-        <span>더보기</span>
-      </div>
-      <div>
-        <h2>TOP 20 베스트셀러</h2>
-        <span>더보기</span>
-      </div>
-      <footer>푸터</footer>
     </div>
+
+    <section class="arrivals-section py-20 overflow-hidden bg-[#F3F5F6]">
+      <div class="px-5 md:px-15 mb-10">
+        <h2 class="text-[18px] tracking-widest uppercase">
+          새롭게 선보이는 젠틀몬스터 신제품
+        </h2>
+        <a href="" class="underline text-[14px]">더보기</a>
+      </div>
+
+      <div class="swiper">
+        <div class="swiper-wrapper ml-15 flex flex-row items-start">
+          <div class="swiper-slide relative group">
+            <a href="#" class="block">
+              <div
+                class="relative overflow-hidden w-full aspect-square md:w-180 md:h-180"
+              >
+                <figure class="absolute inset-0">
+                  <img
+                    src="https://gm-prd-resource.gentlemonster.com/catalog/product/bulk/6afd1675-e577-4b36-b4cc-fd465c7f614c/11005049_LOOK_BOOK_FIRST.jpg?width=1400"
+                    alt="Product"
+                    class="w-full h-full object-cover"
+                  />
+                </figure>
+              </div>
+            </a>
+            <div
+              class="arrivals-product-info absolute bottom-10 left-0 md:bottom-15 pointer-events-none"
+            >
+              <div class="px-5 md:px-0">
+                <h3 class="text-[13px] leading-4.25 font-light">
+                  디즈니 F1® - 윙 4 R13
+                </h3>
+                <p class="text-[13px] leading-4.25 font-light">₩420,000</p>
+              </div>
+              <div class="mt-2 px-5 md:px-0 pointer-events-auto">
+                <button
+                  class="text-[12px] underline underline-offset-4 uppercase opacity-100"
+                >
+                  위시리스트에 추가하기
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide relative group">
+            <a href="#" class="block">
+              <div
+                class="relative overflow-hidden w-full aspect-square md:w-180 md:h-180"
+              >
+                <figure class="absolute inset-0">
+                  <img
+                    src="https://gm-prd-resource.gentlemonster.com/catalog/product/bulk/6afd1675-e577-4b36-b4cc-fd465c7f614c/11005049_LOOK_BOOK_FIRST.jpg?width=1400"
+                    alt="Product"
+                    class="w-full h-full object-cover"
+                  />
+                </figure>
+              </div>
+            </a>
+            <div
+              class="arrivals-product-info absolute bottom-10 left-0 md:bottom-15 pointer-events-none"
+            >
+              <div class="px-5 md:px-0">
+                <h3 class="text-[13px] leading-4.25 font-light">
+                  디즈니 F1® - 윙 4 R13
+                </h3>
+                <p class="text-[13px] leading-4.25 font-light">₩420,000</p>
+              </div>
+              <div class="mt-2 px-5 md:px-0 pointer-events-auto">
+                <button
+                  class="text-[12px] underline underline-offset-4 uppercase opacity-100"
+                >
+                  위시리스트에 추가하기
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide relative group">
+            <a href="#" class="block">
+              <div
+                class="relative overflow-hidden w-full aspect-square md:w-180 md:h-180"
+              >
+                <figure class="absolute inset-0">
+                  <img
+                    src="https://gm-prd-resource.gentlemonster.com/catalog/product/bulk/6afd1675-e577-4b36-b4cc-fd465c7f614c/11005049_LOOK_BOOK_FIRST.jpg?width=1400"
+                    alt="Product"
+                    class="w-full h-full object-cover"
+                  />
+                </figure>
+              </div>
+            </a>
+            <div
+              class="arrivals-product-info absolute bottom-10 left-0 md:bottom-15 pointer-events-none"
+            >
+              <div class="px-5 md:px-0">
+                <h3 class="text-[13px] leading-4.25 font-light">
+                  디즈니 F1® - 윙 4 R13
+                </h3>
+                <p class="text-[13px] leading-4.25 font-light">₩420,000</p>
+              </div>
+              <div class="mt-2 px-5 md:px-0 pointer-events-auto">
+                <button
+                  class="text-[12px] underline underline-offset-4 uppercase opacity-100"
+                >
+                  위시리스트에 추가하기
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide relative group">
+            <a href="#" class="block">
+              <div
+                class="relative overflow-hidden w-full aspect-square md:w-180 md:h-180"
+              >
+                <figure class="absolute inset-0">
+                  <img
+                    src="https://gm-prd-resource.gentlemonster.com/catalog/product/bulk/6afd1675-e577-4b36-b4cc-fd465c7f614c/11005049_LOOK_BOOK_FIRST.jpg?width=1400"
+                    alt="Product"
+                    class="w-full h-full object-cover"
+                  />
+                </figure>
+              </div>
+            </a>
+            <div
+              class="arrivals-product-info absolute bottom-10 left-0 md:bottom-15 pointer-events-none"
+            >
+              <div class="px-5 md:px-0">
+                <h3 class="text-[13px] leading-4.25 font-light">
+                  디즈니 F1® - 윙 4 R13
+                </h3>
+                <p class="text-[13px] leading-4.25 font-light">₩420,000</p>
+              </div>
+              <div class="mt-2 px-5 md:px-0 pointer-events-auto">
+                <button
+                  class="text-[12px] underline underline-offset-4 uppercase opacity-100"
+                >
+                  위시리스트에 추가하기
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide relative group">
+            <a href="#" class="block">
+              <div
+                class="relative overflow-hidden w-full aspect-square md:w-180 md:h-180"
+              >
+                <figure class="absolute inset-0">
+                  <img
+                    src="https://gm-prd-resource.gentlemonster.com/catalog/product/bulk/6afd1675-e577-4b36-b4cc-fd465c7f614c/11005049_LOOK_BOOK_FIRST.jpg?width=1400"
+                    alt="Product"
+                    class="w-full h-full object-cover"
+                  />
+                </figure>
+              </div>
+            </a>
+            <div
+              class="arrivals-product-info absolute bottom-10 left-0 md:bottom-15 pointer-events-none"
+            >
+              <div class="px-5 md:px-0">
+                <h3 class="text-[13px] leading-4.25 font-light">
+                  디즈니 F1® - 윙 4 R13
+                </h3>
+                <p class="text-[13px] leading-4.25 font-light">₩420,000</p>
+              </div>
+              <div class="mt-2 px-5 md:px-0 pointer-events-auto">
+                <button
+                  class="text-[12px] underline underline-offset-4 uppercase opacity-100"
+                >
+                  위시리스트에 추가하기
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide relative group">
+            <a href="#" class="block">
+              <div
+                class="relative overflow-hidden w-full aspect-square md:w-180 md:h-180"
+              >
+                <figure class="absolute inset-0">
+                  <img
+                    src="https://gm-prd-resource.gentlemonster.com/catalog/product/bulk/6afd1675-e577-4b36-b4cc-fd465c7f614c/11005049_LOOK_BOOK_FIRST.jpg?width=1400"
+                    alt="Product"
+                    class="w-full h-full object-cover"
+                  />
+                </figure>
+              </div>
+            </a>
+            <div
+              class="arrivals-product-info absolute bottom-10 left-0 md:bottom-15 pointer-events-none"
+            >
+              <div class="px-5 md:px-0">
+                <h3 class="text-[13px] leading-4.25 font-light">
+                  디즈니 F1® - 윙 4 R13
+                </h3>
+                <p class="text-[13px] leading-4.25 font-light">₩420,000</p>
+              </div>
+              <div class="mt-2 px-5 md:px-0 pointer-events-auto">
+                <button
+                  class="text-[12px] underline underline-offset-4 uppercase opacity-100"
+                >
+                  위시리스트에 추가하기
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div
+      class="item-view-container px-5 md:px-15 flex justify-center overflow-x-auto scrollbar-hide bg-[#F3F5F6]"
+    >
+      <div class="item-view-wrapper flex gap-2">
+        <div
+          class="thumb-item w-12 h-16 md:w-16 md:h-20 cursor-pointer border-b-2 border-black transition-all"
+          data-index="0"
+        >
+          <img
+            src="https://gm-prd-resource.gentlemonster.com/catalog/product/bulk/6afd1675-e577-4b36-b4cc-fd465c7f614c/11005049_LOOK_BOOK_FIRST.jpg?width=1400"
+            class="w-full h-full object-cover opacity-100"
+          />
+        </div>
+
+        <div
+          class="thumb-item w-12 h-16 md:w-16 md:h-20 cursor-pointer border-b-2 border-transparent hover:border-gray-300"
+          data-index="1"
+        >
+          <img
+            src="https://gm-prd-resource.gentlemonster.com/catalog/product/bulk/6afd1675-e577-4b36-b4cc-fd465c7f614c/11005049_LOOK_BOOK_FIRST.jpg?width=1400"
+            class="w-full h-full object-cover opacity-50 hover:opacity-100"
+          />
+        </div>
+
+        <span class="text-[10px] self-end ml-4 text-gray-500 uppercase"
+          >아이템 뷰</span
+        >
+      </div>
+    </div>
+
+    <section class="best-seller-section py-20 bg-[#f7f7f7]">
+      <div class="px-5 md:px-15 mb-10">
+        <h2 class="text-[18px] tracking-widest uppercase">TOP 20 베스트셀러</h2>
+        <a href="" class="underline text-[14px]">더보기</a>
+      </div>
+    </section>
   </body>
 </html>
