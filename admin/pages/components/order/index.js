@@ -1,4 +1,4 @@
-import { orderAPI } from "../../API/orderListApi.js";
+import { orderAPI } from "../../API/order/orderListApi.js";
 import { paginationButton } from "./paginationButton.js";
 import { calcListNum } from "./calcListNum.js";
 import { search } from "./search.js";

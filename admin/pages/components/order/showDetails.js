@@ -6,6 +6,6 @@ export function showDetails(button, orderId) {
   }
 
   button.addEventListener("click", () => {
-    window.location.href = `/admin/orders/${orderId}`;
+    window.location.href = `/admin/pages/order-details.html?orderId=${orderId}`;
   });
 }
