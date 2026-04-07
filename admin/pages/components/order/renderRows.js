@@ -1,0 +1,57 @@
+import { showDetails } from "./showDetails.js";
+
+export function renderRows(tbody, orders) {
+  tbody.innerHTML = "";
+
+  orders.forEach((item) => {
+    const tr = document.createElement("tr");
+    tr.className = "text-[14px]";
+
+    const tdIndex = document.createElement("td");
+    tdIndex.className = "py-5";
+    tdIndex.textContent = item.orderNumber ?? "-";
+
+    const tdId = document.createElement("td");
+    tdId.className = "py-5 text-(--admin-gray)";
+    tdId.textContent = item.userId ?? "-";
+
+    const tdName = document.createElement("td");
+    tdName.className = "py-5 text-(--admin-gray)";
+    tdName.textContent = item.shippingAddress?.recipientName ?? "-";
+
+    const tdPrice = document.createElement("td");
+    tdPrice.className = "py-5";
+    tdPrice.textContent =
+      item.finalPrice != null ? item.finalPrice.toLocaleString() : "-";
+
+    const tdDate = document.createElement("td");
+    tdDate.className = "py-5 text-(--admin-gray)";
+    tdDate.textContent = item.orderDate?.split("T")[0] ?? "-";
+
+    const tdButton = document.createElement("td");
+    tdButton.className = "py-5";
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "cursor-pointer";
+    button.innerHTML = `
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M1.71833 10.29C1.64888 10.1029 1.64888 9.89709 1.71833 9.71C2.39475 8.06987 3.54293 6.66753 5.01731 5.68074C6.49169 4.69396 8.22587 4.16718 10 4.16718C11.7741 4.16718 13.5083 4.69396 14.9827 5.68074C16.4571 6.66753 17.6052 8.06987 18.2817 9.71C18.3511 9.89709 18.3511 10.1029 18.2817 10.29C17.6052 11.9301 16.4571 13.3325 14.9827 14.3192C13.5083 15.306 11.7741 15.8328 10 15.8328C8.22587 15.8328 6.49169 15.306 5.01731 14.3192C3.54293 13.3325 2.39475 11.9301 1.71833 10.29Z" stroke="#155DFC" stroke-width="1.66667"/>
+        <path d="M10 12.5C11.3807 12.5 12.5 11.3807 12.5 10C12.5 8.61929 11.3807 7.5 10 7.5C8.61929 7.5 7.5 8.61929 7.5 10C7.5 11.3807 8.61929 12.5 10 12.5Z" stroke="#155DFC" stroke-width="1.66667"/>
+      </svg>
+    `;
+
+    tdButton.appendChild(button);
+
+    tr.appendChild(tdIndex);
+    tr.appendChild(tdId);
+    tr.appendChild(tdName);
+    tr.appendChild(tdPrice);
+    tr.appendChild(tdDate);
+    tr.appendChild(tdButton);
+
+    tbody.appendChild(tr);
+
+    showDetails(button, item.orderId);
+  });
+}

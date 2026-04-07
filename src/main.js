@@ -2,16 +2,19 @@ import "./style.css";
 
 //스크롤 이벤트
 const header = document.querySelector(".utility-bar");
+if (header) {
+  const handleScroll = () => {
+    if (window.scrollY > 785.33) {
+      header.classList.add("is-scrolled");
+    } else {
+      header.classList.remove("is-scrolled");
+    }
+  };
 
-const handleScroll = () => {
-  if (window.scrollY > 785.33) {
-    header.classList.add("is-scrolled");
-  } else {
-    header.classList.remove("is-scrolled");
-  }
-};
+  window.addEventListener("scroll", handleScroll);
+}
 
-window.addEventListener("scroll", handleScroll);
+
 
 //메뉴 버튼 이벤트
 const btn = document.getElementById("menu-btn");
