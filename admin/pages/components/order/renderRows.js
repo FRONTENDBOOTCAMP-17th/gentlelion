@@ -1,4 +1,4 @@
-import { showDetails } from "./showDetails.js";
+import { showDetails } from "../common/showDetails.js";
 
 export function renderRows(tbody, orders) {
   tbody.innerHTML = "";
@@ -52,6 +52,6 @@ export function renderRows(tbody, orders) {
 
     tbody.appendChild(tr);
 
-    showDetails(button, item.orderId);
+    showDetails(button, item.orderId, (id) => `/admin/pages/order-details.html?orderId=${id}`);
   });
 }

@@ -1,4 +1,4 @@
-import { showDetails } from "./showDetails.js";
+import { showDetails } from "../common/showDetails.js";
 import { userDelete } from "./deleteButtonEvent.js";
 
 export function renderRows(tbody, users, render) {
@@ -73,7 +73,7 @@ export function renderRows(tbody, users, render) {
 
     tbody.appendChild(tr);
 
-    showDetails(detailButton, item.userId);
+    showDetails(detailButton, item.userId, (id) => `/admin/pages/user-details.html?userId=${id}`);
     userDelete(deletebutton, item.userId, render);
   });
 }
