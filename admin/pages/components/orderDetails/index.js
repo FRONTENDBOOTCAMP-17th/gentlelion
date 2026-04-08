@@ -1,5 +1,5 @@
 import { orderDetailsAPI } from "../../API/order/orderDetailsApi.js";
-import { updateDataApi } from "./updateDataApi.js";
+import { renderOrderDetails } from "./renderOrderDetails.js";
 import { chaseProductState } from "./chaseProductState.js";
 
 async function updateOrderDetails() {
@@ -11,7 +11,7 @@ async function updateOrderDetails() {
         console.log(data);
 
 
-        updateDataApi(data);
+        renderOrderDetails(data);
         chaseProductState(data);
 
     } catch (error) {
