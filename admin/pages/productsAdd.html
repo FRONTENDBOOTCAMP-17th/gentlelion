@@ -83,27 +83,35 @@
             class="block text-xs font-bold text-[#0a0a0a] mb-1.5 uppercase tracking-wide"
             >색상</label
           >
-          <div class="flex items-center gap-2 mb-2">
-            <input
-              type="text"
-              placeholder="Black"
-              class="flex-1 border border-gray-200 rounded-xl h-11 px-4 text-sm bg-gray-50 text-gray-400"
-              readonly
-            />
-            <button type="button" class="text-[#d92d20] p-2">
-              <svg
-                class="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+
+          <div id="colorContainer" class="space-y-2 mb-2">
+            <div class="flex items-center gap-2">
+              <input
+                name="colors"
+                type="text"
+                placeholder="Black"
+                class="flex-1 border border-gray-200 rounded-xl h-11 px-4 text-sm focus:border-black outline-none"
+              />
+              <button
+                type="button"
+                class="remove-color-btn text-[#d92d20] p-2 hover:bg-red-50 rounded-lg transition-colors"
               >
-                <path
-                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-4v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                />
-              </svg>
-            </button>
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-4v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
+
           <button
+            id="addColorBtn"
             type="button"
             class="w-full border border-dashed border-gray-300 rounded-xl h-11 text-xs font-medium text-[#667085] hover:bg-gray-50 transition-colors"
           >

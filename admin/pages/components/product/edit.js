@@ -2,6 +2,8 @@ import { getProductList } from "../../API/product/productListApi.js";
 import { editProduct } from "../../API/product/productEditApi.js";
 
 const form = document.getElementById("productEditForm");
+const colorContainer = document.getElementById("colorContainer");
+const addColorBtn = document.getElementById("addColorBtn");
 
 function Navigation() {
   const backBtnTop = document.getElementById("backBtnTop");
