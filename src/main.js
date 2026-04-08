@@ -5,7 +5,7 @@ const btn = document.getElementById("menu-btn");
 const line1 = document.getElementById("line1");
 const line2 = document.getElementById("line2");
 
-if (btn) {
+if (btn && line1 && line2 && header) {
   btn.addEventListener("click", () => {
     line1.classList.toggle("translate-y-[2.5px]");
     line1.classList.toggle("rotate-45");
@@ -16,5 +16,3 @@ if (btn) {
     header.classList.toggle("is-active");
   });
 }
-
-

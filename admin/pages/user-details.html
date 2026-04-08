@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>사용자 상세 정보 — Gentle Monster Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { inter: ["Inter", "sans-serif"] },
+            colors: {
+              "admin-gray": "#6A7282",
+              "admin-border": "#e4e7ec",
+              "admin-bg": "#f9fafb",
+              "admin-green": "#00A63E",
+              "admin-red": "#E7000B",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" src="./components/userDetails/index.js"></script>
+  </head>
+  <body
+    class="font-inter bg-black/60 min-h-screen flex items-center justify-center"
+  >
+    <div
+      class="bg-white rounded-[10px] w-[672px] px-6 py-6 flex flex-col gap-0"
+    >
+      <h2
+        class="text-2xl font-bold text-[#0a0a0a] leading-8 tracking-[0.07px] pb-6"
+      >
+        사용자 상세 정보
+      </h2>
+      <hr class="border-[#E5E7EB]" />
+      <div class="flex flex-col gap-4 py-6">
+        <div class="flex flex-col gap-0.5">
+          <p class="text-[14px] leading-5 tracking-[-0.15px] text-[#364153]">
+            사용자 ID
+          </p>
+          <p
+            class="text-[14px] leading-5 tracking-[-0.15px] text-[#101828]"
+            id="user-id"
+          >
+            -
+          </p>
+        </div>
+        <div class="flex gap-0">
+          <div class="flex flex-col gap-0.5 flex-1">
+            <p class="text-[14px] leading-5 tracking-[-0.15px] text-[#364153]">
+              성
+            </p>
+            <p
+              class="text-[14px] leading-5 tracking-[-0.15px] text-[#101828]"
+              id="user-lastname"
+            >
+              -
+            </p>
+          </div>
+          <div class="flex flex-col gap-0.5 flex-1">
+            <p class="text-[14px] leading-5 tracking-[-0.15px] text-[#364153]">
+              이름
+            </p>
+            <p
+              class="text-[14px] leading-5 tracking-[-0.15px] text-[#101828]"
+              id="user-firstname"
+            >
+              -
+            </p>
+          </div>
+        </div>
+        <div class="flex flex-col gap-0.5">
+          <p class="text-[14px] leading-5 tracking-[-0.15px] text-[#364153]">
+            이메일
+          </p>
+          <p
+            class="text-[14px] leading-5 tracking-[-0.15px] text-[#101828]"
+            id="user-email"
+          >
+            -
+          </p>
+        </div>
+        <div class="flex flex-col gap-0.5">
+          <p class="text-[14px] leading-5 tracking-[-0.15px] text-[#364153]">
+            전화번호
+          </p>
+          <p
+            class="text-[14px] leading-5 tracking-[-0.15px] text-[#101828]"
+            id="user-phone"
+          >
+            -
+          </p>
+        </div>
+        <div class="flex flex-col gap-0.5">
+          <p class="text-[14px] leading-5 tracking-[-0.15px] text-[#364153]">
+            주소
+          </p>
+          <p
+            class="text-[14px] leading-5 tracking-[-0.15px] text-[#101828]"
+            id="user-address"
+          >
+            -
+          </p>
+        </div>
+        <div class="flex flex-col gap-0.5">
+          <p class="text-[14px] leading-5 tracking-[-0.15px] text-[#364153]">
+            상세주소
+          </p>
+          <p
+            class="text-[14px] leading-5 tracking-[-0.15px] text-[#101828]"
+            id="user-address-detail"
+          >
+            -
+          </p>
+        </div>
+        <div class="flex flex-col gap-0.5">
+          <p class="text-[14px] leading-5 tracking-[-0.15px] text-[#364153]">
+            가입일
+          </p>
+          <p
+            class="text-[14px] leading-5 tracking-[-0.15px] text-[#101828]"
+            id="user-created"
+          >
+            -
+          </p>
+        </div>
+      </div>
+      <hr class="border-[#E5E7EB]" />
+      <div class="flex flex-col gap-4 py-6">
+        <div class="flex flex-col gap-0.5">
+          <p class="text-[14px] leading-5 tracking-[-0.15px] text-[#364153]">
+            현재 포인트
+          </p>
+          <p
+            class="text-[30px] font-bold leading-9 tracking-[0.4px] text-[#101828]"
+            id="user-points"
+          >
+            -
+          </p>
+        </div>
+        <div class="flex flex-col gap-1.5">
+          <label class="text-[14px] leading-5 tracking-[-0.15px] text-[#364153]"
+            >포인트 금액</label
+          >
+          <input
+            id="point-input"
+            type="number"
+            placeholder="1000"
+            class="w-full h-[42px] rounded-[10px] border border-[#D1D5DC] px-3 text-[14px] text-[#0a0a0a] placeholder-[#0a0a0a]/50 outline-none focus:ring-2 focus:ring-black/10"
+          />
+        </div>
+        <div class="flex gap-3">
+          <button
+            onclick="adjustPoint('add')"
+            class="flex-1 h-10 rounded-[10px] bg-admin-green text-white text-[14px] font-medium cursor-pointer hover:opacity-90 transition-opacity"
+          >
+            + 포인트 지급
+          </button>
+          <button
+            onclick="adjustPoint('sub')"
+            class="flex-1 h-10 rounded-[10px] bg-admin-red text-white text-[14px] font-medium cursor-pointer hover:opacity-90 transition-opacity"
+          >
+            - 포인트 차감
+          </button>
+        </div>
+        <div class="h-16"></div>
+      </div>
+      <button
+        onclick="history.back()"
+        class="w-full h-10 rounded-[10px] bg-[#000000] text-white text-[14px] font-medium cursor-pointer hover:bg-gray-800 transition-colors mt-2"
+      >
+        닫기
+      </button>
+    </div>
+  </body>
+</html>

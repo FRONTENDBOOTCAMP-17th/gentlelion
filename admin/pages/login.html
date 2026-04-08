@@ -6,6 +6,7 @@
     <title>관리자 로그인</title>
     <link rel="stylesheet" href="../../src/style.css" />
     <link rel="stylesheet" href="../../src/components/style.css" />
+    <script type="module" src="./components/login/handleLogin.js"></script>
   </head>
   <body class="bg-gray-100 min-h-screen flex items-center justify-center px-4">
     <div
@@ -60,32 +61,5 @@
         테스트 계정: admin&#64;gentlemonster.com / admin123
       </p>
     </div>
-
-    <script>
-      function handleLogin(e) {
-        e.preventDefault();
-        const email = document.getElementById("email").value.trim();
-        const password = document.getElementById("password").value;
-        const errorMsg = document.getElementById("errorMsg");
-        const btn = document.getElementById("submitBtn");
-
-        errorMsg.classList.add("hidden");
-        btn.innerHTML = "로그인 중...";
-        btn.disabled = true;
-
-        setTimeout(() => {
-          if (email === "admin@gentlemonster.com" && password === "admin123") {
-            btn.innerHTML = "로그인 성공";
-            setTimeout(() => {
-              window.location.href = "admin-dashboard.html";
-            }, 500);
-          } else {
-            errorMsg.classList.remove("hidden");
-            btn.innerHTML = "<span>→</span> 로그인";
-            btn.disabled = false;
-          }
-        }, 700);
-      }
-    </script>
   </body>
 </html>
