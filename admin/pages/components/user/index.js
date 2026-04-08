@@ -43,7 +43,7 @@ async function user(page = 1) {
     paginationButton(buttonComponents, totalPages, currentPage, user);
     calcListNum(data, range, currentPage);
 
-    const onSearch = (filteredOrders) => renderUserRows(tbody, filteredOrders);
+    const onSearch = (filteredUsers) => renderUserRows(tbody, filteredUsers);
 
     const filterFn = (item, keyword) => {
       const userId = String(item.userId ?? "").toLowerCase();
