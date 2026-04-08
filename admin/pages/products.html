@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>제품 관리</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="./components/product/index.js"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "admin-gray": "#667085",
+              "admin-border": "#e4e7ec",
+              "admin-red": "#d92d20",
+              "admin-bg": "#f9fafb",
+            },
+            letterSpacing: {
+              brand: "0.396px",
+              "tight-15": "-0.15px",
+              "wide-6": "0.6px",
+              "wide-07": "0.07px",
+            },
+          },
+        },
+      };
+
+      function toggleMenu() {
+        const menu = document.getElementById("dropdownMenu");
+        menu.classList.toggle("hidden");
+      }
+    </script>
+    <script type="module" src="../../src/main.js"></script>
+    <script type="module" src="./components/product/index.js"></script>
+  </head>
+  <body class="min-h-screen bg-admin-bg">
+    <div class="flex min-h-screen">
+      <aside
+        class="hidden xl:flex flex-col shrink-0 bg-white w-64 border-r border-admin-border fixed h-full"
+      >
+        <div class="px-6 py-5 border-b border-admin-border">
+          <p class="text-lg font-bold text-[#0a0a0a] leading-7 tracking-brand">
+            GENTLE MONSTER
+          </p>
+          <p class="text-xs text-admin-gray mt-0.5">관리자 페이지</p>
+        </div>
+
+        <nav class="flex-1 py-3 flex flex-col gap-1">
+          <a
+            href="admin-dashboard.html"
+            class="flex items-center rounded-lg mx-3 w-55.75 h-12 pl-4 gap-3 hover:bg-gray-50"
+          >
+            <svg
+              class="w-5 h-5 shrink-0 text-admin-gray"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <rect x="3" y="3" width="7" height="7" />
+              <rect x="14" y="3" width="7" height="7" />
+              <rect x="3" y="14" width="7" height="7" />
+              <rect x="14" y="14" width="7" height="7" />
+            </svg>
+            <span
+              class="text-sm font-medium text-admin-gray leading-5 tracking-tight-15"
+              >대시보드</span
+            >
+          </a>
+
+          <a
+            href="#"
+            class="flex items-center rounded-lg mx-3 w-55.75 h-12 pl-4 gap-3 bg-[#0a0a0a]"
+          >
+            <svg
+              class="w-5 h-5 shrink-0 text-white"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+            <span
+              class="text-sm font-medium text-white leading-5 tracking-tight-15"
+              >사용자 관리</span
+            >
+          </a>
+
+          <a
+            href="#"
+            class="flex items-center rounded-lg mx-3 w-55.75 h-12 pl-4 gap-3 hover:bg-gray-50"
+          >
+            <svg
+              class="w-5 h-5 shrink-0 text-admin-gray"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M20 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"
+              />
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+            </svg>
+            <span
+              class="text-sm font-medium text-admin-gray leading-5 tracking-tight-15"
+              >제품 관리</span
+            >
+          </a>
+
+          <a
+            href="#"
+            class="flex items-center rounded-lg mx-3 w-55.75 h-12 pl-4 gap-3 hover:bg-gray-50"
+          >
+            <svg
+              class="w-5 h-5 shrink-0 text-admin-gray"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <circle cx="9" cy="21" r="1" />
+              <circle cx="20" cy="21" r="1" />
+              <path
+                d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
+              />
+            </svg>
+            <span
+              class="text-sm font-medium text-admin-gray leading-5 tracking-tight-15"
+              >주문 관리</span
+            >
+          </a>
+
+          <a
+            href="../pages/admin-login.html"
+            class="flex items-center rounded-lg mx-3 w-55.75 h-12 pl-4 gap-3 hover:bg-red-50 mt-auto mb-4"
+          >
+            <svg
+              class="w-5 h-5 shrink-0 text-admin-red"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+              <polyline points="16 17 21 12 16 7" />
+              <line x1="21" y1="12" x2="9" y2="12" />
+            </svg>
+            <span
+              class="text-sm font-medium text-admin-red leading-5 tracking-tight-15"
+              >로그아웃</span
+            >
+          </a>
+        </nav>
+      </aside>
+
+      <div class="flex-1 flex flex-col min-w-0 xl:ml-64">
+        <header
+          class="xl:hidden bg-white flex items-center justify-between px-5 h-14 border-b border-admin-border sticky top-0 z-30"
+        >
+          <span class="text-base font-bold text-[#0a0a0a] tracking-brand"
+            >GENTLE MONSTER</span
+          >
+          <div class="relative">
+            <button onclick="toggleMenu()" class="p-1 text-admin-gray">
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+            <div
+              id="dropdownMenu"
+              class="hidden absolute right-0 mt-2 w-44 bg-white border border-admin-border rounded-[10px] shadow-sm overflow-hidden"
+            >
+              <a
+                href="admin-dashboard.html"
+                class="flex items-center px-4 py-3 gap-3 text-sm font-medium text-admin-gray hover:bg-gray-50"
+                >대시보드</a
+              >
+              <a
+                href="#"
+                class="flex items-center px-4 py-3 gap-3 text-sm font-medium text-admin-gray hover:bg-gray-50"
+                >사용자 관리</a
+              >
+              <a
+                href="#"
+                class="flex items-center px-4 py-3 gap-3 text-sm font-medium text-admin-gray hover:bg-gray-50"
+                >제품 관리</a
+              >
+              <a
+                href="#"
+                class="flex items-center px-4 py-3 gap-3 text-sm font-medium text-admin-gray hover:bg-gray-50"
+                >주문 관리</a
+              >
+              <div class="border-t border-admin-border"></div>
+              <a
+                href="../pages/admin-login.html"
+                class="flex items-center px-4 py-3 gap-3 text-sm font-medium text-admin-red hover:bg-red-50"
+                >로그아웃</a
+              >
+            </div>
+          </div>
+        </header>
+
+        <header
+          class="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4 p-8"
+        >
+          <h1 class="text-[24px] font-bold text-[#0a0a0a]">제품 관리</h1>
+
+          <div class="flex items-center gap-3">
+            <div class="relative">
+              <input
+                id="search"
+                class="border border-admin-border rounded-lg h-10 w-60 pl-10 text-sm focus:outline-none"
+                type="text"
+                placeholder="제품 검색..."
+              />
+              <svg
+                class="absolute -translate-y-1/2 top-1/2 left-3 w-4 h-4 text-gray-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+            </div>
+
+            <button
+              id="addProductBtn"
+              class="flex items-center gap-2 bg-[#0a0a0a] text-white px-4 h-10 rounded-lg text-sm font-medium hover:bg-gray-800 transition-colors"
+            >
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                viewBox="0 0 24 24"
+              >
+                <path d="M12 5v14M5 12h14" />
+              </svg>
+              제품 추가
+            </button>
+          </div>
+        </header>
+
+        <main class="px-8 pb-8">
+          <div
+            class="bg-white border border-admin-border rounded-xl overflow-hidden"
+          >
+            <div class="overflow-x-auto">
+              <table class="w-full text-left">
+                <thead class="bg-gray-50 border-b border-admin-border">
+                  <tr
+                    class="text-[12px] text-admin-gray uppercase tracking-wider"
+                  >
+                    <th class="px-6 py-4 font-medium">제품 ID</th>
+                    <th class="px-6 py-4 font-medium">이름</th>
+                    <th class="px-6 py-4 font-medium">카테고리</th>
+                    <th class="px-6 py-4 font-medium">가격</th>
+                    <th class="px-6 py-4 font-medium">재고</th>
+                    <th class="px-6 py-4 font-medium text-right">작업</th>
+                  </tr>
+                </thead>
+                <tbody
+                  id="productTableBody"
+                  class="divide-y divide-admin-border"
+                ></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="mt-6 flex flex-col items-center gap-4">
+            <div id="listButtonComponents" class="flex gap-1 justify-center">
+              <button
+                class="text-[14px] py-2 px-4 border border-admin-border rounded-lg bg-white font-medium hover:bg-gray-50 transition-colors"
+                data-set="1"
+              >
+                1
+              </button>
+            </div>
+            <p class="text-admin-gray text-[14px]">
+              총
+              <span id="orderListTotal" class="font-medium text-black">0</span
+              >건 중
+              <span id="orderListNum" class="font-medium text-black">1-20</span
+              >건 표시
+            </p>
+          </div>
+        </main>
+      </div>
+    </div>
+    <button
+      id="addProductBtn"
+      class="flex items-center gap-2 bg-[#0a0a0a] text-white px-4 h-10 rounded-lg text-sm font-medium hover:bg-gray-800 transition-colors"
+    >
+      <svg
+        class="w-4 h-4"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        viewBox="0 0 24 24"
+      >
+        <path d="M12 5v14M5 12h14" />
+      </svg>
+      제품 추가
+    </button>
+  </body>
+</html>
