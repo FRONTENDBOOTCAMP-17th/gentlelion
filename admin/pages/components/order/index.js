@@ -20,8 +20,8 @@ async function order(page = 1) {
 
     const orderSearch = document.getElementById("search");
     const buttonComponents = document.getElementById("listButtonComponents");
-    const total = document.getElementById("orderListTotal");
-    const range = document.getElementById("orderListNum");
+    const total = document.getElementById("ListTotal");
+    const range = document.getElementById("ListNum");
 
     const orders = Array.isArray(data.data.orders) ? data.data.orders : [];
     const pagination = data.data.pagination ?? {};

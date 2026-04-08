@@ -21,8 +21,8 @@ async function user(page = 1) {
 
     const userSearch = document.getElementById("search");
     const buttonComponents = document.getElementById("listButtonComponents");
-    const total = document.getElementById("orderListTotal");
-    const range = document.getElementById("orderListNum");
+    const total = document.getElementById("ListTotal");
+    const range = document.getElementById("ListNum");
 
     const users = Array.isArray(data.data.users) ? data.data.users : [];
     const pagination = data.data.pagination ?? {};
@@ -47,7 +47,7 @@ async function user(page = 1) {
 
     const filterFn = (item, keyword) => {
       const userId = String(item.userId ?? "").toLowerCase();
-      const userName = String(item.firstName + item.lastName ?? "").toLowerCase();
+      const userName = String((item.firstName ?? "") + (item.lastName ?? "")).toLowerCase();
       const userEmail = String(item.email ?? "").toLowerCase();
       return userId.includes(keyword) || userEmail.includes(keyword) || userName.includes(keyword);
     };

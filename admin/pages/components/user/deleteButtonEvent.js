@@ -11,6 +11,12 @@ export function userDelete(button, userId, onsuccess) {
     }
 
     button.addEventListener("click", async () => {
+        const confirmed = window.confirm("정말 삭제하시겠습니까?");
+
+        if(!confirmed){
+            return;
+        }
+        
         const result = await userDeleteApi(userId);
         
         if (!result) {

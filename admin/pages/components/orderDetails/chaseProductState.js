@@ -10,7 +10,7 @@ export function chaseProductState(data){
 
     const id = data.data.orderId;
     const status = data.data.status;
-    const trakingNum = data.data.trackingNumber;
+    const trackingNum = data.data.trackingNumber;
 
     const buttons = Object.values(button);
 
@@ -32,7 +32,7 @@ export function chaseProductState(data){
 
             await orderPatchApi(id, {
                 status: btn.id.toUpperCase(),
-                trackingNumber : trakingNum
+                trackingNumber : trackingNum
             });
         });
     });

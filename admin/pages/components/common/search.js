@@ -1,7 +1,13 @@
+let currentHandler = null;
+
 export function search(items, input, onSearch, filterFn) {
   if (!input) return;
 
-  input.addEventListener("input", () => {
+  if(currentHandler){
+    input.removeEventListener("input", currentHandler);
+  }
+
+  currentHandler = () => {
     const keyword = input.value.trim().toLowerCase();
 
     if (!keyword) {
@@ -10,5 +16,7 @@ export function search(items, input, onSearch, filterFn) {
     }
 
     onSearch(items.filter((item) => filterFn(item, keyword)));
-  });
+  }
+
+  input.addEventListener("input", currentHandler);
 }
