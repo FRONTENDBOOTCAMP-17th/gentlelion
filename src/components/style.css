@@ -1,21 +1,21 @@
-:root{
-    /* user 페이지 */
-    --subTitle-button: #DFE3E8;
-    --text-primary: #111111;
-    --text-gray: #858585;
-    --border: #D9D9D9;
-    --bg: #F3F4F6;
+:root {
+  /* user 페이지 */
+  --subTitle-button: #dfe3e8;
+  --text-primary: #111111;
+  --text-gray: #858585;
+  --border: #d9d9d9;
+  --bg: #f3f4f6;
 
-    /* admin 페이지 */
-    --cancle-button: #E5E7EB;
-    --active-button: #000000;
-    --admin-green: #00A63E;
-    --admin-red: #E7000B;
-    --admin-lightGreen: #DCFCE7;
-    --admin-lightRed: #FFE2E2;
-    --admin-gray: #6A7282;
-    --admin-border: #99A1AF;
-    --admin-page: #4A5565;
+  /* admin 페이지 */
+  --cancle-button: #e5e7eb;
+  --active-button: #000000;
+  --admin-green: #00a63e;
+  --admin-red: #e7000b;
+  --admin-lightGreen: #dcfce7;
+  --admin-lightRed: #ffe2e2;
+  --admin-gray: #6a7282;
+  --admin-border: #99a1af;
+  --admin-page: #4a5565;
 }
 
 #subNav {
@@ -24,4 +24,14 @@
 
 #subNav.dragging {
   cursor: grabbing;
+}
+
+/* header css */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

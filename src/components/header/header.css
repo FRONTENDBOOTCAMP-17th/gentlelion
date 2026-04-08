@@ -1,0 +1,43 @@
+/* 롤링 배너 */
+@theme {
+  @keyframes rolling {
+    0%,   20% { transform: translateY(0);    }
+    25%,  45% { transform: translateY(-20%); }
+    50%,  70% { transform: translateY(-40%); }
+    75%, 100% { transform: translateY(-60%); }
+  }
+  --animate-rolling: rolling 8s linear infinite;
+}
+
+@layer components {
+  /* ── 테마 변수 ── */
+  [data-theme="light"] {
+    --header-icon-color: black;
+    --header-overlay-bg: var(--bg, #ffffff);
+  }
+
+  [data-theme="dark"] {
+    --header-icon-color: white;
+    --header-overlay-bg: var(--bg, #000000);
+  }
+
+  /* ── 컴포넌트 기본 스타일 ── */
+  .nav-bar {
+    @apply text-[14px] px-2 py-1 bg-transparent border-none cursor-pointer;
+    color: var(--header-icon-color);
+  }
+  .nav-bar-list {
+    @apply mt-3 text-nowrap first:mt-9 text-[13px] leading-4.25;
+    color: var(--header-icon-color);
+  }
+  .rolling-list {
+    @apply text-[13px];
+    color: var(--header-icon-color);
+  }
+
+  /* ── 스크롤 / 활성 상태 → 같은 레이어 안이므로 specificity 비교 가능 ── */
+  .utility-bar.is-scrolled,
+  .utility-bar.is-active {
+    --header-icon-color: black; /* 변수 하나만 바꾸면 하위 전체 적용 */
+  }
+}

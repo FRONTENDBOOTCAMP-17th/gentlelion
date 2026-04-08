@@ -1,23 +1,6 @@
 import "./style.css";
 
-// 스크롤 이벤트
-const header = document.querySelector(".utility-bar");
-
-const handleScroll = () => {
-  if (!header) return;
-
-  if (window.scrollY > 785.33) {
-    header.classList.add("is-scrolled");
-  } else {
-    header.classList.remove("is-scrolled");
-  }
-};
-
-if (header) {
-  window.addEventListener("scroll", handleScroll);
-}
-
-// 메뉴 버튼 이벤트
+//메뉴 버튼 이벤트
 const btn = document.getElementById("menu-btn");
 const line1 = document.getElementById("line1");
 const line2 = document.getElementById("line2");
