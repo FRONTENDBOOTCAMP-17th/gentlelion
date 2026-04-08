@@ -1,10 +1,22 @@
 /* 롤링 배너 */
 @theme {
   @keyframes rolling {
-    0%,   20% { transform: translateY(0);    }
-    25%,  45% { transform: translateY(-20%); }
-    50%,  70% { transform: translateY(-40%); }
-    75%, 100% { transform: translateY(-60%); }
+    0%,
+    20% {
+      transform: translateY(0);
+    }
+    25%,
+    45% {
+      transform: translateY(-20%);
+    }
+    50%,
+    70% {
+      transform: translateY(-40%);
+    }
+    75%,
+    100% {
+      transform: translateY(-60%);
+    }
   }
   --animate-rolling: rolling 8s linear infinite;
 }
@@ -18,7 +30,20 @@
 
   [data-theme="dark"] {
     --header-icon-color: white;
-    --header-overlay-bg: var(--bg, #000000);
+
+    .utility-bar.is-scrolled::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: -1;
+    }
+
+    .utility-bar.is-scrolled .menu-item > div {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
   }
 
   /* ── 컴포넌트 기본 스타일 ── */
