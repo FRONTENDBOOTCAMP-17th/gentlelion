@@ -1,7 +1,7 @@
 import { orderAPI } from "../../API/order/orderListApi.js";
 import { paginationButton } from "./paginationButton.js";
 import { calcListNum } from "./calcListNum.js";
-import { search } from "./search.js";
+import { search } from "../common/search.js";
 import { renderOrderRows } from "./renderOrderRows.js";
 
 async function order(page = 1) {
@@ -42,9 +42,16 @@ async function order(page = 1) {
     paginationButton(buttonComponents, totalPages, currentPage, order);
     calcListNum(data, range, currentPage);
 
-    search(orders, orderSearch, (filteredOrders) => {
-      renderOrderRows(tbody, filteredOrders);
-    });
+    const onSearch = (filteredOrders) => renderOrderRows(tbody, filteredOrders);
+
+    const filterFn = (item, keyword) => {
+      const recipientName = String(item.shippingAddress?.recipientName ?? "").toLowerCase();
+      const orderNumber = String(item.orderNumber ?? "").toLowerCase();
+      return recipientName.includes(keyword) || orderNumber.includes(keyword);
+    };
+
+    search(orders, orderSearch, onSearch, filterFn);
+
   } catch (error) {
     console.error(error);
   }

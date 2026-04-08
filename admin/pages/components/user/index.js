@@ -1,7 +1,7 @@
 import { userApi } from "../../API/user/userListApi.js";
 import { paginationButton } from "../order/paginationButton.js";
 import { calcListNum } from "../order/calcListNum.js";
-import { search } from "../user/search.js";
+import { search } from "../common/search.js";
 import { renderUserRows } from "./renderUserRows.js";
 
 async function user(page = 1) {
@@ -43,9 +43,17 @@ async function user(page = 1) {
     paginationButton(buttonComponents, totalPages, currentPage, user);
     calcListNum(data, range, currentPage);
 
-    search(users, userSearch, (filteredOrders) => {
-      renderUserRows(tbody, filteredOrders);
-    });
+    const onSearch = (filteredOrders) => renderUserRows(tbody, filteredOrders);
+
+    const filterFn = (item, keyword) => {
+      const userId = String(item.userId ?? "").toLowerCase();
+      const userName = String(item.firstName + item.lastName ?? "").toLowerCase();
+      const userEmail = String(item.email ?? "").toLowerCase();
+      return userId.includes(keyword) || userEmail.includes(keyword) || userName.includes(keyword);
+    };
+
+    search(users, userSearch, onSearch, filterFn);
+
   } catch (error) {
     console.error(error);
   }
