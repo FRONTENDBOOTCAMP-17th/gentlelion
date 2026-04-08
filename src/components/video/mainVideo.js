@@ -42,7 +42,7 @@ function loadContent(index) {
   currentIndex = index;
   const data = videoData[index];
 
-  titleElement.innerText = data.title;
+  titleElement.textContent = data.title;
   cancelAnimationFrame(imageRequest);
 
   progressBars.forEach((bar, i) => {
