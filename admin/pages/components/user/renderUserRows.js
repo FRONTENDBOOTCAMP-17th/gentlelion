@@ -8,7 +8,7 @@ export function renderUserRows(tbody, users, render) {
   renderRows(tbody, users, {
     columns: [
       { getValue: (item) => item.userId, className: "py-5" },
-      { getValue: (item) => item.lastName + item.firstName, className: "py-5 text-(--admin-gray)" },
+      { getValue: (item) => item.firstName + item.lastName, className: "py-5 text-(--admin-gray)" },
       { getValue: (item) => item.email, className: "py-5 text-(--admin-gray)" },
       { getValue: (item) => item.phone, className: "py-5" },
       { getValue: (item) => item.points, className: "py-5" },
