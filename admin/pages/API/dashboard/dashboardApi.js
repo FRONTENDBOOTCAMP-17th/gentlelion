@@ -17,11 +17,14 @@ export async function dashboardAPI() {
       },
     );
 
+    
+
     if (!res.ok) {
       throw new Error("API 요청 실패");
     }
 
     const data = await res.json();
+    console.log(data)
     return data.data;
   } catch (error) {
     console.error(error);

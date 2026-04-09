@@ -3,244 +3,64 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>대시보드 — Gentle Monster Admin</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              "admin-gray": "#667085",
-              "admin-border": "#e4e7ec",
-              "admin-red": "#d92d20",
-              "admin-bg": "#f9fafb",
-            },
-            letterSpacing: {
-              brand: "0.396px",
-              "tight-15": "-0.15px",
-              "wide-6": "0.6px",
-              "wide-07": "0.07px",
-            },
-          },
-        },
-      };
-    </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      body {
-        font-family: "Inter", sans-serif;
-      }
-    </style>
+    <title>대시보드</title>
+    <script type="module" src="/src/main.js"></script>
     <script type="module" src="./components/dashboard/index.js"></script>
-    <script
-      type="module"
-      src="./components/aside/dashboardNavigation.js"
-    ></script>
+    <script type="module" src="./components/aside/dashboardNavigation.js"></script>
   </head>
   <body class="min-h-screen bg-admin-bg">
     <div class="flex min-h-screen">
-      <aside
-        class="hidden xl:flex flex-col flex-shrink-0 bg-white w-64 border-r border-admin-border"
-      ></aside>
+      <aside class="hidden xl:flex flex-col shrink-0 bg-white w-64 border-r border-admin-border"></aside>
 
       <div class="flex-1 flex flex-col min-w-0">
-        <header
-          class="xl:hidden fixed top-0 left-0 right-0 z-30 bg-white flex items-center justify-between px-5 h-14 border-b border-admin-border"
-        >
-          <span class="text-base font-bold text-[#0a0a0a] tracking-brand"
-            >GENTLE MONSTER</span
-          >
-          <div class="relative">
-            <button onclick="toggleMenu()" class="p-1 text-admin-gray">
-              <svg
-                class="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-              >
-                <path d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
-            <div
-              id="dropdownMenu"
-              class="hidden absolute right-0 mt-2 w-44 bg-white overflow-hidden border border-admin-border rounded-[10px] shadow-sm"
-            >
-              <a
-                href="dashboard.html"
-                class="flex items-center px-4 py-3 gap-3 text-sm font-medium text-admin-gray hover:bg-gray-50"
-              >
-                <svg
-                  class="w-4 h-4 flex-shrink-0"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                >
-                  <rect x="3" y="3" width="7" height="7" />
-                  <rect x="14" y="3" width="7" height="7" />
-                  <rect x="3" y="14" width="7" height="7" />
-                  <rect x="14" y="14" width="7" height="7" />
-                </svg>
-                대시보드
-              </a>
-              <a
-                href="users.html"
-                class="flex items-center px-4 py-3 gap-3 text-sm font-medium text-admin-gray hover:bg-gray-50"
-                >사용자 관리</a
-              >
-              <a
-                href="#"
-                class="flex items-center px-4 py-3 gap-3 text-sm font-medium text-admin-gray hover:bg-gray-50"
-                >제품 관리</a
-              >
-              <a
-                href="#"
-                class="flex items-center px-4 py-3 gap-3 text-sm font-medium text-admin-gray hover:bg-gray-50"
-                >주문 관리</a
-              >
-              <div class="border-t border-admin-border"></div>
-              <a
-                href="#"
-                onclick="logout()"
-                class="flex items-center px-4 py-3 gap-3 text-sm font-medium text-admin-red hover:bg-red-50"
-                >로그아웃</a
-              >
-            </div>
-          </div>
-        </header>
-
         <main class="flex-1 p-4 md:p-6 xl:p-8 mt-14 xl:mt-0 overflow-y-auto">
-          <h2
-            class="text-2xl font-bold text-[#0a0a0a] leading-8 tracking-wide-07 mb-6"
-          >
+          <h2 class="text-2xl font-bold leading-8 mb-6">
             대시보드
           </h2>
           <div class="grid grid-cols-1 xl:grid-cols-4 gap-4 mb-6">
-            <div class="bg-white rounded-[10px] shadow-sm p-[10px]">
-              <div
-                class="w-10 h-10 rounded-xl flex items-center justify-center mb-3 bg-[#2b7fff]"
-              >
-                <svg
-                  width="24"
-                  height="24"
-                  fill="none"
-                  stroke="white"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                >
+            <div class="bg-white rounded-[10px] shadow-sm p-2.5">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3 bg-[#2b7fff]">
+                <svg width="24" height="24" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
                   <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
                   <circle cx="9" cy="7" r="4" />
                   <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
                   <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                 </svg>
               </div>
-              <p
-                class="text-sm font-medium text-admin-gray leading-5 tracking-tight-15"
-              >
-                총 사용자
-              </p>
-              <p
-                class="text-2xl font-bold text-[#0a0a0a] leading-8 tracking-wide-07"
-                id="stat-users"
-              >
-                -
-              </p>
+              <p class="text-sm font-medium text-admin-gray leading-5">총 사용자</p>
+              <p class="text-2xl font-bold text-[#0a0a0a] leading-8" id="stat-users">-</p>
             </div>
-            <div class="bg-white rounded-[10px] shadow-sm p-[10px]">
-              <div
-                class="w-10 h-10 rounded-xl flex items-center justify-center mb-3 bg-[#00c950]"
-              >
-                <svg
-                  width="24"
-                  height="24"
-                  fill="none"
-                  stroke="white"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
-                  />
+            <div class="bg-white rounded-[10px] shadow-sm p-2.5">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3 bg-[#00c950]">
+                <svg width="24" height="24" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
                   <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
                   <line x1="12" y1="22.08" x2="12" y2="12" />
                 </svg>
               </div>
-              <p
-                class="text-sm font-medium text-admin-gray leading-5 tracking-tight-15"
-              >
-                총 제품
-              </p>
-              <p
-                class="text-2xl font-bold text-[#0a0a0a] leading-8 tracking-wide-07"
-                id="stat-products"
-              >
-                -
-              </p>
+              <p class="text-sm font-medium text-admin-gray leading-5">총 제품</p>
+              <p class="text-2xl font-bold text-[#0a0a0a] leading-8" id="stat-products">-</p>
             </div>
-            <div class="bg-white rounded-[10px] shadow-sm p-[10px]">
-              <div
-                class="w-10 h-10 rounded-xl flex items-center justify-center mb-3 bg-[#ad46ff]"
-              >
-                <svg
-                  width="24"
-                  height="24"
-                  fill="none"
-                  stroke="white"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                >
+            <div class="bg-white rounded-[10px] shadow-sm p-2.5">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3 bg-[#ad46ff]">
+                <svg width="24" height="24" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
                   <circle cx="9" cy="21" r="1" />
                   <circle cx="20" cy="21" r="1" />
-                  <path
-                    d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
-                  />
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
                 </svg>
               </div>
-              <p
-                class="text-sm font-medium text-admin-gray leading-5 tracking-tight-15"
-              >
-                총 주문
-              </p>
-              <p
-                class="text-2xl font-bold text-[#0a0a0a] leading-8 tracking-wide-07"
-                id="stat-orders"
-              >
-                -
-              </p>
+              <p class="text-sm font-medium text-admin-gray leading-5">총 주문</p>
+              <p class="text-2xl font-bold text-[#0a0a0a] leading-8" id="stat-orders">-</p>
             </div>
-            <div class="bg-white rounded-[10px] shadow-sm p-[10px]">
-              <div
-                class="w-10 h-10 rounded-xl flex items-center justify-center mb-3 bg-[#ff6900]"
-              >
-                <svg
-                  width="24"
-                  height="24"
-                  fill="none"
-                  stroke="white"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                >
+            <div class="bg-white rounded-[10px] shadow-sm p-2.5">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3 bg-[#ff6900]">
+                <svg width="24" height="24" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
                   <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
                   <polyline points="17 6 23 6 23 12" />
                 </svg>
               </div>
-              <p
-                class="text-sm font-medium text-admin-gray leading-5 tracking-tight-15"
-              >
-                총 매출
-              </p>
-              <p
-                class="text-2xl font-bold text-[#0a0a0a] leading-8 tracking-wide-07"
-                id="stat-revenue"
-              >
-                -
-              </p>
+              <p class="text-sm font-medium text-admin-gray leading-5">총 매출</p>
+              <p class="text-2xl font-bold text-[#0a0a0a] leading-8" id="stat-revenue">-</p>
             </div>
           </div>
 
@@ -252,29 +72,15 @@
               <table class="w-full">
                 <thead>
                   <tr class="bg-admin-bg border-b border-admin-border">
-                    <th
-                      class="text-left px-6 py-4 text-xs font-medium text-admin-gray leading-4 tracking-wide-6 uppercase"
-                    >
-                      주문번호
-                    </th>
-                    <th
-                      class="text-left px-6 py-4 text-xs font-medium text-admin-gray leading-4 tracking-wide-6 uppercase"
-                    >
-                      주문 ID
-                    </th>
-                    <th
-                      class="text-left px-6 py-4 text-xs font-medium text-admin-gray leading-4 tracking-wide-6 uppercase"
-                    >
-                      금액
-                    </th>
-                    <th
-                      class="text-left px-6 py-4 text-xs font-medium text-admin-gray leading-4 tracking-wide-6 uppercase"
-                    >
-                      주문일시
-                    </th>
+                    <th class="text-left px-6 py-4 text-xs font-medium text-admin-gray leading-4 uppercase">주문번호</th>
+                    <th class="text-left px-6 py-4 text-xs font-medium text-admin-gray leading-4 uppercase">주문 ID</th>
+                    <th class="text-left px-6 py-4 text-xs font-medium text-admin-gray leading-4 uppercase">금액</th>
+                    <th class="text-left px-6 py-4 text-xs font-medium text-admin-gray leading-4 uppercase">주문일시</th>
                   </tr>
                 </thead>
-                <tbody id="orderTableBody"></tbody>
+                <tbody id="orderTableBody">
+                  <td>안녕</td>
+                </tbody>
               </table>
             </div>
             <div class="md:hidden" id="orderCardBody"></div>
