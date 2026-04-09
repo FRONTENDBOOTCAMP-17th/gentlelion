@@ -9,68 +9,51 @@
   <body>
     <!-- 제품 카드 -->
     <div class="w-full max-w-100">
-      <div id="carousel-wrap"></div>
+      <a href="/" class="block">
+        <figure class="aspect-square overflow-hidden">
+          <img
+            class="h-full w-full object-cover scale-200"
+            loading="lazy"
+            width="1400"
+            height="1400"
+            src="https://gm-prd-resource.gentlemonster.com/catalog/product/bulk/32f0875d-40e5-4a9a-b902-bf91881aca01/11005049_D_45.jpg?width=1400"
+            alt="디즈니 F1 - 윙 4 R13"
+          />
+        </figure>
+      </a>
 
       <div class="flex items-start justify-between px-4 py-3">
         <a href="/" class="pr-3">
-          <h2 class="text-[12px] leading-[1.4]">
-            디즈니 F1
-            <sup class="relative top-0.5 text-xs">®</sup>
-            - 윙 4 R13
+          <h2 class="text-[12px] leading-[1.4] product-name">
+            디즈니 F1 - 윙 4 R13
           </h2>
           <p class="mt-1 text-[12px] text-neutral-700">
-            ₩420,000 - 재입고 예정
+            <span class="product-price">₩420,000</span>
+            <span class="in-stock">- 재입고 예정</span>
           </p>
         </a>
 
-        <div class="flex flex-col items-end gap-2">
-          <div id="color-chips" class="flex gap-1"></div>
-          <div id="color-text" class="text-[12px] text-neutral-700"></div>
-          <button
-            class="shrink-0 cursor-pointer"
-            type="button"
-            aria-label="상품 저장"
+        <button
+          class="shrink-0 cursor-pointer"
+          type="button"
+          aria-label="상품 저장"
+        >
+          <svg
+            class="inline-block"
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="19"
+            viewBox="0 0 16 19"
+            fill="none"
           >
-            <svg
-              class="inline-block"
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="19"
-              viewBox="0 0 16 19"
-              fill="none"
-            >
-              <path
-                d="M8.38236 11.9221L8 11.6059L7.61764 11.9221L0.6 17.7253V0.6H15.4V17.7253L8.38236 11.9221Z"
-                stroke="#111111"
-                stroke-width="1.2"
-              ></path>
-            </svg>
-          </button>
-        </div>
+            <path
+              d="M8.38236 11.9221L8 11.6059L7.61764 11.9221L0.6 17.7253V0.6H15.4V17.7253L8.38236 11.9221Z"
+              stroke="#111111"
+              stroke-width="1.2"
+            ></path>
+          </svg>
+        </button>
       </div>
     </div>
-
-    <script type="module">
-      import { createImageCarousel } from "../../components/carousel/imageCarousel.js";
-      import { renderColorChips } from "../../data/colorChips.js";
-
-      // API에서 받은 이미지 URL 배열 (테스트용)
-      const images = [
-        "https://gm-prd-resource.gentlemonster.com/catalog/product/bulk/32f0875d-40e5-4a9a-b902-bf91881aca01/11005049_D_45.jpg?width=1400",
-        "https://gm-prd-resource.gentlemonster.com/catalog/product/bulk/32f0875d-40e5-4a9a-b902-bf91881aca01/11005049_D_01.jpg?width=1400",
-        "https://gm-prd-resource.gentlemonster.com/catalog/product/bulk/32f0875d-40e5-4a9a-b902-bf91881aca01/11005049_D_02.jpg?width=1400",
-      ];
-
-      const carousel = createImageCarousel(images, {
-        alt: "디즈니 F1 - 윙 4 R13",
-      });
-      document.getElementById("carousel-wrap").appendChild(carousel);
-
-      renderColorChips({
-        productId: "0PEEZ09X6ASH7",
-        chipsEl: document.getElementById("color-chips"),
-        textEl: document.getElementById("color-text"),
-      });
-    </script>
   </body>
 </html>
