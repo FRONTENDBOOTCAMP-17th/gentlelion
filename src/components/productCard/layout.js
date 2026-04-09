@@ -3,10 +3,10 @@ import { moreButton } from "./moreButton.js"
 
 async function layout() {
     const productContainer = document.getElementById("productContainer");
-    const buttonContainer = document.getElementById("moreButton");
-    
+    const main = document.querySelector("main");
+
     await productCard(productContainer);
-    moreButton(buttonContainer);
+    await moreButton(main);
 }
 
 layout();

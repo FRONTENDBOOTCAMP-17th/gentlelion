@@ -5,10 +5,6 @@ export async function productCard(container) {
     const html = await response.text();
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, 'text/html');
-    const productElement = doc.querySelector('product');
 
-    if (productElement && container) {
-        container.appendChild(productElement);
-    }
-
+    container.appendChild(doc.body.firstElementChild);
 }
