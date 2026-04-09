@@ -12,10 +12,12 @@ export function renderRows(tbody, items, config) {
       tr.appendChild(td);
     });
 
-    const tdButton = document.createElement("td");
-    tdButton.className = config.buttonCellClass ?? "py-5";
-    config.renderButtons(tdButton, item);
-    tr.appendChild(tdButton);
+    if (typeof config.renderButtons === "function") {
+      const tdButton = document.createElement("td");
+      tdButton.className = config.buttonCellClass ?? "py-5";
+      config.renderButtons(tdButton, item);
+      tr.appendChild(tdButton);
+    }
 
     tbody.appendChild(tr);
   });
