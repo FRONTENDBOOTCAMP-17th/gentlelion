@@ -12,5 +12,3 @@ export async function productCard(container) {
     }
 
 }
-
-productCard();

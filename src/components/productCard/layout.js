@@ -1,8 +1,12 @@
 import { productCard } from "./productCard.js"
+import { moreButton } from "./moreButton.js"
 
-function layout() {
+async function layout() {
     const productContainer = document.getElementById("productContainer");
-    productCard(productContainer);
+    const buttonContainer = document.getElementById("moreButton");
+    
+    await productCard(productContainer);
+    moreButton(buttonContainer);
 }
 
 layout();
