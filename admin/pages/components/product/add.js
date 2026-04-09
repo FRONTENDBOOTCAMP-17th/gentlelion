@@ -107,21 +107,33 @@ if (productForm) {
     e.preventDefault();
     const formData = new FormData(productForm);
 
+    const colorInputs = colorContainer.querySelectorAll("[name='colors']");
+    const colors = [];
+    for (const input of colorInputs) {
+      const val = input.value.trim();
+      if (val) colors.push({ name: val });
+    }
+
     const productData = {
       name: formData.get("name"),
       category: formData.get("category"),
       price: Number(formData.get("price")),
       description: formData.get("description"),
       stock: Number(formData.get("stock")),
+      colors: colors,
       specifications: {
         frameWidth: formData.get("frameWidth"),
         lensHeight: formData.get("lensHeight"),
         lensWidth: formData.get("lensWidth"),
+        bridgeWidth: formData.get("bridgeWidth"),
+        templeLength: formData.get("templeLength"),
       },
     };
 
     try {
+      console.log(productData);
       await addProduct(productData);
+      localStorage.removeItem("addProductColors");
       alert("제품이 등록되었습니다.");
       location.href = "products.html";
     } catch (error) {
