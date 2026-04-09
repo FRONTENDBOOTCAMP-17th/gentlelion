@@ -1,4 +1,4 @@
-const button = document.getElementById("menu-btn");
+const button = document.getElementById("mobileMenu");
 const menu = document.getElementById("mobileMenu");
 const menuItems = menu.querySelectorAll(".menu-animate");
 const header = document.querySelector(".header");

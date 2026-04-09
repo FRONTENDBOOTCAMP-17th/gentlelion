@@ -4,7 +4,7 @@ import { renderNavigation } from "./utils/renderNavigation.js";
 const navigationList = document.getElementById("navigationList");
 
 renderNavigation(navigationList, sunglasses, {
-  detailPath: "/src/pages/sunglasses-detail.html",
+  detailPath: "/src/pages/sunglasses.html",
   getLabel: (item) => item.name,
   getSlug: (item) => item.slug,
 });
