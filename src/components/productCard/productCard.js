@@ -7,8 +7,6 @@ export async function productCard(container) {
     const doc = parser.parseFromString(html, 'text/html');
     const productElement = doc.querySelector('product');
 
-    console.log(productElement);
-
     if (productElement && container) {
         container.appendChild(productElement);
     }
