@@ -1,5 +1,6 @@
 import { getProductList } from "../../API/product/productListApi.js";
 import { editProduct } from "../../API/product/productEditApi.js";
+import { uploadImage } from "../../API/product/imageApi.js";
 
 const form = document.getElementById("productEditForm");
 const colorContainer = document.getElementById("colorContainer");
@@ -104,6 +105,30 @@ async function EditPage() {
   Navigation();
   const urlParams = new URLSearchParams(location.search);
   const productId = urlParams.get("id");
+  const imageInput = document.getElementById("imageInput");
+  const imagePreview = document.getElementById("imagePreview");
+  const uploadPlaceholder = document.getElementById("uploadPlaceholder");
+  const imageUrlInput = document.getElementById("imageUrlInput");
+  const imageUploadBtn = document.getElementById("imageUploadBtn");
+
+  imageUploadBtn.addEventListener("click", () => imageInput.click());
+
+  imageInput.addEventListener("change", async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    try {
+      uploadPlaceholder.querySelector("span").textContent = "업로드 중...";
+      const uploadedUrl = await uploadImage(file);
+
+      imagePreview.src = uploadedUrl;
+      imagePreview.classList.remove("hidden");
+      uploadPlaceholder.classList.add("hidden");
+      imageUrlInput.value = uploadedUrl;
+    } catch (err) {
+      alert("이미지 업로드 실패: " + err.message);
+    }
+  });
 
   if (!productId) {
     alert("잘못된 접근입니다.");
@@ -120,6 +145,13 @@ async function EditPage() {
     const item = products.find((p) => p.id == productId);
 
     if (item) {
+      if (item.images && item.images.length > 0) {
+        const currentImg = item.images[0];
+        imagePreview.src = currentImg;
+        imagePreview.classList.remove("hidden");
+        uploadPlaceholder.classList.add("hidden");
+        imageUrlInput.value = currentImg;
+      }
       form.name.value = item.name;
       form.price.value = item.price;
       form.category.value = item.category;
@@ -163,6 +195,7 @@ async function EditPage() {
       description: formData.get("description"),
       stock: Number(formData.get("stock")),
       colors,
+      images: imageUrlInput.value ? [imageUrlInput.value] : [],
       specifications: {
         frameWidth: formData.get("frameWidth"),
         lensHeight: formData.get("lensHeight"),

@@ -1,8 +1,40 @@
 import { addProduct } from "../../API/product/productAdd.js";
+import { uploadImage } from "../../API/product/imageApi.js";
 
 const productForm = document.getElementById("productAddForm");
 const colorContainer = document.getElementById("colorContainer");
 const addColorBtn = document.getElementById("addColorBtn");
+
+function imageUpload() {
+  const uploadBtn = document.getElementById("imageUploadBtn");
+  const fileInput = document.getElementById("imageInput");
+  const previewImg = document.getElementById("imagePreview");
+  const placeholder = document.getElementById("uploadPlaceholder");
+  const imageUrlInput = document.getElementById("imageUrlInput");
+
+  uploadBtn.addEventListener("click", () => fileInput.click());
+
+  fileInput.addEventListener("change", async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    try {
+      placeholder.querySelector("span").textContent = "업로드 중...";
+
+      const uploadedUrl = await uploadImage(file);
+
+      previewImg.src = uploadedUrl;
+      previewImg.classList.remove("hidden");
+      placeholder.classList.add("hidden");
+
+      imageUrlInput.value = uploadedUrl;
+    } catch (error) {
+      alert(error.message);
+      placeholder.querySelector("span").textContent = "업로드 실패. 다시 시도";
+    }
+  });
+}
+imageUpload();
 
 function createColor(value = "") {
   const row = document.createElement("div");
@@ -121,6 +153,7 @@ if (productForm) {
       description: formData.get("description"),
       stock: Number(formData.get("stock")),
       colors: colors,
+      images: [imageUrlInput.value],
       specifications: {
         frameWidth: formData.get("frameWidth"),
         lensHeight: formData.get("lensHeight"),
