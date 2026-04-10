@@ -5,6 +5,6 @@ import { changeBtnState } from "./changeBtnState";
 
 export async function wishlist() {
     const data = await getWishlist(getToken());
-    wishbuttonEvent(getToken());
+    wishbuttonEvent(getToken(), data);
     changeBtnState(data);
 }
