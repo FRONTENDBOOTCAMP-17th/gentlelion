@@ -9,7 +9,8 @@ export async function postWishlist(token, productId) {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ productId })
+            // color값은 현재 임시로 되어있습니다.
+            body: JSON.stringify({ productId, color: "Black" })
         });
 
         if (!response.ok) throw new Error("위시리스트 추가 실패");

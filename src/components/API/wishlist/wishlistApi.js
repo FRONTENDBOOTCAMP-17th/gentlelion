@@ -13,6 +13,7 @@ export async function getWishlist(token) {
         if (!response.ok) throw new Error("위시리스트 로드 실패");
 
         const result = await response.json();
+        console.log(result);
         return result;
     } catch (error) {
         console.error(error);
