@@ -1,6 +1,14 @@
-import { loadHeader } from "./components/header/header.js"
-import { loadFooter } from "./components/footer/footer.js"
+import { loadHeader } from "./components/header/header.js";
+import { loadFooter } from "./components/footer/footer.js";
+import { headerEvent } from "./components/header/headerEvent.js";
+import { initMenuAnimation } from "./components/mobilemenu/menuAnimation.js";
 import "./components/style.css";
 
-loadHeader();
-loadFooter();
+async function init() {
+  await loadHeader();
+  headerEvent();
+  initMenuAnimation();
+  loadFooter();
+}
+
+init();
