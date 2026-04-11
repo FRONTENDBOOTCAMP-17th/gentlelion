@@ -1,5 +1,6 @@
 import { delCartlist } from "../API/cart/delcartApi";
 import { putCartApi } from "../API/cart/putCartApi";
+import { emptyCart } from "./emptyCart.js";
 
 export async function cartCard(token, container, data) {
     const response = await fetch('/src/components/cart/cartCard.html');
@@ -25,20 +26,25 @@ export async function cartCard(token, container, data) {
         const select = card.querySelector(".cart-quantity");
         if (select) {
             select.value = product.quantity ?? 1;
-
             select.addEventListener("change", (e) => {
-                putCartApi(token, product.cartItemId, e.target.value)
+                putCartApi(token, product.cartItemId, e.target.value);
             });
         }
 
         const deleteBtn = card.querySelector(".cart-delete-btn");
         if (deleteBtn) {
-            deleteBtn.addEventListener("click", () => {
-                console.log(`삭제: ${product.cartItemId}`);
-                delCartlist(token, product.cartItemId);
+            deleteBtn.addEventListener("click", async () => {
+                await delCartlist(token, product.cartItemId);
                 card.remove();
+                
+                const remaining = container.querySelectorAll(".cart-product-name").length;
+                if (remaining === 0) {
+                    container.innerHTML = '';
+                    await emptyCart(container);
+                }
             });
         }
+
         container.appendChild(card);
     }
 }
