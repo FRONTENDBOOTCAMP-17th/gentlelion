@@ -1,62 +1,48 @@
-<div class="flex w-full gap-4 py-4 border-b border-neutral-200">
-  <!-- 상품 이미지 -->
-  <a href="/" class="shrink-0 w-36 h-36 overflow-hidden block">
+<div class="flex gap-4 md:gap-6 py-4 min-w-100 md:min-w-150 ml-auto mr-auto">
+  <figure
+    class="flex justify-center items-center shrink-0 w-36 h-36 md:w-48 md:h-48 overflow-hidden"
+  >
     <img
-      class="h-full w-full object-cover cart-product-image"
+      class="w-36 h-36 md:w-48 md:h-48 scale-180 object-cover object-center cart-product-image"
       loading="lazy"
       src=""
       alt=""
     />
-  </a>
+  </figure>
 
   <!-- 상품 정보 -->
-  <div class="flex flex-1 justify-between">
-    <div class="flex flex-col gap-1">
-      <h2 class="text-[13px] font-medium leading-[1.4] cart-product-name"></h2>
-      <p class="text-[12px] text-neutral-500 cart-product-color"></p>
-      <p class="text-[13px] font-medium cart-product-price"></p>
+  <div class="flex justify-between">
+    <div class="flex flex-col gap-1 justify-center">
+      <h2 class="text-[13px] md:text-[16px] font-medium leading-[1.4] cart-product-name"></h2>
+      <p class="text-[12px] md:text-[15px] text-neutral-500 cart-product-color"></p>
+      <p class="text-[13px] md:text-[16px] font-medium cart-product-price"></p>
 
       <!-- 수량 -->
       <div class="flex items-center gap-2 mt-2">
-        <span class="text-[12px] text-neutral-500">수량</span>
-        <select class="cart-quantity text-[13px] border-none outline-none cursor-pointer bg-transparent">
+        <span class="text-[12px] md:text-[15px] text-neutral-500">수량</span>
+        <select
+          class="cart-quantity text-[13px] md:text-[16px] border-none outline-none cursor-pointer bg-transparent"
+        >
           <option>1</option>
           <option>2</option>
           <option>3</option>
           <option>4</option>
           <option>5</option>
+          <option>6</option>
+          <option>7</option>
+          <option>8</option>
+          <option>9</option>
+          <option>10</option>
         </select>
       </div>
 
       <!-- 삭제 버튼 -->
       <button
-        class="cart-delete-btn mt-2 w-fit text-[12px] text-neutral-500 underline underline-offset-2 cursor-pointer hover:text-black transition-colors"
+        class="cart-delete-btn mt-2 w-fit text-[12px] md:text-[15px] text-neutral-500 underline underline-offset-2 cursor-pointer hover:text-black transition-colors"
         type="button"
       >
         삭제하기
       </button>
     </div>
-
-    <!-- 위시리스트 버튼 -->
-    <button
-      class="wishButton shrink-0 self-start cursor-pointer"
-      type="button"
-      aria-label="위시리스트 저장"
-    >
-      <svg
-        class="inline-block"
-        xmlns="http://www.w3.org/2000/svg"
-        width="16"
-        height="24"
-        viewBox="0 0 16 19"
-        fill="none"
-      >
-        <path
-          d="M8.38236 11.9221L8 11.6059L7.61764 11.9221L0.6 17.7253V0.6H15.4V17.7253L8.38236 11.9221Z"
-          stroke="#111111"
-          stroke-width="1.2"
-        ></path>
-      </svg>
-    </button>
   </div>
 </div>
