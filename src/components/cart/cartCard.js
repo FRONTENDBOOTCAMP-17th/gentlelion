@@ -1,4 +1,5 @@
 import { delCartlist } from "../API/cart/delcartApi";
+import { putCartApi } from "../API/cart/putCartApi";
 
 export async function cartCard(token, container, data) {
     const response = await fetch('/src/components/cart/cartCard.html');
@@ -10,8 +11,6 @@ export async function cartCard(token, container, data) {
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
         const card = doc.body.firstElementChild;
-
-        console.log("프로덕트", product);
 
         const img = card.querySelector(".cart-product-image");
         if (img) {
@@ -28,7 +27,7 @@ export async function cartCard(token, container, data) {
             select.value = product.quantity ?? 1;
 
             select.addEventListener("change", (e) => {
-                console.log(`수량 변경: ${product.id} → ${e.target.value}`);
+                putCartApi(token, product.cartItemId, e.target.value)
             });
         }
 

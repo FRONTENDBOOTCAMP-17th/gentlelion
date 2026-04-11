@@ -10,7 +10,9 @@ export async function delCartlist(token, cartItemId) {
             },
         });
 
-        if (!response.ok) throw new Error("장바구니 삭제 실패");
+        if (!response.ok) {
+            throw new Error("장바구니 삭제 실패");
+        }
 
         const result = await response.json();
         return result;

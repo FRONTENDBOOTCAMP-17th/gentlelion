@@ -6,6 +6,5 @@ async function handlerCart(){
     const productContainer = document.getElementById("productContainer");
     const data = await getCartListApi(getToken());
     await cartCard(getToken(), productContainer, data);
-    console.log(data);
 }
 handlerCart();
