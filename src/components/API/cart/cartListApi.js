@@ -10,6 +10,16 @@ export async function getCartListApi(token) {
       }
     });
 
+    if(response.status === 401){
+      const isConfirm = confirm("로그인이 필요합니다. \n로그인 페이지로 이동하시겠습니까?");
+      if(isConfirm){
+        location.href = "/src/components/login/login.html"
+      }
+      else{
+        location.href = "/"
+      }
+    }
+
     if (!response.ok) throw new Error("쇼핑백 목록 로드 실패");
 
     const result = await response.json();
