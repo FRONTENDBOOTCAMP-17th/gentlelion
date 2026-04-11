@@ -8,7 +8,9 @@ async function init() {
   await loadHeader();
   headerEvent();
   initMenuAnimation();
-  loadFooter();
+  if(document.body.dataset.footer !== "false"){
+    loadFooter();
+  }
 }
 
 init();

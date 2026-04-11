@@ -11,6 +11,7 @@
   <body
     class="font-gentle bg-(--bg) flex flex-col min-h-screen"
     data-theme="light"
+    data-footer="false"
   >
     <div
       id="mobileMenu"
@@ -60,10 +61,16 @@
     <aside class="navigation mx-3 md:px-8 lg:px-15"></aside>
 
     <main class="flex-1">
-      <div
-        id="productContainer"
-        class="flex flex-col items-center gap-4 mx-auto mt-16"
-      ></div>
+      <div class="md:flex md:min-h-screen">
+        <div
+          id="productContainer"
+          class="flex flex-col items-center gap-4 mx-auto mt-16"
+        ></div>
+      </div>
+      <aside
+        id="cartNavigationContainer"
+        class="md:w-80 md:fixed md:right-0 md:top-0 md:h-full"
+      ></aside>
     </main>
   </body>
 </html>

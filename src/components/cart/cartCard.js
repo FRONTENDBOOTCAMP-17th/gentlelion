@@ -1,8 +1,9 @@
 import { delCartlist } from "../API/cart/delcartApi";
 import { putCartApi } from "../API/cart/putCartApi";
 import { emptyCart } from "./emptyCart.js";
+import { cartNavigation } from "./cartNavigation.js";
 
-export async function cartCard(token, container, data) {
+export async function cartCard(token, productContainer, navContainer, data) {
     const response = await fetch('/src/components/cart/cartCard.html');
     if (!response.ok) return;
 
@@ -26,8 +27,10 @@ export async function cartCard(token, container, data) {
         const select = card.querySelector(".cart-quantity");
         if (select) {
             select.value = product.quantity ?? 1;
-            select.addEventListener("change", (e) => {
-                putCartApi(token, product.cartItemId, e.target.value);
+            select.addEventListener("change", async(e) => {
+                const updateData = await putCartApi(token, product.cartItemId, e.target.value);
+                navContainer.innerHTML = "";
+                await cartNavigation(navContainer, updateData.data.totalPrice);
             });
         }
 
@@ -37,14 +40,15 @@ export async function cartCard(token, container, data) {
                 await delCartlist(token, product.cartItemId);
                 card.remove();
                 
-                const remaining = container.querySelectorAll(".cart-product-name").length;
+                const remaining = productContainer.querySelectorAll(".cart-product-name").length;
                 if (remaining === 0) {
-                    container.innerHTML = '';
-                    await emptyCart(container);
+                    productContainer.innerHTML = '';
+                    navContainer.innerHTML = '';
+                    await emptyCart(productContainer);
                 }
             });
         }
 
-        container.appendChild(card);
+        productContainer.appendChild(card);
     }
 }
