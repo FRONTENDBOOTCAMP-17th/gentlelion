@@ -76,11 +76,18 @@
             <div class="text-[11px] text-[#858585] text-right">
               *필수 입력 항목
             </div>
-            <div class="relative">
+            <div class="relative flex flex-col gap-4">
               <input
                 type="email"
                 id="emailInput"
                 placeholder="이메일 주소*"
+                required
+                class="w-full h-13 px-3 bg-white border border-white rounded-lg text-[13px] outline-none focus:border-black transition-all placeholder-[#858585]"
+              />
+              <input
+                type="password"
+                id="pwInput"
+                placeholder="비밀번호*"
                 required
                 class="w-full h-13 px-3 bg-white border border-white rounded-lg text-[13px] outline-none focus:border-black transition-all placeholder-[#858585]"
               />
@@ -93,20 +100,13 @@
           >
             계속하기
           </button>
-          <button
-            class="w-full h-13 bg-[#858585] text-white text-[13px] rounded-lg uppercase font-medium transition-colors"
+          <a
+            href="/src/components/login/register.html"
+            class="flex justify-center items-center w-full h-13 bg-(--text-gray) text-white text-[13px] rounded-lg uppercase font-medium transition-colors"
           >
-            다른 옵션 보기
-          </button>
+            회원가입
+          </a>
         </form>
-
-        <div class="mt-16">
-          <button
-            class="w-full h-13 border border-[#ababab] text-[13px] rounded-lg uppercase text-[#111] hover:bg-white transition-all"
-          >
-            주문 추적하기
-          </button>
-        </div>
       </div>
     </main>
   </body>
