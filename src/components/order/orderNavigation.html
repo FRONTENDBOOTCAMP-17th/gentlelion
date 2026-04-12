@@ -1,19 +1,19 @@
-<div class="cart-navigation px-6">
-  <div class="cart-sticky-bar fixed bottom-0 left-0 w-full z-50 p-4 md:hidden">
+<div class="order-navigation px-6">
+  <div class="order-sticky-bar fixed bottom-0 left-0 w-full z-50 p-4 md:hidden">
     <button
-      class="cart-checkout-btn w-full bg-black text-white text-[14px] font-medium py-4 cursor-pointer"
+      class="order-checkout-btn w-full bg-black text-white text-[14px] font-medium py-4 cursor-pointer"
     >
-      결제하기 - <span class="cart-total-price-sticky"></span>
+      구매 - <span class="order-total-price-sticky"></span>
     </button>
   </div>
 
   <div
-    class="cart-summary md:fixed md:right-0 md:top-0 md:h-full md:w-80 md:flex md:flex-col md:justify-center md:px-8"
+    class="order-summary md:fixed md:right-0 md:top-0 md:h-full md:w-80 md:flex md:flex-col md:justify-center md:px-8"
   >
     <div class="flex flex-col gap-3 py-6">
       <div class="flex justify-between text-[13px]">
         <span>소계</span>
-        <span class="cart-subtotal"></span>
+        <span class="order-subtotal"></span>
       </div>
       <div class="flex justify-between text-[13px]">
         <span>배송</span>
@@ -22,7 +22,7 @@
       <div class="flex justify-between text-[14px] font-medium mt-2">
         <span>총계</span>
         <div class="flex flex-col items-end gap-1">
-          <span class="cart-total-price text-[18px]"></span>
+          <span class="order-total-price text-[18px]"></span>
           <span class="text-[11px] text-neutral-400">세금 포함</span>
         </div>
       </div>
@@ -31,9 +31,9 @@
     <div class="flex flex-col gap-3 pb-6">
       <a
         href="/src/components/order/order.html"
-        class="cart-checkout-btn w-full text-center bg-black text-white text-[14px] font-medium py-4 cursor-pointer hover:bg-neutral-800 transition-colors"
+        class="order-checkout-btn w-full text-center bg-black text-white text-[14px] font-medium py-4 cursor-pointer hover:bg-neutral-800 transition-colors"
       >
-        결제하기 - <span class="cart-total-price-btn"></span>
+        구매 - <span class="order-total-price-btn"></span>
       </a>
       <a
         href="/"
