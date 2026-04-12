@@ -11,10 +11,9 @@ async function handlerOrder() {
     const data = await getCartListApi(getToken());
     const items = data.data.items;
 
-    console.log(data.data);
-    console.log(data.data.items === "[]");
-    if(items === ""){
-        console.log("돌아가");
+    if (!items || items.length === 0) {
+        window.location.href = "/";
+        return;
     }
 
     const userMeta = await getProfileApi(getToken());
