@@ -3,11 +3,21 @@ import { getToken } from "../API/token/getToken.js";
 import { orderCard } from "./orderCard.js";
 import { orderNavigation } from "./orderNavigation.js";
 import { orderSummation } from "./orderSummation.js";
+import { orderButton } from "./orderButton.js";
+import { getProfileApi } from "../API/profile/getProfileApi";
 
 async function handlerOrder() {
     const navigationContainer = document.getElementById("orderNavigationContainer");
     const data = await getCartListApi(getToken());
     const items = data.data.items;
+
+    console.log(data.data);
+    console.log(data.data.items === "[]");
+    if(items === ""){
+        console.log("돌아가");
+    }
+
+    const userMeta = await getProfileApi(getToken());
 
     if (items.length > 0) {
         const mobileContainer = document.querySelector(".order-container");
@@ -21,5 +31,6 @@ async function handlerOrder() {
     }
 
     orderSummation();
+    orderButton(getToken(), items, data.data.totalPrice, userMeta);
 }
 handlerOrder();
