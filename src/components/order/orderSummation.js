@@ -4,7 +4,6 @@ export function orderSummation() {
     const chevronDown = "M6 9L12 15L18 9";
     const chevronUp = "M6 15L12 9L18 15";
 
-    // 각 버튼과 같은 인덱스의 컨테이너를 쌍으로 묶기
     buttons.forEach((button, index) => {
         const container = containers[index];
         if (!container) return;

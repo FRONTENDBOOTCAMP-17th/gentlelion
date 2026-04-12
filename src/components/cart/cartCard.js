@@ -2,6 +2,7 @@ import { delCartlist } from "../API/cart/delcartApi";
 import { putCartApi } from "../API/cart/putCartApi";
 import { emptyCart } from "./emptyCart.js";
 import { cartNavigation } from "./cartNavigation.js";
+import { checkPriceChange } from "../API/cart/checkPriceChange.js"
 
 export async function cartCard(token, productContainer, navContainer, data) {
     const response = await fetch('/src/components/cart/cartCard.html');
@@ -10,9 +11,14 @@ export async function cartCard(token, productContainer, navContainer, data) {
     const html = await response.text();
 
     for (const product of data.data.items) {
+        const shouldContinue = await checkPriceChange(token, product);
+        if (!shouldContinue) return;
+
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
         const card = doc.body.firstElementChild;
+
+        console.log(product);
 
         const img = card.querySelector(".cart-product-image");
         if (img) {
@@ -39,7 +45,7 @@ export async function cartCard(token, productContainer, navContainer, data) {
             deleteBtn.addEventListener("click", async () => {
                 await delCartlist(token, product.cartItemId);
                 card.remove();
-                
+
                 const remaining = productContainer.querySelectorAll(".cart-product-name").length;
                 if (remaining === 0) {
                     productContainer.innerHTML = '';
