@@ -18,6 +18,7 @@ export function cartAccordion(nav) {
                 el.querySelector(".cart-accordion-icon").textContent = "+";
             });
 
+
             if (!isOpen) {
                 content.style.maxHeight = content.scrollHeight + "px";
                 icon.textContent = "−";

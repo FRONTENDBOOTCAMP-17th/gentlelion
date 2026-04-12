@@ -10,6 +10,35 @@
   <div
     class="order-summary md:fixed md:right-0 md:top-0 md:h-full md:w-80 md:flex md:flex-col md:justify-center md:px-8"
   >
+    <!-- 주문 요약 -->
+    <div id="orderSummation" class="justify-between mt-10 hidden md:flex">
+      <p class="text-[12px]">주문 요약</p>
+      <button
+        class="order-summation-btn text-[12px] cursor-pointer flex items-center gap-1"
+      >
+        <span>₩410,000</span>
+        <svg
+          class="inline-block"
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+          <path
+            d="M6 9L12 15L18 9"
+            stroke="black"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+    </div>
+    <section
+          class="order-container px-6 grid-cols-1 hidden md:grid items-center gap-4 mx-auto"
+        ></section>
+
     <div class="flex flex-col gap-3 py-6">
       <div class="flex justify-between text-[13px]">
         <span>소계</span>
@@ -43,7 +72,7 @@
       </a>
     </div>
 
-    <div class="flex flex-col border-t border-(--border)">
+    <div class="flex flex-col border-t border-(--border) bg-(--bg)">
       <div class="cart-accordion-item">
         <button
           class="cart-accordion-btn flex justify-between items-center w-full py-4 text-[13px] cursor-pointer"
@@ -51,11 +80,14 @@
           <span>무료 배송 & 반품</span>
           <span class="cart-accordion-icon">+</span>
         </button>
-        <div class="cart-accordion-content text-[12px] text-neutral-500 leading-relaxed">
+        <div
+          class="cart-accordion-content text-[12px] text-neutral-500 leading-relaxed"
+        >
           <p class="pb-4">
-            젠틀몬스터 공식 온라인 스토어는 무료 배송 및 반품 서비스를 제공합니다.
-            반품은 제품을 수령하신 날로부터 7일 이내에 접수해 주셔야 합니다.
-            제품은 사용되지 않은 상태여야 하며, 모든 구성품을 포함하고 있어야 합니다.
+            젠틀몬스터 공식 온라인 스토어는 무료 배송 및 반품 서비스를
+            제공합니다. 반품은 제품을 수령하신 날로부터 7일 이내에 접수해 주셔야
+            합니다. 제품은 사용되지 않은 상태여야 하며, 모든 구성품을 포함하고
+            있어야 합니다.
           </p>
         </div>
       </div>
@@ -67,21 +99,25 @@
           <span>무이자 할부 및 다양한 결제 옵션</span>
           <span class="cart-accordion-icon">+</span>
         </button>
-        <div class="cart-accordion-content text-[12px] text-neutral-500 leading-relaxed">
+        <div
+          class="cart-accordion-content text-[12px] text-neutral-500 leading-relaxed"
+        >
           <p>
-            무이자 할부 서비스 카드사에서 제공하는 무이자 할부 서비스는 아래 각각의
-            PG사를 클릭하여 확인하실 수 있습니다. 카카오페이 / KCP(신용카드) / 토스페이
+            무이자 할부 서비스 카드사에서 제공하는 무이자 할부 서비스는 아래
+            각각의 PG사를 클릭하여 확인하실 수 있습니다. 카카오페이 /
+            KCP(신용카드) / 토스페이
           </p>
           <p class="mt-2">
-            후불 결제 서비스 토스페이로 결제하시는 경우 후불 결제 서비스를 이용하실 수
-            있습니다. 후불 결제와 관련된 자세한 내용은 토스 앱에서 확인하세요.
+            후불 결제 서비스 토스페이로 결제하시는 경우 후불 결제 서비스를
+            이용하실 수 있습니다. 후불 결제와 관련된 자세한 내용은 토스 앱에서
+            확인하세요.
           </p>
           <p class="mt-2 pb-4">
-            결제 수단: KCP(신용카드), 카카오페이, 네이버페이, 토스페이, Apple Pay, 기프트 카드
+            결제 수단: KCP(신용카드), 카카오페이, 네이버페이, 토스페이, Apple
+            Pay, 기프트 카드
           </p>
         </div>
       </div>
     </div>
-
   </div>
 </div>
