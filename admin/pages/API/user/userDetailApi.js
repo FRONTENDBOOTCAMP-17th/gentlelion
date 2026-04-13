@@ -1,30 +1,6 @@
-export async function userDetailAPI(id) {
-  try {
-    const token = localStorage.getItem("token");
+import { get } from "../../../../shareApi/index.js";
 
-    if (!token) {
-      console.error("토큰이 없습니다.");
-      return null;
-    }
-
-    const res = await fetch(
-      `https://api.fullstackfamily.com/api/gentlelion/v1/admin/users/${id}`,
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      },
-    );
-
-    if (!res.ok) {
-      throw new Error("API 요청 실패");
-    }
-
-    const data = await res.json();
-    return data.data;
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
-}
+export const userDetailAPI = async (id) => {
+  const data = await get(`/admin/users/${id}`);
+  return data.data;
+};
