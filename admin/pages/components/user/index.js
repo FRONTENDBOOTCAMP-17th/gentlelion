@@ -9,7 +9,6 @@ import { toggleMenu } from "../common/toggleMenu.js";
 async function user(page = 1) {
   try {
     const data = await userApi(page, 20);
-    console.log(data);
 
     if (!data || !data.data) {
       console.error("데이터 없음");

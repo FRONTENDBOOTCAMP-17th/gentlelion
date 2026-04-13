@@ -164,7 +164,6 @@ if (productForm) {
     };
 
     try {
-      console.log(productData);
       await addProduct(productData);
       localStorage.removeItem("addProductColors");
       alert("제품이 등록되었습니다.");
