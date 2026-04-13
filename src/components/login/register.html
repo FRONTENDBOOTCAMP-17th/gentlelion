@@ -178,8 +178,16 @@
                 id="address"
                 placeholder="주소*"
                 required
-                class="w-full h-13 px-3 bg-white border border-white rounded-lg text-[13px] outline-none focus:border-black transition-all placeholder-[#858585]"
+                readonly
+                class="w-full h-13 px-3 bg-white border border-white rounded-lg text-[13px] outline-none focus:border-black transition-all placeholder-[#858585] cursor-pointer"
               />
+              <button
+                type="button"
+                id="addressSearchBtn"
+                class="absolute top-1/2 -translate-y-1/2 right-3 text-[12px] text-[#858585] underline"
+              >
+                주소 검색
+              </button>
             </div>
           </div>
           <div class="space-y-1.5">
@@ -187,17 +195,17 @@
               <input
                 type="text"
                 id="addressDetail"
-                placeholder="상세주소*"
+                placeholder="상세주소를 입력해주세요"
                 required
                 class="w-full h-13 px-3 bg-white border border-white rounded-lg text-[13px] outline-none focus:border-black transition-all placeholder-[#858585]"
               />
             </div>
           </div>
 
-          <div class="flex items-center mb-4">
+          <div class="relative flex items-center mb-4">
             <input
               type="checkbox"
-              id="custom-checkbox"
+              id="agreeAll"
               class="peer appearance-none w-4 h-4 border rounded-xs bg-white checked:bg-white focus:ring-1 cursor-pointer"
               checked
             />
@@ -207,7 +215,7 @@
               height="10"
               viewBox="0 0 13 10"
               fill="none"
-              class="pointer-events-none absolute opacity-0 peer-checked:opacity-100 transition-all"
+              class="pointer-events-none absolute left-0.5 opacity-0 peer-checked:opacity-100 transition-all"
             >
               <rect
                 width="11.2502"
@@ -226,10 +234,10 @@
               >모두 동의하기</label
             >
           </div>
-          <div class="flex items-center">
+          <div class="relative flex items-center">
             <input
               type="checkbox"
-              id="custom-checkbox"
+              id="agreeTerms"
               class="peer appearance-none w-4 h-4 border rounded-xs bg-white checked:bg-white focus:ring-1 cursor-pointer"
               checked
             />
@@ -239,7 +247,7 @@
               height="10"
               viewBox="0 0 13 10"
               fill="none"
-              class="pointer-events-none absolute opacity-0 peer-checked:opacity-100 transition-all"
+              class="pointer-events-none absolute left-0.5 opacity-0 peer-checked:opacity-100 transition-all"
             >
               <rect
                 width="11.2502"
@@ -255,14 +263,16 @@
               ></rect>
             </svg>
             <label for="checked-checkbox" class="select-none ms-2 text-[13px]"
-              >젠틀몬스터의 <a href="" class="underline">이용약관</a>에
-              동의합니다.(필수)</label
+              >젠틀몬스터의
+              <a href="./terms.html" target="_blank" class="underline"
+                >이용약관</a
+              >에 동의합니다.(필수)</label
             >
           </div>
-          <div class="flex items-center">
+          <div class="relative flex items-center">
             <input
               type="checkbox"
-              id="custom-checkbox"
+              id="agreeAge"
               class="peer appearance-none w-4 h-4 border rounded-xs bg-white checked:bg-white focus:ring-1 cursor-pointer"
               checked
             />
@@ -272,7 +282,7 @@
               height="10"
               viewBox="0 0 13 10"
               fill="none"
-              class="pointer-events-none absolute opacity-0 peer-checked:opacity-100 transition-all"
+              class="pointer-events-none absolute left-0.5 opacity-0 peer-checked:opacity-100 transition-all"
             >
               <rect
                 width="11.2502"
@@ -291,10 +301,10 @@
               >만 14세 이상입니다.(필수)</label
             >
           </div>
-          <div class="flex items-center">
+          <div class="relative flex items-center">
             <input
               type="checkbox"
-              id="custom-checkbox"
+              id="agreeNewsletter"
               class="peer appearance-none w-4 h-4 border rounded-xs bg-white checked:bg-white focus:ring-1 cursor-pointer"
               checked
             />
@@ -304,7 +314,7 @@
               height="10"
               viewBox="0 0 13 10"
               fill="none"
-              class="pointer-events-none absolute opacity-0 peer-checked:opacity-100 transition-all"
+              class="pointer-events-none absolute left-0.5 opacity-0 peer-checked:opacity-100 transition-all"
             >
               <rect
                 width="11.2502"
@@ -327,7 +337,7 @@
             <div class="relative flex items-center justify-center w-4 h-4">
               <input
                 type="checkbox"
-                id="custom-checkbox"
+                id="agreePrivacy"
                 class="peer appearance-none w-4 h-4 border rounded-xs bg-white checked:bg-white focus:ring-1 cursor-pointer"
                 checked
               />
@@ -337,7 +347,7 @@
                 height="10"
                 viewBox="0 0 13 10"
                 fill="none"
-                class="pointer-events-none absolute opacity-0 peer-checked:opacity-100 transition-all"
+                class="pointer-events-none absolute left-0.5 opacity-0 peer-checked:opacity-100 transition-all"
               >
                 <rect
                   width="11.2502"
@@ -355,8 +365,9 @@
             </div>
             <label for="checked-checkbox" class="select-none ms-2 text-[13px]"
               >젠틀몬스터 뉴스레터 수신을 위한
-              <a href="" class="underline">개인정보 수집 및 이용</a>에
-              동의합니다.(선택)</label
+              <a href="./privacy.html" target="_blank" class="underline"
+                >개인정보 수집 및 이용</a
+              >에 동의합니다.(선택)</label
             >
           </div>
 
