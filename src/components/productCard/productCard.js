@@ -5,9 +5,19 @@ export async function productCard(container, products) {
     const html = await response.text();
 
     for (const product of products.data) {
+        console.log(product.images[0]);
+
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
         const card = doc.body.firstElementChild;
+
+        const img = card.querySelector(".product-image");
+        if (img) {
+            img.src =
+                product.images?.[0] ??
+                "";
+            img.alt = product.name ?? "";
+        }
 
         card.querySelector(".product-name").textContent = product.name;
         card.querySelector(".product-price").textContent = "₩" + product.price.toLocaleString();
@@ -16,7 +26,7 @@ export async function productCard(container, products) {
         }
 
         const wishButton = card.querySelector(".wishButton");
-        if(wishButton){
+        if (wishButton) {
             wishButton.dataset.productId = product.id;
         }
 
