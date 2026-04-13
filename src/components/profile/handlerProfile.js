@@ -8,6 +8,7 @@ import { loadRecent } from "./loadRecent";
 import { logout } from "./logout";
 import { editProfile } from "./editProfile";
 import { editAddress } from "./editAdress";
+import { withdrawInput } from "./withdrawInput";
 
 async function handlerProfile() {
     const data = await getProfileApi(getToken())
@@ -19,5 +20,6 @@ async function handlerProfile() {
     logout();
     editProfile();
     editAddress(data);
+    withdrawInput();
 }
 handlerProfile();
