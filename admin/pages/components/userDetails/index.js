@@ -15,7 +15,13 @@ async function init() {
 
     render(data);
 
-    window.adjustPoint = (type) => adjustPoint(type, data);
+    window.adjustPoint = async (type) => {
+      try {
+        await adjustPoint(type, data);
+      } catch (e) {
+        alert(e.message);
+      }
+    };
   } catch (error) {
     console.error(error);
   }
