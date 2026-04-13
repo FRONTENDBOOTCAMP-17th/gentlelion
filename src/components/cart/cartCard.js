@@ -18,13 +18,11 @@ export async function cartCard(productContainer, navContainer, data) {
     const doc = parser.parseFromString(html, "text/html");
     const card = doc.body.firstElementChild;
 
-    console.log(product);
-
     const img = card.querySelector(".cart-product-image");
     if (img) {
       img.src =
         product.imageUrl ??
-        "https://storage.fullstackfamily.com/content/gentlelion/images/7a26fb54-e530-4811-9fee-794f3bf9e22d.jpg";
+        "";
       img.alt = product.name ?? "";
     }
 
