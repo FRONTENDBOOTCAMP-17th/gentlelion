@@ -141,7 +141,7 @@ async function EditPage() {
   });
 
   try {
-    const products = await getProductList();
+    const { products } = await getProductList();
     const item = products.find((p) => p.id == productId);
 
     if (item) {

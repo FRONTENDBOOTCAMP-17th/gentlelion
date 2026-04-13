@@ -1,10 +1,9 @@
-import { getWishlist } from "../API/wishlist/wishlistApi";
-import { getToken } from "../API/token/getToken";
-import { wishbuttonEvent } from "../productCard/wishbuttonEvent";
-import { changeBtnState } from "./changeBtnState";
+import { getWishlist } from "../API/wishlist/wishlistApi.js";
+import { wishbuttonEvent } from "../productCard/wishbuttonEvent.js";
+import { changeBtnState } from "./changeBtnState.js";
 
 export async function wishlist() {
-    const data = await getWishlist(getToken());
-    wishbuttonEvent(getToken(), data);
-    changeBtnState(data);
+  const data = await getWishlist();
+  wishbuttonEvent(data);
+  changeBtnState(data);
 }
