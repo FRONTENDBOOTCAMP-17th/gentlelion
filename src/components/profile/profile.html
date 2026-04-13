@@ -76,7 +76,9 @@
             프로필
           </button>
         </div>
-        <button class="logout-btn cursor-pointer logout max-md:hidden">로그아웃</button>
+        <button class="logout-btn cursor-pointer logout max-md:hidden">
+          로그아웃
+        </button>
       </div>
       <div class="profile-section">
         <div class="flex flex-col items-center mt-15 max-md:mt-0">
@@ -95,9 +97,67 @@
             </div>
           </div>
           <div
+            id="profileEditForm"
+            class="hidden w-full max-w-162 flex flex-col gap-3 mt-4 mb-2 p-5 border border-[#e5e7eb] rounded-xl bg-[#fafafa]"
+          >
+            <div class="flex flex-col gap-1">
+              <label class="text-[11px] text-[#858585]">이름</label>
+              <div class="flex gap-2">
+                <input
+                  id="editFn"
+                  type="text"
+                  placeholder="성"
+                  class="w-1/2 border border-[#d1d5db] rounded-lg px-3 py-2 text-[13px] outline-none focus:border-[#111] transition"
+                />
+                <input
+                  id="editLn"
+                  type="text"
+                  placeholder="이름"
+                  class="w-1/2 border border-[#d1d5db] rounded-lg px-3 py-2 text-[13px] outline-none focus:border-[#111] transition"
+                />
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-1">
+              <label class="text-[11px] text-[#858585]">이메일</label>
+              <input
+                id="editEmail"
+                type="email"
+                placeholder="이메일 주소"
+                class="border border-[#d1d5db] rounded-lg px-3 py-2 text-[13px] outline-none focus:border-[#111] transition"
+              />
+            </div>
+
+            <div class="flex flex-col gap-1">
+              <label class="text-[11px] text-[#858585]">전화번호</label>
+              <input
+                id="editPhone"
+                type="tel"
+                placeholder="010-0000-0000"
+                class="border border-[#d1d5db] rounded-lg px-3 py-2 text-[13px] outline-none focus:border-[#111] transition"
+              />
+            </div>
+
+            <div class="flex gap-2 mt-1">
+              <button
+                id="profileSaveBtn"
+                class="cursor-pointer flex-1 bg-[#111] text-white rounded-lg py-2.5 text-[12px] font-medium"
+              >
+                저장하기
+              </button>
+              <button
+                id="profileCancelBtn"
+                class="cursor-pointer flex-1 border border-[#d1d5db] rounded-lg py-2.5 text-[12px] text-[#555]"
+              >
+                취소
+              </button>
+            </div>
+          </div>
+          <div
             class="w-full flex flex-col items-center justify-center max-md:px-6 px-15"
           >
             <button
+              id="profileEditBtn"
               class="cursor-pointer flex items-center justify-center w-full max-w-162 rounded-lg border border-[#ababab] mt-1 px-6 py-3 text-center text-[12px] leading-5 text-[#111]"
             >
               프로필 편집하기

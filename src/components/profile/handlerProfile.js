@@ -6,6 +6,7 @@ import { goToIndex } from "./goToIndex";
 import { changeLayout } from "./changeLayout";
 import { loadRecent } from "./loadRecent";
 import { logout } from "./logout";
+import { editProfile } from "./editProfile";
 
 async function handlerProfile() {
     const data = await getProfileApi(getToken())
@@ -15,5 +16,6 @@ async function handlerProfile() {
     goToIndex();
     changeLayout();
     logout();
+    editProfile();
 }
 handlerProfile();
