@@ -76,7 +76,7 @@
             프로필
           </button>
         </div>
-        <button class="cursor-pointer logout max-md:hidden">로그아웃</button>
+        <button class="logout-btn cursor-pointer logout max-md:hidden">로그아웃</button>
       </div>
       <div class="profile-section">
         <div class="flex flex-col items-center mt-15 max-md:mt-0">
@@ -142,7 +142,7 @@
             class="w-full flex flex-col items-center justify-center max-md:px-6 px-15"
           >
             <button
-              class="cursor-pointer md:hidden flex items-center justify-center w-full max-w-162 rounded-lg border border-[#ababab] mt-1 px-6 py-3 text-center text-[12px] leading-5 text-[#111]"
+              class="logout-btn cursor-pointer md:hidden flex items-center justify-center w-full max-w-162 rounded-lg border border-[#ababab] mt-1 px-6 py-3 text-center text-[12px] leading-5 text-[#111]"
             >
               로그아웃
             </button>
@@ -178,7 +178,9 @@
         </div>
         <div class="order-section-card flex flex-col w-100 md:w-200"></div>
         <div class="order-detail hidden flex flex-col w-100 md:w-200">
-          <button class="order-back-btn cursor-pointer text-left text-[13px] py-4">
+          <button
+            class="order-back-btn cursor-pointer text-left text-[13px] py-4"
+          >
             ← 목록으로
           </button>
           <div class="order-detail-content"></div>
