@@ -5,10 +5,11 @@ import { changeSVG } from "../wishlist/changeSVG.js";
 export async function wishbuttonEvent(data) {
   const buttons = document.querySelectorAll(".wishButton");
 
-  buttons.forEach((button) => {
-    button.addEventListener("click", async () => {
-      const productId = Number(button.dataset.productId);
-      const isWishlisted = button.dataset.wishlist === "1";
+    buttons.forEach((button) => {
+        button.addEventListener("click", async () => {
+            const productId = Number(button.dataset.productId);
+            console.log("productId: ", productId);
+            const isWishlisted = button.dataset.wishlist === "1";
 
       if (!isWishlisted) {
         const result = await postWishlist(productId);

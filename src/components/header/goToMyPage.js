@@ -19,7 +19,7 @@ export async function goToMyPage() {
             return;
         }
 
-        window.location.href = "/";
+        window.location.href = "/src/components/profile/profile.html";
 
     } catch (error) {
         console.error("인증 확인 실패:", error);

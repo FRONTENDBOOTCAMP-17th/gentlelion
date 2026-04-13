@@ -1,10 +1,10 @@
 import { postRegisterApi } from "../API/register/postRegisterApi";
 
 async function handlerRegister() {
-    const form = document.getElementById("loginForm"); // button → form
+    const form = document.getElementById("loginForm");
 
     form.addEventListener("submit", async (e) => {
-        e.preventDefault(); // 페이지 새로고침 방지
+        e.preventDefault();
 
         const email = document.getElementById("emailInput").value.trim();
         const pw = document.getElementById("passwordInput").value.trim();
