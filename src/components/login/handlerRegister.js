@@ -3,8 +3,10 @@ import { checkPassword } from "./checkPassword";
 import { checkKoreanName } from "./checkKoreanName";
 import { formatPhoneNumber } from "./formatPhoneNumber";
 import { checkRequired } from "./checkRequired";
+import { initAddressSearch } from "./addressSearch";
 
 async function handlerRegister() {
+    initAddressSearch();
     formatPhoneNumber();
     const form = document.getElementById("loginForm");
 

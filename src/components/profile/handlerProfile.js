@@ -9,6 +9,7 @@ import { logout } from "./logout";
 import { editProfile } from "./editProfile";
 import { editAddress } from "./editAdress";
 import { withdrawInput } from "./withdrawInput";
+import { initAddressSearch } from "../login/addressSearch";
 
 async function handlerProfile() {
     const data = await getProfileApi(getToken())
@@ -21,5 +22,6 @@ async function handlerProfile() {
     editProfile();
     editAddress(data);
     withdrawInput();
+    initAddressSearch();
 }
 handlerProfile();

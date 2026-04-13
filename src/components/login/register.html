@@ -178,8 +178,16 @@
                 id="address"
                 placeholder="주소*"
                 required
-                class="w-full h-13 px-3 bg-white border border-white rounded-lg text-[13px] outline-none focus:border-black transition-all placeholder-[#858585]"
+                readonly
+                class="w-full h-13 px-3 bg-white border border-white rounded-lg text-[13px] outline-none focus:border-black transition-all placeholder-[#858585] cursor-pointer"
               />
+              <button
+                type="button"
+                id="addressSearchBtn"
+                class="absolute top-1/2 -translate-y-1/2 right-3 text-[12px] text-[#858585] underline"
+              >
+                주소 검색
+              </button>
             </div>
           </div>
           <div class="space-y-1.5">
@@ -187,7 +195,7 @@
               <input
                 type="text"
                 id="addressDetail"
-                placeholder="상세주소*"
+                placeholder="상세주소를 입력해주세요"
                 required
                 class="w-full h-13 px-3 bg-white border border-white rounded-lg text-[13px] outline-none focus:border-black transition-all placeholder-[#858585]"
               />
@@ -255,8 +263,10 @@
               ></rect>
             </svg>
             <label for="checked-checkbox" class="select-none ms-2 text-[13px]"
-              >젠틀몬스터의 <a href="./terms.html" target="_blank" class="underline">이용약관</a>에
-              동의합니다.(필수)</label
+              >젠틀몬스터의
+              <a href="./terms.html" target="_blank" class="underline"
+                >이용약관</a
+              >에 동의합니다.(필수)</label
             >
           </div>
           <div class="relative flex items-center">
@@ -355,8 +365,9 @@
             </div>
             <label for="checked-checkbox" class="select-none ms-2 text-[13px]"
               >젠틀몬스터 뉴스레터 수신을 위한
-              <a href="./privacy.html" target="_blank" class="underline">개인정보 수집 및 이용</a>에
-              동의합니다.(선택)</label
+              <a href="./privacy.html" target="_blank" class="underline"
+                >개인정보 수집 및 이용</a
+              >에 동의합니다.(선택)</label
             >
           </div>
 
