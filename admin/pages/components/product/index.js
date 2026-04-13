@@ -5,6 +5,7 @@ import { loadSidebar } from "../aside/dashboardNavigation.js";
 import { paginationButton } from "./pagination.js";
 import { calcListNum } from "../common/calcListNum.js";
 import { search } from "../common/search.js";
+import { toggleMenu } from "../common/toggleMenu.js";
 
 async function ProductPage(page = 1) {
   try {
@@ -108,6 +109,7 @@ function init() {
   }
   deleteEvent();
   loadSidebar();
+  toggleMenu();
   ProductPage(1);
 }
 

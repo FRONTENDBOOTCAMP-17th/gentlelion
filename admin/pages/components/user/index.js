@@ -3,7 +3,8 @@ import { paginationButton } from "../order/paginationButton.js";
 import { calcListNum } from "../common/calcListNum.js";
 import { search } from "../common/search.js";
 import { renderUserRows } from "./renderUserRows.js";
-import { loadSidebar } from "../aside/dashboardNavigation.js"
+import { loadSidebar } from "../aside/dashboardNavigation.js";
+import { toggleMenu } from "../common/toggleMenu.js";
 
 async function user(page = 1) {
   try {
@@ -48,14 +49,20 @@ async function user(page = 1) {
 
     const filterFn = (item, keyword) => {
       const userId = String(item.userId ?? "").toLowerCase();
-      const userName = String((item.firstName ?? "") + (item.lastName ?? "")).toLowerCase();
+      const userName = String(
+        (item.firstName ?? "") + (item.lastName ?? ""),
+      ).toLowerCase();
       const userEmail = String(item.email ?? "").toLowerCase();
-      return userId.includes(keyword) || userEmail.includes(keyword) || userName.includes(keyword);
+      return (
+        userId.includes(keyword) ||
+        userEmail.includes(keyword) ||
+        userName.includes(keyword)
+      );
     };
 
     loadSidebar();
+    toggleMenu();
     search(users, userSearch, onSearch, filterFn);
-
   } catch (error) {
     console.error(error);
   }
