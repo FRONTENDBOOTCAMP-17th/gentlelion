@@ -8,6 +8,12 @@ export async function handleLogin(e) {
   const errorMsg = document.getElementById("errorMsg");
   const btn = document.getElementById("submitBtn");
 
+  if (!email || !password) {
+    errorMsg.textContent = "이메일과 비밀번호를 모두 입력해주세요";
+    errorMsg.classList.remove("hidden");
+    return;
+  }
+
   errorMsg.classList.add("hidden");
   btn.disabled = true;
 
