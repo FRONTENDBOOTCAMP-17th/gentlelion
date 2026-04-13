@@ -1,4 +1,5 @@
 import { editProfileSaveButton } from "./editProfileSaveButton";
+import { checkKoreanName } from "../login/checkKoreanName";
 
 export function editProfile() {
     const editBtn = document.getElementById("profileEditBtn");
@@ -12,7 +13,6 @@ export function editProfile() {
         if (isHidden) {
             document.getElementById("editFn").value = document.getElementById("fn").textContent;
             document.getElementById("editLn").value = document.getElementById("ln").textContent;
-            document.getElementById("editEmail").value = document.getElementById("email").textContent;
             document.getElementById("editPhone").value = document.getElementById("phone").textContent;
 
             editForm.classList.remove("hidden");
@@ -24,14 +24,23 @@ export function editProfile() {
     });
 
     saveBtn.addEventListener("click", async () => {
-        document.getElementById("fn").textContent = document.getElementById("editFn").value;
-        document.getElementById("ln").textContent = document.getElementById("editLn").value;
-        document.getElementById("email").textContent = document.getElementById("editEmail").value;
-        document.getElementById("phone").textContent = document.getElementById("editPhone").value;
+        if (!checkKoreanName("editFn") || !checkKoreanName("editLn")) {
+            alert("성과 이름은 한글만 입력 가능합니다.");
+            return;
+        }
 
-        editForm.classList.add("hidden");
-        editBtn.textContent = "프로필 편집하기";
-        await editProfileSaveButton();
+        try {
+            await editProfileSaveButton();
+
+            document.getElementById("fn").textContent = document.getElementById("editFn").value;
+            document.getElementById("ln").textContent = document.getElementById("editLn").value;
+            document.getElementById("phone").textContent = document.getElementById("editPhone").value;
+
+            editForm.classList.add("hidden");
+            editBtn.textContent = "프로필 편집하기";
+        } catch (err) {
+            alert("저장에 실패했습니다.");
+        }
     });
 
     cancelBtn.addEventListener("click", () => {
