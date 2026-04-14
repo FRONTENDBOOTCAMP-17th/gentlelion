@@ -14,7 +14,7 @@ export async function cartCard(productContainer, navContainer, data) {
 
     const img = card.querySelector(".cart-product-image");
     if (img) {
-      img.src = product.imageUrl ?? "";
+      img.src = product.images[0] ?? "";
       img.alt = product.name ?? "";
     }
 
