@@ -4,33 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>사용자 상세 정보 — Gentle Monster Admin</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: { inter: ["Inter", "sans-serif"] },
-            colors: {
-              "admin-gray": "#6A7282",
-              "admin-border": "#e4e7ec",
-              "admin-bg": "#f9fafb",
-              "admin-green": "#00A63E",
-              "admin-red": "#E7000B",
-            },
-          },
-        },
-      };
-    </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="../../src/style.css" />
+    <link rel="stylesheet" href="../../src/components/style.css" />
     <script type="module" src="./components/userDetails/index.js"></script>
   </head>
-  <body
-    class="font-inter bg-black/60 min-h-screen flex items-center justify-center"
-  >
+  <body class="bg-black/60 min-h-screen flex items-center justify-center">
     <div
       class="bg-white rounded-[10px] w-[672px] px-6 py-6 flex flex-col gap-0"
     >
@@ -158,14 +136,14 @@
         </div>
         <div class="flex gap-3">
           <button
-            onclick="adjustPoint('add')"
-            class="flex-1 h-10 rounded-[10px] bg-admin-green text-white text-[14px] font-medium cursor-pointer hover:opacity-90 transition-opacity"
+            id="addPointBtn"
+            class="flex-1 h-10 rounded-[10px] bg-[#00A63E] text-white text-[14px] font-medium cursor-pointer hover:opacity-90 transition-opacity"
           >
             + 포인트 지급
           </button>
           <button
-            onclick="adjustPoint('sub')"
-            class="flex-1 h-10 rounded-[10px] bg-admin-red text-white text-[14px] font-medium cursor-pointer hover:opacity-90 transition-opacity"
+            id="subPointBtn"
+            class="flex-1 h-10 rounded-[10px] bg-[#E7000B] text-white text-[14px] font-medium cursor-pointer hover:opacity-90 transition-opacity"
           >
             - 포인트 차감
           </button>
