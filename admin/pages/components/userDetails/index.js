@@ -17,6 +17,11 @@ async function init() {
 
     const addPointBtn = document.getElementById("addPointBtn");
     const subPointBtn = document.getElementById("subPointBtn");
+    const closeBtn = document.getElementById("closeBtn");
+
+    if (closeBtn) {
+      closeBtn.addEventListener("click", () => history.back());
+    }
 
     if (addPointBtn) {
       addPointBtn.addEventListener("click", async () => {
