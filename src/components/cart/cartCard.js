@@ -1,28 +1,20 @@
-import { delCartlist } from "../API/cart/delCartApi";
+import { loadTemplate } from "../../utils/loadTemplate.js";
+import { delCartlist } from "../API/cart/deleteCartApi.js";
 import { putCartApi } from "../API/cart/putCartApi";
 import { emptyCart } from "./emptyCart.js";
 import { cartNavigation } from "./cartNavigation.js";
 import { checkPriceChange } from "../API/cart/checkPriceChange.js";
 
 export async function cartCard(productContainer, navContainer, data) {
-  const response = await fetch("/src/components/cart/cartCard.html");
-  if (!response.ok) return;
-
-  const html = await response.text();
-
   for (const product of data.data.items) {
     const shouldContinue = await checkPriceChange(product);
     if (!shouldContinue) return;
 
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(html, "text/html");
-    const card = doc.body.firstElementChild;
+    const card = await loadTemplate("/src/components/cart/cartCard.html");
 
     const img = card.querySelector(".cart-product-image");
     if (img) {
-      img.src =
-        product.imageUrl ??
-        "";
+      img.src = product.imageUrl ?? "";
       img.alt = product.name ?? "";
     }
 

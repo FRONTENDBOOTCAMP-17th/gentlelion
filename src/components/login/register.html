@@ -11,51 +11,6 @@
     <script type="module" src="./handlerRegister.js"></script>
   </head>
   <body class="bg-(--bg) flex flex-col" data-theme="light">
-    <div
-      id="mobileMenu"
-      class="fixed opacity-0 pointer-events-none transition-all duration-500 top-0 z-49 left-0 bg-white w-screen h-full"
-    >
-      <aside class="relative top-40 ml-5">
-        <nav>
-          <ul class="font-medium flex flex-col gap-2 mb-3">
-            <li class="menu-animate text-[22px]">
-              <a class="w-max" href="/">선글라스</a>
-            </li>
-            <li class="menu-animate text-[22px]">
-              <a class="w-max" href="/">안경</a>
-            </li>
-            <li class="menu-animate text-[22px]">
-              <a class="w-max" href="/">컬렉션</a>
-            </li>
-          </ul>
-          <ul class="font-medium flex flex-col gap-2">
-            <li class="menu-animate text-[18px]">
-              <a class="w-max" href="/">스토리</a>
-            </li>
-            <li class="menu-animate text-[18px]">
-              <a class="w-max" href="/">서비스</a>
-            </li>
-          </ul>
-        </nav>
-
-        <div class="mt-35 text-[12px] flex flex-col">
-          <a class="menu-animate w-max" href="/" class="">로그인 / 계정 생성</a>
-          <a class="menu-animate w-max" href="/">주문 추가하기</a>
-        </div>
-        <div class="mt-2 text-[12px] w-max">
-          <a class="menu-animate w-max" href="/">위시리스트<sup>0</sup></a>
-          <p class="menu-animate font-medium mt-11">
-            아직 위시리스트에 추가된 제품이 없습니다.
-          </p>
-        </div>
-
-        <div class="text-[12px] mt-12 font-medium flex flex-col gap-3">
-          <a class="menu-animate w-max" href="/">고객 서비스</a>
-          <a class="menu-animate w-max" href="/">국가: South Korea</a>
-        </div>
-      </aside>
-    </div>
-
     <aside class="navigation mx-3 md:px-8 lg:px-15"></aside>
     <main
       class="flex-1 flex flex-col items-center justify-center w-full max-w-162 mx-auto px-4 py-12"
@@ -230,7 +185,7 @@
                 fill="#111111"
               ></rect>
             </svg>
-            <label for="default-checkbox" class="select-none ms-2 text-[13px]"
+            <label for="agreeAll" class="select-none ms-2 text-[13px]"
               >모두 동의하기</label
             >
           </div>
@@ -262,7 +217,7 @@
                 fill="#111111"
               ></rect>
             </svg>
-            <label for="checked-checkbox" class="select-none ms-2 text-[13px]"
+            <label for="agreeTerms" class="select-none ms-2 text-[13px]"
               >젠틀몬스터의
               <a href="./terms.html" target="_blank" class="underline"
                 >이용약관</a
@@ -297,7 +252,7 @@
                 fill="#111111"
               ></rect>
             </svg>
-            <label for="checked-checkbox" class="select-none ms-2 text-[13px]"
+            <label for="agreeAge" class="select-none ms-2 text-[13px]"
               >만 14세 이상입니다.(필수)</label
             >
           </div>
@@ -329,7 +284,7 @@
                 fill="#111111"
               ></rect>
             </svg>
-            <label for="checked-checkbox" class="select-none ms-2 text-[13px]"
+            <label for="agreeNewsletter" class="select-none ms-2 text-[13px]"
               >젠틀몬스터 뉴스레터를 받고 싶습니다.(선택)</label
             >
           </div>
@@ -363,7 +318,7 @@
                 ></rect>
               </svg>
             </div>
-            <label for="checked-checkbox" class="select-none ms-2 text-[13px]"
+            <label for="agreePrivacy" class="select-none ms-2 text-[13px]"
               >젠틀몬스터 뉴스레터 수신을 위한
               <a href="./privacy.html" target="_blank" class="underline"
                 >개인정보 수집 및 이용</a
