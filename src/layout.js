@@ -5,6 +5,8 @@ import { profileButton } from "./components/header/profileButton.js";
 import { createMobileMenu } from "./components/mobilemenu/createMobileMenu.js";
 import { initMenuAnimation } from "./components/mobilemenu/menuAnimation.js";
 import { renderBestSeller } from "./components/slide/bestSeller.js";
+import { renderArrivals } from "./components/slide/arrivals.js";
+import { initSlide } from "./components/slide/mainSlide.js";
 import "./components/style.css";
 
 async function init() {
@@ -12,11 +14,11 @@ async function init() {
   await createMobileMenu();
   headerEvent();
   initMenuAnimation();
-  if (document.body.dataset.footer !== "false") {
-    loadFooter();
-  }
+  if (document.body.dataset.footer !== "false") loadFooter();
   profileButton();
-  renderBestSeller();
+  await renderArrivals();
+  await renderBestSeller();
+  initSlide();
 }
 
 init();
