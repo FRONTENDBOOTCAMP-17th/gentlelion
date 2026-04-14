@@ -26,15 +26,12 @@
               로그인하셨습니다.
             </p>
           </div>
-          <button class="email-edit-btn text-[13px] cursor-pointer">
-            편집하기
-          </button>
         </section>
 
         <section class="flex flex-col gap-4">
           <p class="text-[13px]">2 배송</p>
           <p class="text-[13px]">주소 선택</p>
-          <button
+          <button id="addressBtn"
             class="cursor-pointer text-start flex items-center justify-between border border-(--border) p-3 rounded-xl"
           >
             <div class="flex flex-col text-[12px]">
@@ -42,15 +39,12 @@
               <p>배송지 12345, 대한민국</p>
               <p id="phoneNum">010-1234-5678</p>
             </div>
-            <div class="address-edit-btn text-[12px] cursor-pointer">
-              편집하기
-            </div>
           </button>
         </section>
 
         <section class="flex flex-col gap-3">
           <p class="text-[13px]">배송 방법 선택하기</p>
-          <button
+          <button id="shippingBtn"
             class="text-start cursor-pointer flex flex-col text-[12px] border border-(--border) p-3 rounded-xl"
           >
             <p>무료</p>
@@ -63,7 +57,7 @@
         <section class="flex flex-col gap-4">
           <p class="text-[13px]">3 결제</p>
           <p class="text-[13px]">결제 수단을 선택해 주세요</p>
-          <button
+          <button id="paymentBtn"
             class="w-full cursor-pointer text-center text-[12px] border border-(--border) p-3 rounded-xl"
           >
             Point
