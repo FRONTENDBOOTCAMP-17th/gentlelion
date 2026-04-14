@@ -34,5 +34,10 @@ async function handlerOrder() {
   orderSummation();
   orderButton(items, data.data.totalPrice, userMeta);
   initCheckoutValidation();
+
+  const mobilePriceSpan = document.querySelector("#orderSummation .order-summation-btn span");
+  if (mobilePriceSpan) {
+    mobilePriceSpan.textContent = "₩" + data.data.totalPrice.toLocaleString();
+  }
 }
 handlerOrder();
