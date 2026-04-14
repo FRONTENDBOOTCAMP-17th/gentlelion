@@ -1,4 +1,4 @@
-import { editAdressSaveButton } from "./editAdressSaveButton";
+import { editAddressSaveButton } from "./editAddressSaveButton";
 
 export function editAddress(data) {
   const editBtn = document.getElementById("addressEditBtn");
@@ -33,7 +33,7 @@ export function editAddress(data) {
 
     editForm.classList.add("hidden");
     editBtn.textContent = "편집하기";
-    await editAdressSaveButton();
+    await editAddressSaveButton();
   });
 
   cancelBtn.addEventListener("click", () => {

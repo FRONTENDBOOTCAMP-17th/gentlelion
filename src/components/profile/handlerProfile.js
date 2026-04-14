@@ -7,7 +7,7 @@ import { changeLayout } from "./changeLayout";
 import { loadRecent } from "./loadRecent";
 import { logout } from "./logout";
 import { editProfile } from "./editProfile";
-import { editAddress } from "./editAdress";
+import { editAddress } from "./editAddress";
 import { withdrawInput } from "./withdrawInput";
 import { initAddressSearch } from "../login/addressSearch";
 import { formatPhoneNumber } from "../login/formatPhoneNumber";
