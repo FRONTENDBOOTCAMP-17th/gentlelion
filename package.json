@@ -1,8 +1,14 @@
 {
+  "name": "gentlelion",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "dev:user": "npm -w packages/user run dev",
+    "dev:admin": "npm -w packages/admin run dev",
+    "build:user": "npm -w packages/user run build",
+    "build:admin": "npm -w packages/admin run build"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.27",
