@@ -1,5 +1,5 @@
 import { loadTemplate } from "../../utils/loadTemplate.js";
-import { delCartlist } from "../API/cart/delCartApi";
+import { delCartlist } from "../API/cart/deleteCartApi.js";
 import { putCartApi } from "../API/cart/putCartApi";
 import { emptyCart } from "./emptyCart.js";
 import { cartNavigation } from "./cartNavigation.js";
