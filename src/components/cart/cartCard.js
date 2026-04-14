@@ -40,7 +40,7 @@ export async function cartCard(productContainer, navContainer, data) {
     const deleteBtn = card.querySelector(".cart-delete-btn");
     if (deleteBtn) {
       deleteBtn.addEventListener("click", async () => {
-        await delCartlist(token, product.cartItemId);
+        await delCartlist(product.cartItemId);
         card.remove();
 
         const remaining =
