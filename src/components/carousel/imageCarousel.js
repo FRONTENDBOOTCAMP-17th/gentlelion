@@ -1,39 +1,50 @@
+const TRACK_WIDTH_MAP = {
+  1: "w-full",
+  2: "w-[200%]",
+  3: "w-[300%]",
+  4: "w-[400%]",
+  5: "w-[500%]",
+};
+
+const SLIDE_WIDTH_MAP = {
+  1: "w-full",
+  2: "w-1/2",
+  3: "w-1/3",
+  4: "w-1/4",
+  5: "w-1/5",
+};
+
 export function createImageCarousel(images = [], options = {}) {
   const { alt = "상품 이미지" } = options;
 
   const imageWrap = document.createElement("div");
-  imageWrap.style.cssText =
-    "position:relative;width:100%;aspect-ratio:520 / 718;overflow:hidden;" +
-    "background:#F3F4F6;cursor:grab;user-select:none;-webkit-user-select:none;";
-  imageWrap.style.touchAction = "pan-y";
-
+  imageWrap.className =
+    "carousel-wrap relative w-full overflow-hidden bg-[#F3F4F6] cursor-grab select-none md:aspect-[520/718] aspect-square";
   if (images.length === 0) {
     const empty = document.createElement("div");
-    empty.style.cssText =
-      "position:absolute;top:0;left:0;width:100%;height:100%;background:#e8e9eb;";
+    empty.className = "absolute inset-0 bg-[#e8e9eb]";
     imageWrap.appendChild(empty);
     return imageWrap;
   }
 
+  const count = Math.min(images.length, 5);
+  const trackWidthClass = TRACK_WIDTH_MAP[count] || "w-full";
+  const slideWidthClass = SLIDE_WIDTH_MAP[count] || "w-full";
+
   const track = document.createElement("div");
-  track.style.cssText =
-    "position:absolute;top:0;left:0;height:100%;" +
-    "display:flex;transition:transform 0.3s ease;will-change:transform;";
-  track.style.width = `${images.length * 100}%`;
-  track.style.touchAction = "pan-y";
+  track.className = `absolute top-0 left-0 h-full flex ${trackWidthClass} transition-transform duration-300 ease-in-out`;
 
   images.forEach(function (src) {
     const slide = document.createElement("div");
-    slide.style.cssText = `flex:0 0 ${100 / images.length}%;max-width:${100 / images.length}%;height:100%;overflow:hidden;`;
+    slide.className = `${slideWidthClass} h-full overflow-hidden flex-shrink-0`;
 
     const img = document.createElement("img");
     img.src = src;
     img.alt = alt;
     img.loading = "lazy";
     img.draggable = false;
-    img.style.cssText =
-      "width:100%;height:100%;object-fit:cover;object-position:center;" +
-      "display:block;pointer-events:none;";
+    img.className =
+      "w-full h-full object-cover object-center block pointer-events-none";
 
     slide.appendChild(img);
     track.appendChild(slide);
@@ -43,9 +54,8 @@ export function createImageCarousel(images = [], options = {}) {
 
   if (images.length > 1) {
     const pagination = document.createElement("div");
-    pagination.style.cssText =
-      "position:absolute;bottom:10px;left:0;width:100%;" +
-      "display:flex;justify-content:center;gap:4px;z-index:10;pointer-events:none;";
+    pagination.className =
+      "absolute bottom-[10px] left-0 w-full flex justify-center gap-[4px] z-10 pointer-events-none";
 
     let curIdx = 0;
     const bullets = [];
@@ -53,19 +63,36 @@ export function createImageCarousel(images = [], options = {}) {
     let currentX = 0;
     let isDown = false;
     let isDragging = false;
-    let moved = false;
 
     function updateBullets() {
       bullets.forEach(function (bullet, i) {
-        bullet.style.backgroundColor =
-          i === curIdx ? "rgb(28,26,26)" : "rgba(28,26,26,0.25)";
+        if (i === curIdx) {
+          bullet.classList.add("bg-[rgb(28,26,26)]");
+          bullet.classList.remove("bg-[rgba(28,26,26,0.25)]");
+        } else {
+          bullet.classList.remove("bg-[rgb(28,26,26)]");
+          bullet.classList.add("bg-[rgba(28,26,26,0.25)]");
+        }
       });
     }
 
-    function goTo(idx, animate = true) {
+    function goTo(idx, animate) {
+      if (animate === undefined) animate = true;
       curIdx = Math.max(0, Math.min(idx, images.length - 1));
-      track.style.transition = animate ? "transform 0.3s ease" : "none";
-      track.style.transform = `translateX(-${curIdx * (100 / images.length)}%)`;
+      if (animate) {
+        track.classList.add(
+          "transition-transform",
+          "duration-300",
+          "ease-in-out",
+        );
+      } else {
+        track.classList.remove(
+          "transition-transform",
+          "duration-300",
+          "ease-in-out",
+        );
+      }
+      track.style.transform = `translateX(-${curIdx * (100 / count)}%)`;
       updateBullets();
     }
 
@@ -73,23 +100,24 @@ export function createImageCarousel(images = [], options = {}) {
       if (images.length <= 1) return;
       isDown = true;
       isDragging = false;
-      moved = false;
       startX = clientX;
       currentX = clientX;
-      track.style.transition = "none";
-      imageWrap.style.cursor = "grabbing";
+      track.classList.remove(
+        "transition-transform",
+        "duration-300",
+        "ease-in-out",
+      );
+      imageWrap.classList.remove("cursor-grab");
+      imageWrap.classList.add("grabbing");
     }
 
     function onMove(clientX) {
       if (!isDown) return;
       currentX = clientX;
       const diff = currentX - startX;
-      if (!isDragging && Math.abs(diff) > 5) {
-        isDragging = true;
-        moved = true;
-      }
+      if (!isDragging && Math.abs(diff) > 5) isDragging = true;
       if (!isDragging) return;
-      const step = 100 / images.length;
+      const step = 100 / count;
       const base = -(curIdx * step);
       let movePct = (diff / imageWrap.offsetWidth) * step;
       if (curIdx === 0 && diff > 0) movePct *= 0.2;
@@ -100,7 +128,8 @@ export function createImageCarousel(images = [], options = {}) {
     function onEnd() {
       if (!isDown) return;
       isDown = false;
-      imageWrap.style.cursor = "grab";
+      imageWrap.classList.add("cursor-grab");
+      imageWrap.classList.remove("grabbing");
       const diff = currentX - startX;
       if (isDragging) {
         if (diff < -40 && curIdx < images.length - 1) goTo(curIdx + 1, true);
@@ -122,10 +151,12 @@ export function createImageCarousel(images = [], options = {}) {
 
     images.forEach(function (_, i) {
       const bullet = document.createElement("span");
-      bullet.style.cssText =
-        "display:inline-block;width:8px;height:1px;border-radius:0;" +
-        "cursor:pointer;pointer-events:all;transition:background-color 0.2s;" +
-        `background-color:${i === 0 ? "rgb(28,26,26)" : "rgba(28,26,26,0.25)"};`;
+      bullet.className =
+        "inline-block w-[8px] h-[1px] rounded-none cursor-pointer pointer-events-auto transition-colors duration-200 bg-[rgba(28,26,26,0.25)]";
+      if (i === 0) {
+        bullet.classList.add("bg-[rgb(28,26,26)]");
+        bullet.classList.remove("bg-[rgba(28,26,26,0.25)]");
+      }
       bullet.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -142,7 +173,7 @@ export function createImageCarousel(images = [], options = {}) {
       onStart(e.clientX);
       try {
         imageWrap.setPointerCapture(e.pointerId);
-      } catch {}
+      } catch (err) {}
     });
     imageWrap.addEventListener("pointermove", function (e) {
       onMove(e.clientX);
@@ -150,7 +181,7 @@ export function createImageCarousel(images = [], options = {}) {
     imageWrap.addEventListener("pointerup", function (e) {
       try {
         imageWrap.releasePointerCapture(e.pointerId);
-      } catch {}
+      } catch (err) {}
       onEnd();
     });
     imageWrap.addEventListener("pointercancel", function () {

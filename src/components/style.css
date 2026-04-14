@@ -36,3 +36,11 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+.carousel-wrap {
+  aspect-ratio: 520 / 718;
+  touch-action: pan-y;
+  -webkit-user-select: none;
+}
+.carousel-wrap.grabbing {
+  cursor: grabbing;
+}

@@ -7,11 +7,6 @@
     <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="../components/style.css" />
     <script type="module" src="../main.js"></script>
-    <script type="module">
-      import "../layout.js";
-      await new Promise((r) => setTimeout(r, 0));
-      import("../components/mobilemenu/menuAnimation.js");
-    </script>
     <style>
       .acc-content {
         max-height: 0;
@@ -21,11 +16,7 @@
       .acc-content.open {
         max-height: 600px;
       }
-      .acc-icon {
-        display: inline-block;
-        font-size: 16px;
-        line-height: 1;
-      }
+
       .pdp-img-container {
         position: relative;
         width: 100%;
@@ -43,68 +34,26 @@
         object-position: center;
         display: block;
       }
-      .mobile-slider-wrap {
+
+      .similar-img-wrap {
         position: relative;
         width: 100%;
-        aspect-ratio: 344 / 478;
+        padding-top: 138.1%;
         overflow: hidden;
         background: #f3f4f6;
-        cursor: grab;
-        user-select: none;
-        -webkit-user-select: none;
-        touch-action: pan-y;
       }
-      .mobile-slider-wrap.grabbing {
-        cursor: grabbing;
-      }
-      .mobile-slider-track {
+      .similar-img-wrap img {
         position: absolute;
         top: 0;
         left: 0;
-        height: 100%;
-        display: flex;
-        transition: transform 0.3s ease;
-        will-change: transform;
-        touch-action: pan-y;
-      }
-      .mobile-slide {
-        flex: 0 0 100%;
-        min-width: 100%;
         width: 100%;
         height: 100%;
-        overflow: hidden;
-      }
-      .mobile-slide img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
+        object-fit: cover;
         object-position: center;
         display: block;
-        pointer-events: none;
       }
-      .slider-dots {
-        display: flex;
-        justify-content: center;
-        gap: 4px;
-        padding: 8px 0 6px;
-        background: #f3f4f6;
-      }
-      .slider-dot {
-        width: 8px;
-        height: 1px;
-        border-radius: 0;
-        background: rgba(28, 26, 26, 0.25);
-        cursor: pointer;
-        transition: background-color 0.2s;
-      }
-      .slider-dot.active {
-        background-color: rgb(28, 26, 26);
-      }
+
       @media (min-width: 769px) {
-        .mobile-slider-wrap,
-        .slider-dots {
-          display: none !important;
-        }
         .desktop-thumb-box {
           display: block;
         }
@@ -130,16 +79,23 @@
           box-sizing: content-box;
         }
       }
-      @media (max-width: 768px) {
-        .desktop-thumb-box {
-          display: none !important;
+      @media (min-width: 769px) {
+        .pdp-img-container {
+          padding-top: 60%;
         }
+      }
+      @media (max-width: 768px) {
         .product-top {
           flex-direction: column !important;
+          display: flex !important;
         }
-        .product-thumbnail,
+        .product-thumbnail {
+          width: 100% !important;
+          order: 1;
+        }
         .product-info {
           width: 100% !important;
+          order: 2;
         }
         .product-info-box {
           position: static !important;
@@ -148,35 +104,57 @@
           box-sizing: border-box;
         }
       }
-      .similar-img-wrap {
-        position: relative;
-        width: 100%;
-        padding-top: 138.1%;
-        overflow: hidden;
-        background: #f3f4f6;
-      }
-      .similar-img-wrap img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-        display: block;
-      }
     </style>
   </head>
 
   <body class="font-gentle bg-[#F3F4F6] text-[#111111]" data-theme="light">
+    <div
+      id="mobileMenu"
+      class="fixed opacity-0 pointer-events-none transition-all duration-500 top-0 z-49 left-0 bg-white w-screen h-full"
+    >
+      <aside class="relative top-40 ml-5">
+        <nav>
+          <ul class="font-medium flex flex-col gap-2 mb-3">
+            <li class="menu-animate text-[22px]">
+              <a class="w-max" href="/">선글라스</a>
+            </li>
+            <li class="menu-animate text-[22px]">
+              <a class="w-max" href="/">안경</a>
+            </li>
+            <li class="menu-animate text-[22px]">
+              <a class="w-max" href="/">컬렉션</a>
+            </li>
+          </ul>
+          <ul class="font-medium flex flex-col gap-2">
+            <li class="menu-animate text-[18px]">
+              <a class="w-max" href="/">스토리</a>
+            </li>
+            <li class="menu-animate text-[18px]">
+              <a class="w-max" href="/">서비스</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="mt-35 text-[12px] flex flex-col">
+          <a class="menu-animate w-max" href="/">로그인 / 계정 생성</a>
+          <a class="menu-animate w-max" href="/">주문 추가하기</a>
+        </div>
+        <div class="mt-2 text-[12px] w-max">
+          <a class="menu-animate w-max" href="/">위시리스트<sup>0</sup></a>
+          <p class="menu-animate font-medium mt-11">
+            아직 위시리스트에 추가된 제품이 없습니다.
+          </p>
+        </div>
+        <div class="text-[12px] mt-12 font-medium flex flex-col gap-3">
+          <a class="menu-animate w-max" href="/">고객 서비스</a>
+          <a class="menu-animate w-max" href="/">국가: South Korea</a>
+        </div>
+      </aside>
+    </div>
+    <aside class="navigation mx-3 md:px-8 lg:px-15"></aside>
     <div class="product-detail min-h-screen">
       <div class="gentle-pdp">
         <div class="product-top flex">
           <div class="product-thumbnail">
-            <div class="mobile-slider-wrap" id="mobileSliderWrap">
-              <div class="mobile-slider-track" id="mobileSliderTrack"></div>
-            </div>
-            <div class="slider-dots" id="sliderDots"></div>
             <div class="desktop-thumb-box" id="desktopThumbBox"></div>
           </div>
 
@@ -188,21 +166,21 @@
                 >
                   <div class="info flex flex-col gap-[4px]">
                     <h1
-                      id="product-name"
+                      id="productName"
                       class="text-[17px] leading-[22px] text-[#111111]"
                     ></h1>
                     <p
-                      id="product-price"
+                      id="productPrice"
                       class="text-[12px] leading-[17px] text-[#111111]"
                     ></p>
                   </div>
                   <div class="flex flex-col items-end gap-[8px]">
                     <div
-                      id="color-chips"
+                      id="colorChips"
                       class="flex flex-wrap justify-end items-start gap-x-[4px] gap-y-[4px]"
                     ></div>
                     <div
-                      id="color-text"
+                      id="colorText"
                       class="text-[12px] leading-[17px] text-[#111111]"
                     ></div>
                   </div>
@@ -210,15 +188,15 @@
 
                 <div class="flex items-center gap-[12px] px-[24px] md:px-0">
                   <button
-                    id="cart-btn"
+                    id="cartBtn"
                     class="flex-1 h-[48px] bg-[#111111] text-white text-[12px] leading-[17px] rounded-[8px] cursor-pointer border-none flex items-center justify-center"
-                  >
-                    쇼핑백에 추가하기
-                  </button>
+                  ></button>
                   <button
-                    id="bookmark-btn"
-                    class="cursor-pointer bg-transparent border-none p-0 flex-shrink-0"
+                    id="bookmarkBtn"
+                    class="wishButton cursor-pointer bg-transparent border-none p-0 flex-shrink-0"
                     aria-label="찜하기"
+                    data-product-id=""
+                    data-wishlist="0"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -240,37 +218,35 @@
                   <div class="acc-item border-t border-[#e5e5e5]">
                     <button
                       class="acc-trigger w-full flex justify-between items-center py-[14px] bg-transparent border-none cursor-pointer"
-                      data-target="acc-delivery"
+                      data-target="accDelivery"
                     >
-                      <span class="text-[12px] leading-[17px] text-[#111111]"
-                        >무료 배송 &amp; 반품</span
-                      >
+                      <span
+                        id="accDeliveryLabel"
+                        class="text-[12px] leading-[17px] text-[#111111]"
+                      ></span>
                       <span class="acc-icon text-[#111111]">+</span>
                     </button>
-                    <div class="acc-content" id="acc-delivery">
+                    <div class="acc-content" id="accDelivery">
                       <p
+                        id="accDeliveryDesc"
                         class="text-[12px] leading-[17px] text-[#111111] pb-[14px]"
-                      >
-                        젠틀라이온 공식 온라인 스토어는 무료 배송 및 반품
-                        서비스를 제공합니다. 반품은 제품을 수령하신 날로부터 7일
-                        이내에 접수해 주셔야 합니다. 제품은 사용되지 않은
-                        상태여야 하며, 모든 구성품을 포함하고 있어야 합니다.
-                      </p>
+                      ></p>
                     </div>
                   </div>
                   <div class="acc-item border-t border-[#e5e5e5]">
                     <button
                       class="acc-trigger w-full flex justify-between items-center py-[14px] bg-transparent border-none cursor-pointer"
-                      data-target="acc-detail"
+                      data-target="accDetail"
                     >
-                      <span class="text-[12px] leading-[17px] text-[#111111]"
-                        >세부 정보</span
-                      >
+                      <span
+                        id="accDetailLabel"
+                        class="text-[12px] leading-[17px] text-[#111111]"
+                      ></span>
                       <span class="acc-icon text-[#111111]">+</span>
                     </button>
-                    <div class="acc-content" id="acc-detail">
+                    <div class="acc-content" id="accDetail">
                       <div
-                        id="product-details"
+                        id="productDetails"
                         class="flex flex-col gap-[2px] pb-[14px]"
                       ></div>
                     </div>
@@ -278,16 +254,17 @@
                   <div class="acc-item border-t border-[#e5e5e5]">
                     <button
                       class="acc-trigger w-full flex justify-between items-center py-[14px] bg-transparent border-none cursor-pointer"
-                      data-target="acc-size"
+                      data-target="accSize"
                     >
-                      <span class="text-[12px] leading-[17px] text-[#111111]"
-                        >사이즈 및 핏</span
-                      >
+                      <span
+                        id="accSizeLabel"
+                        class="text-[12px] leading-[17px] text-[#111111]"
+                      ></span>
                       <span class="acc-icon text-[#111111]">+</span>
                     </button>
-                    <div class="acc-content" id="acc-size">
+                    <div class="acc-content" id="accSize">
                       <div
-                        id="product-size"
+                        id="productSize"
                         class="flex flex-col gap-[2px] pb-[14px]"
                       ></div>
                     </div>
@@ -300,278 +277,253 @@
       </div>
 
       <section
-        id="similar-section"
-        style="display: none"
-        class="px-[24px] md:px-[60px] pt-[48px] pb-[60px]"
+        id="similarSection"
+        class="hidden px-[24px] md:px-[60px] pt-[48px] pb-[60px]"
       >
-        <h2 class="text-[12px] leading-[17px] text-[#111111] mb-[20px]">
-          유사한 프레임
-        </h2>
+        <h2
+          id="similarSectionTitle"
+          class="text-[12px] leading-[17px] text-[#111111] mb-[20px]"
+        ></h2>
         <div
-          id="similar-grid"
+          id="similarGrid"
           class="grid grid-cols-2 md:grid-cols-5 gap-x-[8px] gap-y-[24px]"
         ></div>
       </section>
     </div>
 
     <script type="module">
-      import { collections } from "../data/collection.js";
-      import { renderColorChips } from "../data/colorChips.js";
+      import { loadHeader } from "../components/header/header.js";
+      import { loadFooter } from "../components/footer/footer.js";
+      import { wishlist } from "../components/wishlist/index.js";
+      import { createImageCarousel } from "../components/carousel/imageCarousel.js";
+      import { navigation } from "../components/navigation/index.js";
+      import { initMenuAnimation } from "../components/mobilemenu/menuAnimation.js";
+
+      const BASE_URL = "https://api.fullstackfamily.com/api/gentlelion/v1";
+
+      await loadHeader();
+      await loadFooter();
+      navigation();
+      initMenuAnimation();
 
       const params = new URLSearchParams(window.location.search);
-      const collectionSlug = params.get("collectionSlug");
       const productId = params.get("productId");
 
-      const mobileTrack = document.getElementById("mobileSliderTrack");
-      const sliderDots = document.getElementById("sliderDots");
       const desktopBox = document.getElementById("desktopThumbBox");
-      const productName = document.getElementById("product-name");
-      const productPrice = document.getElementById("product-price");
-      const colorChipsEl = document.getElementById("color-chips");
-      const colorTextEl = document.getElementById("color-text");
-      const cartBtn = document.getElementById("cart-btn");
-      const bookmarkBtn = document.getElementById("bookmark-btn");
-      const detailsEl = document.getElementById("product-details");
-      const sizeEl = document.getElementById("product-size");
+      const productNameEl = document.getElementById("productName");
+      const productPriceEl = document.getElementById("productPrice");
+      const colorChipsEl = document.getElementById("colorChips");
+      const colorTextEl = document.getElementById("colorText");
+      const cartBtn = document.getElementById("cartBtn");
+      const bookmarkBtn = document.getElementById("bookmarkBtn");
+      const detailsEl = document.getElementById("productDetails");
+      const sizeEl = document.getElementById("productSize");
+      const similarSectionTitle = document.getElementById(
+        "similarSectionTitle",
+      );
+      const accDeliveryLabel = document.getElementById("accDeliveryLabel");
+      const accDeliveryDesc = document.getElementById("accDeliveryDesc");
+      const accDetailLabel = document.getElementById("accDetailLabel");
+      const accSizeLabel = document.getElementById("accSizeLabel");
 
-      let currentCollection = null;
-      let currentProduct = null;
-      collections.forEach((col) => {
-        if (col.slug === collectionSlug) currentCollection = col;
-      });
-      if (currentCollection) {
-        (currentCollection.products || []).forEach((p) => {
-          if (String(p.id) === String(productId)) currentProduct = p;
+      const UI_TEXT = {
+        cartBtn: "쇼핑백에 추가하기",
+        notifyBtn: "알림 받기",
+        cartSuccess: "쇼핑백에 추가되었습니다.",
+        notifySuccess: "재입고 알림이 등록되었습니다.",
+        productNotFound: "존재하지 않는 상품입니다.",
+        accDeliveryLabel: "무료 배송 & 반품",
+        accDeliveryDesc:
+          "젠틀라이온 공식 온라인 스토어는 무료 배송 및 반품 서비스를 제공합니다. 반품은 제품을 수령하신 날로부터 7일 이내에 접수해 주셔야 합니다. 제품은 사용되지 않은 상태여야 하며, 모든 구성품을 포함하고 있어야 합니다.",
+        accDetailLabel: "세부 정보",
+        accSizeLabel: "사이즈 및 핏",
+        similarSectionTitle: "유사한 프레임",
+      };
+
+      async function fetchProduct() {
+        const res = await fetch(BASE_URL + "/products/" + productId);
+        if (!res.ok) throw new Error("product_not_found");
+        const json = await res.json();
+        return json.data;
+      }
+
+      async function fetchSimilarProducts(category) {
+        const res = await fetch(
+          BASE_URL + "/products?category=" + category + "&limit=6",
+        );
+        if (!res.ok) return [];
+        const json = await res.json();
+
+        return (json.data || [])
+          .filter(function (p) {
+            return String(p.id) !== String(productId);
+          })
+          .slice(0, 5);
+      }
+
+      function renderDetailLines(el, lines) {
+        lines.forEach(function (line) {
+          const p = document.createElement("p");
+          p.textContent = line;
+          p.className = "text-[12px] leading-[17px] text-[#111111]";
+          el.appendChild(p);
         });
       }
 
-      if (!currentProduct) {
-        productName.textContent = "존재하지 않는 상품입니다.";
-      } else {
-        productName.textContent = currentProduct.name;
-        let priceText = currentProduct.price || "";
-        if (currentProduct.status) priceText += " - " + currentProduct.status;
-        productPrice.textContent = priceText;
+      function renderColorNames(colors) {
+        if (!colors || colors.length === 0) return;
+        colorTextEl.textContent = colors
+          .map(function (c) {
+            return c.name;
+          })
+          .join(" / ");
+      }
 
-        const images =
-          currentProduct.images && currentProduct.images.length > 0
-            ? currentProduct.images
-            : currentProduct.image
-              ? [currentProduct.image]
-              : [];
-
-        let curIdx = 0;
-        const dots = [];
-        const sliderWrap = document.getElementById("mobileSliderWrap");
-
-        images.forEach((src, i) => {
-          const slide = document.createElement("div");
-          slide.className = "mobile-slide";
-          const img = document.createElement("img");
-          img.src = src;
-          img.alt = currentProduct.name;
-          img.loading = i === 0 ? "eager" : "lazy";
-          img.draggable = false;
-          slide.appendChild(img);
-          mobileTrack.appendChild(slide);
-
-          const dot = document.createElement("span");
-          dot.className = "slider-dot" + (i === 0 ? " active" : "");
-          dot.addEventListener("click", (e) => {
-            e.stopPropagation();
-            goTo(i, true);
-          });
-          sliderDots.appendChild(dot);
-          dots.push(dot);
+      function renderSpecifications(el, specifications) {
+        if (!specifications) return;
+        const labels = {
+          frameWidth: "프레임 너비",
+          lensHeight: "렌즈 높이",
+          lensWidth: "렌즈 너비",
+          bridgeWidth: "브릿지 너비",
+          templeLength: "템플 길이",
+        };
+        Object.entries(specifications).forEach(function ([key, value]) {
+          const p = document.createElement("p");
+          p.textContent = (labels[key] || key) + ": " + value;
+          p.className = "text-[12px] leading-[17px] text-[#111111]";
+          el.appendChild(p);
         });
+      }
 
-        function goTo(idx, animate) {
-          curIdx = Math.max(0, Math.min(idx, images.length - 1));
-          mobileTrack.style.transition =
-            animate === false ? "none" : "transform 0.3s ease";
-          mobileTrack.style.transform = "translateX(-" + curIdx * 100 + "%)";
-          dots.forEach((d, i) => d.classList.toggle("active", i === curIdx));
-        }
-
-        let ptrStartX = 0,
-          ptrDown = false,
-          ptrDragging = false;
-        sliderWrap.addEventListener("pointerdown", (e) => {
-          ptrDown = true;
-          ptrDragging = false;
-          ptrStartX = e.clientX;
-          mobileTrack.style.transition = "none";
-          sliderWrap.setPointerCapture(e.pointerId);
-          sliderWrap.classList.add("grabbing");
-        });
-        sliderWrap.addEventListener("pointermove", (e) => {
-          if (!ptrDown) return;
-          const diff = e.clientX - ptrStartX;
-          if (!ptrDragging && Math.abs(diff) > 5) ptrDragging = true;
-          if (!ptrDragging) return;
-          const base = -(curIdx * 100);
-          const pct = (diff / sliderWrap.offsetWidth) * 100;
-          let clamped = pct;
-          if (curIdx === 0 && diff > 0) clamped = pct * 0.2;
-          if (curIdx === images.length - 1 && diff < 0) clamped = pct * 0.2;
-          mobileTrack.style.transform = "translateX(" + (base + clamped) + "%)";
-        });
-        sliderWrap.addEventListener("pointerup", (e) => {
-          if (!ptrDown) return;
-          ptrDown = false;
-          sliderWrap.classList.remove("grabbing");
-          sliderWrap.releasePointerCapture(e.pointerId);
-          if (ptrDragging) {
-            ptrDragging = false;
-            const diff = e.clientX - ptrStartX;
-            if (diff < -40 && curIdx < images.length - 1)
-              goTo(curIdx + 1, true);
-            else if (diff > 40 && curIdx > 0) goTo(curIdx - 1, true);
-            else goTo(curIdx, true);
-            const block = (ev) => {
-              ev.stopPropagation();
-              sliderWrap.removeEventListener("click", block, true);
-            };
-            sliderWrap.addEventListener("click", block, true);
-          }
-        });
-        sliderWrap.addEventListener("pointercancel", () => {
-          ptrDown = false;
-          ptrDragging = false;
-          sliderWrap.classList.remove("grabbing");
-          goTo(curIdx, true);
-        });
-
-        images.forEach((src, i) => {
+      function initDesktopThumbs(images, productNameText) {
+        images.forEach(function (src, i) {
           const wrap = document.createElement("div");
           wrap.className = "pdp-img-container";
+
           const img = document.createElement("img");
           img.src = src;
-          img.alt = currentProduct.name;
+          img.alt = productNameText;
           img.loading = i === 0 ? "eager" : "lazy";
           wrap.appendChild(img);
           desktopBox.appendChild(wrap);
         });
-
-        renderColorChips({
-          productId: currentProduct.id,
-          chipsEl: colorChipsEl,
-          textEl: colorTextEl,
-        });
-
-        [
-          "나일론 소재의 고글 선글라스",
-          "나일론 프레임",
-          "미러 렌즈",
-          "UV 99.9% 차단 렌즈",
-          "제조자 및 수입자: IICOMBINED CO., LTD.",
-          "제조국명: 중국",
-          "본 제품은 렌즈 교체 및 피팅이 불가합니다.",
-        ].forEach((line) => {
-          const p = document.createElement("p");
-          p.textContent = line;
-          p.style.cssText =
-            "font-size:12px;line-height:17px;color:#111111;margin:0;";
-          detailsEl.appendChild(p);
-        });
-
-        [
-          "렌즈 너비: 152.9 mm",
-          "브릿지: 0 mm",
-          "프레임 프론트: 162.9 mm",
-          "템플 길이: 109.3 mm",
-          "렌즈 높이: 44.7 mm",
-        ].forEach((line) => {
-          const p = document.createElement("p");
-          p.textContent = line;
-          p.style.cssText =
-            "font-size:12px;line-height:17px;color:#111111;margin:0;";
-          sizeEl.appendChild(p);
-        });
-
-        const isSoldOut =
-          currentProduct.status === "품절" ||
-          currentProduct.status === "재입고 예정";
-        if (isSoldOut) {
-          cartBtn.textContent = "알림 받기";
-          cartBtn.style.cssText =
-            "width:100%;height:48px;background:#111111;color:#ffffff;border:none;border-radius:8px;font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;";
-        }
-        cartBtn.addEventListener("click", () => {
-          alert(
-            isSoldOut
-              ? "재입고 알림이 등록되었습니다."
-              : "쇼핑백에 추가되었습니다.",
-          );
-        });
-
-        let wished = false;
-        bookmarkBtn.addEventListener("click", () => {
-          wished = !wished;
-          bookmarkBtn.innerHTML = wished
-            ? '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="24" viewBox="0 0 16 24" fill="none"><path d="M0.6 3.6H15.4V20.7253L8.38236 14.9221L8 14.6059L7.61764 14.9221L0.6 20.7253V3.6Z" fill="#111111" stroke="#111111" stroke-width="1.2"/></svg>'
-            : '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="24" viewBox="0 0 16 24" fill="none"><path d="M8.38236 14.9221L8 14.6059L7.61764 14.9221L0.6 20.7253V3.6H15.4V20.7253L8.38236 14.9221Z" stroke="#111111" stroke-width="1.2"/></svg>';
-        });
-
-        const similarProducts = (currentCollection.products || [])
-          .filter((p) => String(p.id) !== String(productId))
-          .slice(0, 5);
-        if (similarProducts.length > 0) {
-          document.getElementById("similar-section").style.display = "block";
-          const grid = document.getElementById("similar-grid");
-          similarProducts.forEach((p) => {
-            const a = document.createElement("a");
-            a.href =
-              "./product-detail.html?collectionSlug=" +
-              collectionSlug +
-              "&productId=" +
-              p.id;
-            a.style.cssText =
-              "display:block;text-decoration:none;cursor:pointer;";
-            const imgWrap = document.createElement("div");
-            imgWrap.className = "similar-img-wrap";
-            const img = document.createElement("img");
-            img.src = (p.images && p.images[0]) || p.image || "";
-            img.alt = p.name;
-            img.loading = "lazy";
-            imgWrap.appendChild(img);
-            const info = document.createElement("div");
-            info.style.cssText = "padding:8px 0 0;";
-            const pName = document.createElement("p");
-            pName.textContent = p.name;
-            pName.style.cssText =
-              "font-size:11px;line-height:16px;color:#111111;margin:0;";
-            const pPrice = document.createElement("p");
-            pPrice.textContent = p.price + (p.status ? " - " + p.status : "");
-            pPrice.style.cssText =
-              "font-size:11px;line-height:16px;color:#111111;margin:0;";
-            info.appendChild(pName);
-            info.appendChild(pPrice);
-            a.appendChild(imgWrap);
-            a.appendChild(info);
-            grid.appendChild(a);
-          });
-        }
       }
 
-      document.querySelectorAll(".acc-trigger").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const id = btn.getAttribute("data-target");
-          const content = document.getElementById(id);
+      function renderSimilarProducts(similarProducts) {
+        if (similarProducts.length === 0) return;
+
+        document.getElementById("similarSection").classList.remove("hidden");
+        similarSectionTitle.textContent = UI_TEXT.similarSectionTitle;
+
+        const grid = document.getElementById("similarGrid");
+
+        similarProducts.forEach(function (p) {
+          const a = document.createElement("a");
+          a.href = "./product-detail.html?productId=" + p.id;
+          a.className = "block no-underline cursor-pointer";
+
+          const imgWrap = document.createElement("div");
+          imgWrap.className = "similar-img-wrap";
+
+          const img = document.createElement("img");
+          img.src = (p.images && p.images[0]) || "";
+          img.alt = p.name;
+          img.loading = "lazy";
+          imgWrap.appendChild(img);
+
+          const info = document.createElement("div");
+          info.className = "pt-[8px]";
+
+          const pName = document.createElement("p");
+          pName.textContent = p.name;
+          pName.className = "text-[11px] leading-[16px] text-[#111111]";
+
+          const pPrice = document.createElement("p");
+          pPrice.textContent = p.price.toLocaleString() + "원";
+          pPrice.className = "text-[11px] leading-[16px] text-[#111111]";
+
+          info.appendChild(pName);
+          info.appendChild(pPrice);
+          a.appendChild(imgWrap);
+          a.appendChild(info);
+          grid.appendChild(a);
+        });
+      }
+
+      document.querySelectorAll(".acc-trigger").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          const targetId = btn.getAttribute("data-target");
+          const content = document.getElementById(targetId);
           const icon = btn.querySelector(".acc-icon");
           const isOpen = content.classList.contains("open");
-          document
-            .querySelectorAll(".acc-content")
-            .forEach((c) => c.classList.remove("open"));
-          document
-            .querySelectorAll(".acc-icon")
-            .forEach((i) => (i.textContent = "+"));
+
+          document.querySelectorAll(".acc-content").forEach(function (c) {
+            c.classList.remove("open");
+          });
+          document.querySelectorAll(".acc-icon").forEach(function (i) {
+            i.textContent = "+";
+          });
+
           if (!isOpen) {
             content.classList.add("open");
             icon.textContent = "−";
           }
         });
       });
+
+      async function init() {
+        accDeliveryLabel.textContent = UI_TEXT.accDeliveryLabel;
+        accDeliveryDesc.textContent = UI_TEXT.accDeliveryDesc;
+        accDetailLabel.textContent = UI_TEXT.accDetailLabel;
+        accSizeLabel.textContent = UI_TEXT.accSizeLabel;
+
+        let currentProduct;
+        try {
+          currentProduct = await fetchProduct();
+        } catch {
+          productNameEl.textContent = UI_TEXT.productNotFound;
+          return;
+        }
+
+        productNameEl.textContent = currentProduct.name;
+        productPriceEl.textContent =
+          currentProduct.price.toLocaleString() + "원";
+
+        const images = currentProduct.images || [];
+        const carousel = createImageCarousel(images, {
+          alt: currentProduct.name,
+        });
+        document.querySelector(".product-thumbnail").prepend(carousel);
+        if (window.innerWidth >= 769) {
+          initDesktopThumbs(images, currentProduct.name);
+        }
+
+        renderColorNames(currentProduct.colors);
+
+        renderDetailLines(
+          detailsEl,
+          currentProduct.description.split("\n").filter(Boolean),
+        );
+
+        renderSpecifications(sizeEl, currentProduct.specifications);
+
+        const isSoldOut = !currentProduct.inStock;
+        cartBtn.textContent = isSoldOut ? UI_TEXT.notifyBtn : UI_TEXT.cartBtn;
+        cartBtn.addEventListener("click", function () {
+          alert(isSoldOut ? UI_TEXT.notifySuccess : UI_TEXT.cartSuccess);
+        });
+
+        bookmarkBtn.dataset.productId = currentProduct.id;
+        await wishlist();
+
+        const similarProducts = await fetchSimilarProducts(
+          currentProduct.category,
+        );
+        renderSimilarProducts(similarProducts);
+      }
+
+      init();
     </script>
   </body>
 </html>
