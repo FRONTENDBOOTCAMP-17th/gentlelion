@@ -14,7 +14,7 @@ export async function renderBestSeller() {
     slide.className = "swiper-slide flex-none ml-1 md:ml-9 relative group";
 
     slide.innerHTML = `
-      <a href="/src/pages/product-detail.html?id=${item.id}" class="relative block">
+      <a href="/src/pages/product-detail.html?productId=${item.id}" class="relative block">
         <div class="relative overflow-hidden w-44 h-60 md:w-97.5 md:h-165.75">
           <figure class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-64 md:w-194 md:h-194">
             <img

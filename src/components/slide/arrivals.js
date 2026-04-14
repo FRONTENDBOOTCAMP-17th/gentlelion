@@ -16,7 +16,7 @@ export async function renderArrivals() {
     const slide = document.createElement("div");
     slide.className = "swiper-slide shrink-0 relative w-full md:w-180 group";
     slide.innerHTML = `
-      <a href="/src/pages/product-detail.html?id=${item.id}" class="block">
+      <a href="/src/pages/product-detail.html?productId=${item.id}" class="block">
         <div class="relative overflow-hidden w-full aspect-1/2 md:w-180 md:h-180">
           <figure class="absolute inset-0">
             <img
