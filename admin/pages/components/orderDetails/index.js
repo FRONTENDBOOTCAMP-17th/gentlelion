@@ -1,6 +1,7 @@
 import { orderDetailsAPI } from "../../API/order/orderDetailsApi.js";
 import { renderOrderDetails } from "./renderOrderDetails.js";
 import { chaseProductState } from "./chaseProductState.js";
+import { cancleButton } from "./cancleButton.js";
 
 async function updateOrderDetails() {
     try {
@@ -8,13 +9,15 @@ async function updateOrderDetails() {
         const id = params.get("orderId");
 
         const data = await orderDetailsAPI(id);
-        console.log(data);
-
 
         renderOrderDetails(data);
         chaseProductState(data);
-
+        cancleButton();
     } catch (error) {
+        if (error.status === 401) {
+            window.location.href = "/admin/pages/login.html";
+            return;
+        }
         console.error(error);
     }
 }

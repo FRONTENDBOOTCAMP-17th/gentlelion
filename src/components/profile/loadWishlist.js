@@ -21,7 +21,7 @@ export async function loadWishlist(token) {
 
     await productCard(productContainer, normalized);
 
-    wishbuttonEvent(token, products);
+    wishbuttonEvent(products);
 
     document.querySelectorAll(".wishButton").forEach(button => {
         button.dataset.wishlist = "1";

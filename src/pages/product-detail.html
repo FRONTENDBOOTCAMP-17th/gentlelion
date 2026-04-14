@@ -100,6 +100,9 @@
         loadAccordion,
         initAccordion,
       } from "../components/accordion/accordion.js";
+      import { addCartButton } from "../components/product-detail/addCartButton.js";
+
+      const BASE_URL = "https://api.fullstackfamily.com/api/gentlelion/v1";
 
       await loadHeader();
       await loadFooter();
@@ -195,9 +198,14 @@
 
         const isSoldOut = !currentProduct.inStock;
         cartBtn.textContent = isSoldOut ? UI_TEXT.notifyBtn : UI_TEXT.cartBtn;
-        cartBtn.addEventListener("click", function () {
-          alert(isSoldOut ? UI_TEXT.notifySuccess : UI_TEXT.cartSuccess);
-        });
+
+        if (!isSoldOut) {
+          addCartButton(currentProduct.id, 1, currentProduct.colors?.[0]?.name);
+        } else {
+          cartBtn.addEventListener("click", function () {
+            alert(UI_TEXT.notifySuccess);
+          });
+        }
 
         bookmarkBtn.dataset.productId = currentProduct.id;
         await wishlist();

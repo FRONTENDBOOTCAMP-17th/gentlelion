@@ -33,6 +33,10 @@ async function dashboard() {
     loadSidebar()
     toggleMenu();
   } catch (error) {
+    if(error.status === 401){
+      window.location.href = "/admin/pages/login.html";
+      return;
+    }
     console.error(error);
   }
 }

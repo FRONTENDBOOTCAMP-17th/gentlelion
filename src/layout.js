@@ -4,6 +4,7 @@ import { headerEvent } from "./components/header/headerEvent.js";
 import { profileButton } from "./components/header/profileButton.js";
 import { createMobileMenu } from "./components/mobilemenu/createMobileMenu.js";
 import { initMenuAnimation } from "./components/mobilemenu/menuAnimation.js";
+import { renderBestSeller } from "./components/slide/bestSeller.js";
 import "./components/style.css";
 
 async function init() {
@@ -15,6 +16,7 @@ async function init() {
     loadFooter();
   }
   profileButton();
+  renderBestSeller();
 }
 
 init();

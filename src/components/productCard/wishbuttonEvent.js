@@ -8,7 +8,6 @@ export async function wishbuttonEvent(data) {
     buttons.forEach((button) => {
         button.addEventListener("click", async () => {
             const productId = Number(button.dataset.productId);
-            console.log("productId: ", productId);
             const isWishlisted = button.dataset.wishlist === "1";
 
       if (!isWishlisted) {
