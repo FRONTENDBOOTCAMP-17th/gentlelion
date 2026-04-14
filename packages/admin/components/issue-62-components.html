@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>62번 이슈 컴포넌트</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body class="font-gentle bg-(--bg)">
+    <!-- 상세정보 모달창 취소/수정 버튼 컴포넌트 -->
+    <div class="flex p-6 gap-4">
+      <button class="bg-(--cancle-button) flex-1 h-10 rounded-lg">취소</button>
+      <button class="bg-black text-white flex-1 h-10 rounded-lg">수정</button>
+    </div>
+
+    <div class="border"></div>
+
+    <!-- 목록 페이지 헤더 -->
+    <div>
+      <header
+        class="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4"
+      >
+        <h1 class="text-[24px] font-bold">제품 관리</h1>
+        <div class="flex gap-4 h-11">
+          <div class="relative">
+            <input
+              class="border border-(--admin-border) rounded-lg h-11 w-[256px] pl-10"
+              type="text"
+              placeholder="제품 검색..."
+            />
+            <svg
+              class="absolute -translate-y-1/2 top-1/2 left-1.5"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9.15979 15.8216C12.839 15.8216 15.8215 12.8391 15.8215 9.15991C15.8215 5.48073 12.839 2.49817 9.15979 2.49817C5.48061 2.49817 2.49805 5.48073 2.49805 9.15991C2.49805 12.8391 5.48061 15.8216 9.15979 15.8216Z"
+                stroke="#99A1AF"
+                stroke-width="1.66543"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M17.4869 17.4871L13.9062 13.9064"
+                stroke="#99A1AF"
+                stroke-width="1.66543"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+
+          <button class="bg-black text-white px-3 py-2 rounded-lg">
+            + 제품 추가
+          </button>
+        </div>
+      </header>
+    </div>
+
+    <div class="border"></div>
+
+    <div></div>
+
+    <!-- 주문 관리 테이블 -->
+    <table class="w-full">
+      <thead>
+        <tr class="text-[12px] text-(--admin-gray)">
+          <td class="py-5">주문번호</td>
+          <td class="py-5">사용자 ID</td>
+          <td class="py-5">수령인</td>
+          <td class="py-5">금액</td>
+          <td class="py-5">주문일시</td>
+          <td class="py-5">작업</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="text-[14px]">
+          <td class="py-5">1</td>
+          <td class="py-5 text-(--admin-gray)">1</td>
+          <td class="py-5 text-(--admin-gray)">홍길동</td>
+          <td class="py-5">290,000</td>
+          <td class="py-5 text-(--admin-gray)">2026.4.1 오후 7:30:00</td>
+          <td class="py-5">
+            <button class="cursor-pointer">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1.71833 10.29C1.64888 10.1029 1.64888 9.89709 1.71833 9.71C2.39475 8.06987 3.54293 6.66753 5.01731 5.68074C6.49169 4.69396 8.22587 4.16718 10 4.16718C11.7741 4.16718 13.5083 4.69396 14.9827 5.68074C16.4571 6.66753 17.6052 8.06987 18.2817 9.71C18.3511 9.89709 18.3511 10.1029 18.2817 10.29C17.6052 11.9301 16.4571 13.3325 14.9827 14.3192C13.5083 15.306 11.7741 15.8328 10 15.8328C8.22587 15.8328 6.49169 15.306 5.01731 14.3192C3.54293 13.3325 2.39475 11.9301 1.71833 10.29Z"
+                    stroke="#155DFC"
+                    stroke-width="1.66667"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M10 12.5C11.3807 12.5 12.5 11.3807 12.5 10C12.5 8.61929 11.3807 7.5 10 7.5C8.61929 7.5 7.5 8.61929 7.5 10C7.5 11.3807 8.61929 12.5 10 12.5Z"
+                    stroke="#155DFC"
+                    stroke-width="1.66667"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

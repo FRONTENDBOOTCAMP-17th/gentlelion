@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gentlelion</title>
+    <script type="module" src="./layout.js"></script>
+    <script type="module" src="./main.js"></script>
+    <script type="module" src="./components/video/mainVideo.js"></script>
+    <script type="module" src="./components/slide/mainSlide.js"></script>
+  </head>
+  <body class="bg-(--bg)" data-theme="dark" data-fixed="true">
+    <div
+      id="mobileMenu"
+      class="fixed opacity-0 pointer-events-none transition-all duration-500 top-0 z-49 left-0 bg-white w-screen h-full"
+    >
+      <aside class="relative top-40 ml-5">
+        <nav>
+          <ul class="font-medium flex flex-col gap-2 mb-3">
+            <li class="menu-animate text-[22px]">
+              <a class="w-max" href="/">선글라스</a>
+            </li>
+            <li class="menu-animate text-[22px]">
+              <a class="w-max" href="/">안경</a>
+            </li>
+            <li class="menu-animate text-[22px]">
+              <a class="w-max" href="/">컬렉션</a>
+            </li>
+          </ul>
+          <ul class="font-medium flex flex-col gap-2">
+            <li class="menu-animate text-[18px]">
+              <a class="w-max" href="/">스토리</a>
+            </li>
+            <li class="menu-animate text-[18px]">
+              <a class="w-max" href="/">서비스</a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="mt-35 text-[12px] flex flex-col">
+          <a class="menu-animate w-max" href="/" class="">로그인 / 계정 생성</a>
+          <a class="menu-animate w-max" href="/">주문 추가하기</a>
+        </div>
+        <div class="mt-2 text-[12px] w-max">
+          <a class="menu-animate w-max" href="/">위시리스트<sup>0</sup></a>
+          <p class="menu-animate font-medium mt-11">
+            아직 위시리스트에 추가된 제품이 없습니다.
+          </p>
+        </div>
+
+        <div class="text-[12px] mt-12 font-medium flex flex-col gap-3">
+          <a class="menu-animate w-max" href="/">고객 서비스</a>
+          <a class="menu-animate w-max" href="/">국가: South Korea</a>
+        </div>
+      </aside>
+    </div>
+    <div class="main-video relative h-[784.55px] w-full">
+      <video
+        id="main-video-player"
+        class="w-full h-full object-cover mobile:scale-[101%]"
+        autoplay=""
+        playsinline=""
+        preload="metadata"
+      >
+        <source
+          id="video-source"
+          src="https://gm-prd-resource.gentlemonster.com/main/banner/798372671433820827/6fc4e780-c8ce-48bd-a8dd-3abff6ab7f8d/main_pc_1920*990.mp4"
+          type="video/mp4"
+        />
+        <p>Your browser does not support HTML video playback.</p>
+      </video>
+      <img
+        id="main-image-player"
+        class="absolute inset-0 w-full h-full object-cover hidden"
+        src=""
+        alt="Campaign Image"
+      />
+      <div
+        class="absolute bottom-12 left-1/2 -translate-x-1/2 w-120 flex gap-2 z-10"
+      >
+        <div
+          class="progress-bg flex-1 h-0.5 bg-white/30 relative overflow-hidden"
+        >
+          <div
+            class="progress-fill absolute h-full bg-white w-0 transition-none"
+          ></div>
+        </div>
+        <div
+          class="progress-bg flex-1 h-0.5 bg-white/30 relative overflow-hidden"
+        >
+          <div
+            class="progress-fill absolute h-full bg-white w-0 transition-none"
+          ></div>
+        </div>
+        <div
+          class="progress-bg flex-1 h-0.5 bg-white/30 relative overflow-hidden"
+        >
+          <div
+            class="progress-fill absolute h-full bg-white w-0 transition-none"
+          ></div>
+        </div>
+        <div
+          class="progress-bg flex-1 h-0.5 bg-white/30 relative overflow-hidden"
+        >
+          <div
+            class="progress-fill absolute h-full bg-white w-0 transition-none"
+          ></div>
+        </div>
+        <div
+          class="progress-bg flex-1 h-0.5 bg-white/30 relative overflow-hidden"
+        >
+          <div
+            class="progress-fill absolute h-full bg-white w-0 transition-none"
+          ></div>
+        </div>
+      </div>
+      <div
+        class="absolute inset-0 bottom-30 flex flex-col items-center justify-end text-white pointer-events-none"
+      >
+        <h2 id="video-title" class="text-[24px] leading-7 mb-8"></h2>
+        <div class="button-group flex gap-4 justify-center pointer-events-auto">
+          <button
+            class="border text-[11px] border-white rounded-[25px] px-6 py-2"
+          >
+            구매하기
+          </button>
+          <button
+            class="campaignBtn border text-[11px] border-white rounded-[25px] px-6 py-2"
+          >
+            캠페인 보기
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <section class="arrivals-section pt-20 overflow-hidden bg-[#F3F5F6]">
+      <div class="px-5 md:px-15 mb-10">
+        <div class="flex items-center justify-between md:block">
+          <span class="md:hidden text-[14px]">신제품</span>
+          <h2 class="text-[18px] tracking-widest uppercase max-md:hidden">
+            새롭게 선보이는 젠틀몬스터 신제품
+          </h2>
+          <a href="" class="underline text-[14px]">더 보기</a>
+        </div>
+      </div>
+
+      <div class="swiper pl-15 max-md:pl-0 overflow-x-auto scrollbar-hide">
+        <div
+          id="arrivals-wrapper"
+          class="swiper-wrapper flex flex-row items-start gap-0 md:gap-0"
+        ></div>
+      </div>
+    </section>
+    <div
+      class="item-view-container px-5 md:px-15 flex justify-center overflow-x-auto scrollbar-hide bg-[#F3F5F6]"
+    >
+      <div id="arrivals-thumbs" class="item-view-wrapper flex gap-2">
+        <span class="text-[10px] self-end ml-4 text-black uppercase"
+          >아이템 뷰</span
+        >
+      </div>
+    </div>
+
+    <section class="best-seller-section py-20 bg-[#f3f5f6]">
+      <div class="px-6 md:px-15 mb-10">
+        <div class="flex items-center justify-between md:block">
+          <h2 class="text-[18px] tracking-widest uppercase max-md:hidden">
+            TOP 20 베스트셀러
+          </h2>
+          <span class="md:hidden text-[14px]">베스트셀러</span>
+          <a href="" class="underline text-[14px]">더보기</a>
+        </div>
+      </div>
+      <div class="swiper best-swiper overflow-x-auto scrollbar-hide">
+        <div class="swiper-wrapper flex flex-row items-start"></div>
+      </div>
+    </section>
+  </body>
+</html>

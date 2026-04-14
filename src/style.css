@@ -1,9 +1,0 @@
-@import "tailwindcss";
-@source "../src/components/**/*.html";
-
-@import "./components/header/header.css";
-
-@theme {
-  --font-gentle:
-    "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
-}

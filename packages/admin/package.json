@@ -1,0 +1,11 @@
+{
+  "name": "@gentlelion/admin",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@gentlelion/share-api": "*"
+  }
+}

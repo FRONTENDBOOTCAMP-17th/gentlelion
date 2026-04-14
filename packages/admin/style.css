@@ -1,0 +1,15 @@
+@import "tailwindcss";
+@source "./pages/**/*.html";
+@source "./components/**/*.html";
+
+:root {
+  --cancle-button: #e5e7eb;
+  --active-button: #000000;
+  --admin-green: #00a63e;
+  --admin-red: #e7000b;
+  --admin-lightGreen: #dcfce7;
+  --admin-lightRed: #ffe2e2;
+  --admin-gray: #6a7282;
+  --admin-border: #99a1af;
+  --admin-page: #4a5565;
+}

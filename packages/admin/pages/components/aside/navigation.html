@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>대시보드</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body class="min-h-screen">
+    <aside
+      class="hidden xl:flex flex-col shrink-0 bg-white w-64 border-r border-(--admin-border)"
+    >
+      <div class="px-6 py-5 border-b border-(--admin-border)">
+        <p class="text-lg font-bold text-[#0a0a0a]">GENTLE MONSTER</p>
+        <p class="text-xs text-(--admin-gray) mt-0.5">관리자 페이지</p>
+      </div>
+      <nav class="flex-1 py-3 flex flex-col gap-1">
+        <a
+          data-nav="dashboard"
+          href="/admin/pages/dashboard.html"
+          class="flex items-center rounded-lg mx-3 h-12 pl-4 gap-3 hover:bg-gray-50"
+        >
+          <svg
+            class="w-5 h-5 shrink-0 text-(--admin-gray)"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <rect x="3" y="3" width="7" height="7" />
+            <rect x="14" y="3" width="7" height="7" />
+            <rect x="3" y="14" width="7" height="7" />
+            <rect x="14" y="14" width="7" height="7" />
+          </svg>
+          <span class="text-sm font-medium text-(--admin-gray)">대시보드</span>
+        </a>
+        <a
+          data-nav="users"
+          href="/admin/pages/users.html"
+          class="flex items-center rounded-lg mx-3 h-12 pl-4 gap-3 hover:bg-gray-50"
+        >
+          <svg
+            class="w-5 h-5 shrink-0 text-(--admin-gray)"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+          </svg>
+          <span class="text-sm font-medium text-(--admin-gray)"
+            >사용자 관리</span
+          >
+        </a>
+        <a
+          data-nav="products"
+          href="/admin/pages/products.html"
+          class="flex items-center rounded-lg mx-3 h-12 pl-4 gap-3 hover:bg-gray-50"
+        >
+          <svg
+            class="w-5 h-5 shrink-0 text-(--admin-gray)"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M20 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"
+            />
+            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+          </svg>
+          <span class="text-sm font-medium text-(--admin-gray)">제품 관리</span>
+        </a>
+        <a
+          data-nav="orders"
+          href="/admin/pages/orders.html"
+          class="flex items-center rounded-lg mx-3 h-12 pl-4 gap-3 hover:bg-gray-50"
+        >
+          <svg
+            class="w-5 h-5 shrink-0 text-(--admin-gray)"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <circle cx="9" cy="21" r="1" />
+            <circle cx="20" cy="21" r="1" />
+            <path
+              d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
+            />
+          </svg>
+          <span class="text-sm font-medium text-(--admin-gray)">주문 관리</span>
+        </a>
+        <button
+          id="logoutBtn"
+          class="flex cursor-pointer items-center rounded-lg mx-3 h-12 pl-4 gap-3 hover:bg-red-50 mt-auto"
+        >
+          <svg
+            class="w-5 h-5 shrink-0 text-red-600"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+            <polyline points="16 17 21 12 16 7" />
+            <line x1="21" y1="12" x2="9" y2="12" />
+          </svg>
+          <span class="text-sm font-medium text-red-600">로그아웃</span>
+        </button>
+      </nav>
+    </aside>
+  </body>
+</html>

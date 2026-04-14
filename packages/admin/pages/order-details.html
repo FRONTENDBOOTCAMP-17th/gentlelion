@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>주문 상세 정보</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script type="module" src="/main.js"></script>
+    <script
+      type="module"
+      src="../pages/components/orderDetails/index.js"
+    ></script>
+  </head>
+  <body class="font-gentle bg-(--bg)">
+    <header class="p-6 border-b border-(--border)">
+      <h1 class="text-[24px] font-bold">주문 상세 정보</h1>
+    </header>
+    <main class="p-6 flex flex-col gap-6">
+      <section class="flex flex-col gap-4">
+        <h2 class="text-[18px] font-bold">주문 정보</h2>
+        <div class="flex text-[14px]">
+          <div class="flex-1">
+            <p>주문번호</p>
+            <p id="orderNumber">GM20260401001</p>
+          </div>
+          <div class="flex-1">
+            <p>사용자 ID</p>
+            <p id="userId">1</p>
+          </div>
+        </div>
+        <div class="text-[14px]">
+          <p>주문일시</p>
+          <time id="create_At">2026. 4. 1.오후 7:30:00</time>
+        </div>
+      </section>
+      <section class="flex flex-col gap-6">
+        <h2 class="text-[18px] font-bold">주문 상품</h2>
+        <div id="itemList" class="flex flex-col gap-4 p-4"></div>
+      </section>
+      <section class="flex flex-col gap-6">
+        <h2 class="text-[18px] font-bold">배송지 정보</h2>
+        <div class="text-[14px]">
+          <p>수령인</p>
+          <p id="recipientName">홍길동</p>
+          <p>연락처</p>
+          <p id="phone">010-1234-5678</p>
+          <p>주소</p>
+          <p>
+            (<span id="zipCode">12345</span>)
+            <span id="address">서울시 강남구 테헤란로 123</span>
+            <span id="addressDetail">456호</span>
+          </p>
+        </div>
+      </section>
+      <section class="flex flex-col gap-4">
+        <h2 class="text-[18px] font-bold">결제 정보</h2>
+        <div class="flex flex-col gap-2">
+          <div class="flex justify-between">
+            <p>상품 금액</p>
+            <p id="price">₩290,000</p>
+          </div>
+          <div class="flex justify-between">
+            <p>배송비</p>
+            <p id="shippingFee">₩0</p>
+          </div>
+        </div>
+        <div
+          class="text-[18px] font-bold flex justify-between border-t border-(--border)"
+        >
+          <p class="mt-2">총 결제금액</p>
+          <p id="totalPrice" class="mt-2">₩290,000</p>
+        </div>
+      </section>
+      <section class="flex flex-col gap-6 border-b border-(--border) pb-6">
+        <h2 class="text-[18px] font-bold">주문 상태 변경</h2>
+        <div class="flex gap-2 text-[14px]">
+          <button
+            id="confirmed"
+            class="py-2 px-4 bg-(--cancle-button) rounded-xl font-medium cursor-pointer"
+          >
+            결제 완료
+          </button>
+          <button
+            id="pending"
+            class="py-2 px-4 bg-(--cancle-button) rounded-xl font-medium cursor-pointer"
+          >
+            상품 준비중
+          </button>
+          <button
+            id="shipping"
+            class="py-2 px-4 bg-(--cancle-button) rounded-xl font-medium cursor-pointer"
+          >
+            배송 중
+          </button>
+          <button
+            id="delivered"
+            class="py-2 px-4 bg-(--cancle-button) rounded-xl font-medium cursor-pointer"
+          >
+            배송 완료
+          </button>
+        </div>
+      </section>
+      <button
+        id="cancle"
+        class="bg-black text-white h-10 rounded-lg cursor-pointer"
+      >
+        닫기
+      </button>
+    </main>
+  </body>
+</html>
