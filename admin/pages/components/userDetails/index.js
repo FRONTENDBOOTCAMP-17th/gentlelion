@@ -43,6 +43,10 @@ async function init() {
       });
     }
   } catch (error) {
+    if (error.status === 401) {
+      window.location.href = "/admin/pages/login.html";
+      return;
+    }
     console.error(error);
   }
 }
