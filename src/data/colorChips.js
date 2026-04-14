@@ -1,38 +1,48 @@
-import { productColors } from "./colors.js";
+const COLOR_MAP = {
+  Black: "#111111",
+  White: "#ffffff",
+  Gray: "#888780",
+  Brown: "#6B3A2A",
+  Gold: "#C9A84C",
+  Red: "#C20A40",
+  Blue: "#1F46A4",
+  Orange: "#E8590C",
+  Green: "#2D6A2D",
+  Tortoise: "#6B3A2A",
+  Silver: "#C0C0C0",
+  Yellow: "#F5C518",
+};
 
-export function renderColorChips({ productId, chipsEl, textEl }) {
-  const colorData = productColors[productId];
+export function renderColorChips({ colors, chipsEl, textEl }) {
+  if (!colors || colors.length === 0) return;
 
-  // 색상 데이터가 없으면 아무것도 생성하지 않음
-  if (!colorData || !colorData.chips || colorData.chips.length === 0) return;
+  let activeIndex = 0;
 
-  colorData.chips.forEach((color, i) => {
+  colors.forEach(function (color, i) {
     const chip = document.createElement("button");
-    chip.style.cssText =
-      "background:none;border:none;cursor:pointer;padding:0;";
+    chip.className = "bg-transparent border-none cursor-pointer p-0";
 
     const swatch = document.createElement("div");
-    swatch.style.cssText = `width:24px;height:24px;background:${color.background};`;
+    swatch.className = "w-[24px] h-[24px]";
+    swatch.style.background = COLOR_MAP[color.name] || "#cccccc";
     chip.appendChild(swatch);
 
-    if (i === colorData.activeIndex) {
+    if (i === activeIndex) {
       const underline = document.createElement("span");
-      underline.style.cssText =
-        "display:block;width:100%;height:1px;background:#111;margin-top:2px;";
+      underline.className = "block w-full h-[1px] bg-[#111111] mt-[2px]";
       chip.appendChild(underline);
-      textEl.textContent = color.label;
+      textEl.textContent = color.name;
     }
 
-    chip.addEventListener("click", () => {
-      textEl.textContent = color.label;
+    chip.addEventListener("click", function () {
+      textEl.textContent = color.name;
 
-      // 기존 밑줄 모두 제거
-      chipsEl.querySelectorAll("span").forEach((s) => s.remove());
+      chipsEl.querySelectorAll("span").forEach(function (s) {
+        s.remove();
+      });
 
-      // 클릭한 칩에 밑줄 추가
       const underline = document.createElement("span");
-      underline.style.cssText =
-        "display:block;width:100%;height:1px;background:#111;margin-top:2px;";
+      underline.className = "block w-full h-[1px] bg-[#111111] mt-[2px]";
       chip.appendChild(underline);
     });
 

@@ -1,0 +1,61 @@
+<div
+  class="md:sticky md:top-0 md:pt-[120px] md:pl-[36px] md:pr-[60px] md:w-[284px] md:box-content"
+>
+  <div class="relative">
+    <div class="flex justify-between items-start mb-[16px] px-[24px] md:px-0">
+      <div class="flex flex-col gap-[4px]">
+        <h1
+          id="productName"
+          class="text-[17px] leading-[22px] text-[#111111]"
+        ></h1>
+        <p
+          id="productPrice"
+          class="text-[12px] leading-[17px] text-[#111111]"
+        ></p>
+      </div>
+      <div class="flex flex-col items-end gap-[8px]">
+        <div
+          id="colorChips"
+          class="flex flex-wrap justify-end items-start gap-x-[4px] gap-y-[4px]"
+        ></div>
+        <div
+          id="colorText"
+          class="text-[12px] leading-[17px] text-[#111111]"
+        ></div>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-[12px] px-[24px] md:px-0">
+      <button
+        id="cartBtn"
+        class="flex-1 h-[48px] bg-[#111111] text-white text-[12px] leading-[17px] rounded-[8px] cursor-pointer border-none flex items-center justify-center"
+      ></button>
+      <button
+        id="bookmarkBtn"
+        class="wishButton cursor-pointer bg-transparent border-none p-0 flex-shrink-0"
+        aria-label="찜하기"
+        data-product-id=""
+        data-wishlist="0"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="24"
+          viewBox="0 0 16 24"
+          fill="none"
+        >
+          <path
+            d="M8.38236 14.9221L8 14.6059L7.61764 14.9221L0.6 20.7253V3.6H15.4V20.7253L8.38236 14.9221Z"
+            stroke="#111111"
+            stroke-width="1.2"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <div
+      id="accordionWrap"
+      class="flex flex-col gap-0 mt-[48px] px-[24px] md:px-0"
+    ></div>
+  </div>
+</div>

@@ -7,104 +7,6 @@
     <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="../components/style.css" />
     <script type="module" src="../main.js"></script>
-    <style>
-      .acc-content {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.35s ease;
-      }
-      .acc-content.open {
-        max-height: 600px;
-      }
-
-      .pdp-img-container {
-        position: relative;
-        width: 100%;
-        padding-top: 100%;
-        overflow: hidden;
-        background: #f3f4f6;
-      }
-      .pdp-img-container img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100% !important;
-        object-fit: contain;
-        object-position: center;
-        display: block;
-      }
-
-      .similar-img-wrap {
-        position: relative;
-        width: 100%;
-        padding-top: 138.1%;
-        overflow: hidden;
-        background: #f3f4f6;
-      }
-      .similar-img-wrap img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-        display: block;
-      }
-
-      @media (min-width: 769px) {
-        .desktop-thumb-box {
-          display: block;
-        }
-        .product-top {
-          display: flex;
-          flex-direction: row;
-        }
-        .product-thumbnail {
-          flex: 1;
-          min-width: 0;
-        }
-        .product-info {
-          flex-shrink: 0;
-          width: 423px;
-        }
-        .product-info-box {
-          position: sticky;
-          top: 0;
-          padding-top: 60px;
-          padding-left: 36px;
-          padding-right: 60px;
-          width: 327px;
-          box-sizing: content-box;
-        }
-      }
-      @media (min-width: 769px) {
-        .pdp-img-container {
-          padding-top: 60%;
-        }
-      }
-      @media (max-width: 768px) {
-        .product-top {
-          flex-direction: column !important;
-          display: flex !important;
-        }
-        .product-thumbnail {
-          width: 100% !important;
-          order: 1;
-        }
-        .product-info {
-          width: 100% !important;
-          order: 2;
-        }
-        .product-info-box {
-          position: static !important;
-          padding: 0 !important;
-          width: 100% !important;
-          box-sizing: border-box;
-        }
-      }
-    </style>
   </head>
 
   <body class="font-gentle bg-[#F3F4F6] text-[#111111]" data-theme="light">
@@ -150,145 +52,28 @@
         </div>
       </aside>
     </div>
+
     <aside class="navigation mx-3 md:px-8 lg:px-15"></aside>
-    <div class="product-detail min-h-screen">
-      <div class="gentle-pdp">
-        <div class="product-top flex">
-          <div class="product-thumbnail">
-            <div class="desktop-thumb-box" id="desktopThumbBox"></div>
-          </div>
 
-          <div class="product-info">
-            <div class="product-info-box">
-              <div class="product-info-container relative">
-                <div
-                  class="flex justify-between items-start mb-[16px] px-[24px] md:px-0"
-                >
-                  <div class="info flex flex-col gap-[4px]">
-                    <h1
-                      id="productName"
-                      class="text-[17px] leading-[22px] text-[#111111]"
-                    ></h1>
-                    <p
-                      id="productPrice"
-                      class="text-[12px] leading-[17px] text-[#111111]"
-                    ></p>
-                  </div>
-                  <div class="flex flex-col items-end gap-[8px]">
-                    <div
-                      id="colorChips"
-                      class="flex flex-wrap justify-end items-start gap-x-[4px] gap-y-[4px]"
-                    ></div>
-                    <div
-                      id="colorText"
-                      class="text-[12px] leading-[17px] text-[#111111]"
-                    ></div>
-                  </div>
-                </div>
-
-                <div class="flex items-center gap-[12px] px-[24px] md:px-0">
-                  <button
-                    id="cartBtn"
-                    class="flex-1 h-[48px] bg-[#111111] text-white text-[12px] leading-[17px] rounded-[8px] cursor-pointer border-none flex items-center justify-center"
-                  ></button>
-                  <button
-                    id="bookmarkBtn"
-                    class="wishButton cursor-pointer bg-transparent border-none p-0 flex-shrink-0"
-                    aria-label="찜하기"
-                    data-product-id=""
-                    data-wishlist="0"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="24"
-                      viewBox="0 0 16 24"
-                      fill="none"
-                    >
-                      <path
-                        d="M8.38236 14.9221L8 14.6059L7.61764 14.9221L0.6 20.7253V3.6H15.4V20.7253L8.38236 14.9221Z"
-                        stroke="#111111"
-                        stroke-width="1.2"
-                      />
-                    </svg>
-                  </button>
-                </div>
-
-                <div class="flex flex-col gap-0 mt-[48px] px-[24px] md:px-0">
-                  <div class="acc-item border-t border-[#e5e5e5]">
-                    <button
-                      class="acc-trigger w-full flex justify-between items-center py-[14px] bg-transparent border-none cursor-pointer"
-                      data-target="accDelivery"
-                    >
-                      <span
-                        id="accDeliveryLabel"
-                        class="text-[12px] leading-[17px] text-[#111111]"
-                      ></span>
-                      <span class="acc-icon text-[#111111]">+</span>
-                    </button>
-                    <div class="acc-content" id="accDelivery">
-                      <p
-                        id="accDeliveryDesc"
-                        class="text-[12px] leading-[17px] text-[#111111] pb-[14px]"
-                      ></p>
-                    </div>
-                  </div>
-                  <div class="acc-item border-t border-[#e5e5e5]">
-                    <button
-                      class="acc-trigger w-full flex justify-between items-center py-[14px] bg-transparent border-none cursor-pointer"
-                      data-target="accDetail"
-                    >
-                      <span
-                        id="accDetailLabel"
-                        class="text-[12px] leading-[17px] text-[#111111]"
-                      ></span>
-                      <span class="acc-icon text-[#111111]">+</span>
-                    </button>
-                    <div class="acc-content" id="accDetail">
-                      <div
-                        id="productDetails"
-                        class="flex flex-col gap-[2px] pb-[14px]"
-                      ></div>
-                    </div>
-                  </div>
-                  <div class="acc-item border-t border-[#e5e5e5]">
-                    <button
-                      class="acc-trigger w-full flex justify-between items-center py-[14px] bg-transparent border-none cursor-pointer"
-                      data-target="accSize"
-                    >
-                      <span
-                        id="accSizeLabel"
-                        class="text-[12px] leading-[17px] text-[#111111]"
-                      ></span>
-                      <span class="acc-icon text-[#111111]">+</span>
-                    </button>
-                    <div class="acc-content" id="accSize">
-                      <div
-                        id="productSize"
-                        class="flex flex-col gap-[2px] pb-[14px]"
-                      ></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+    <div class="min-h-screen">
+      <div class="flex flex-col md:flex-row md:min-h-screen">
+        <div class="w-full md:flex-1 md:min-w-0 md:flex md:flex-col">
+          <div
+            class="block min-[769px]:hidden w-full"
+            id="mobileCarouselWrap"
+          ></div>
+          <div class="hidden min-[769px]:block" id="desktopThumbBox"></div>
         </div>
+        <div
+          class="w-full md:flex-shrink-0 md:w-[380px]"
+          id="productInfoWrap"
+        ></div>
       </div>
 
       <section
         id="similarSection"
         class="hidden px-[24px] md:px-[60px] pt-[48px] pb-[60px]"
-      >
-        <h2
-          id="similarSectionTitle"
-          class="text-[12px] leading-[17px] text-[#111111] mb-[20px]"
-        ></h2>
-        <div
-          id="similarGrid"
-          class="grid grid-cols-2 md:grid-cols-5 gap-x-[8px] gap-y-[24px]"
-        ></div>
-      </section>
+      ></section>
     </div>
 
     <script type="module">
@@ -298,6 +83,23 @@
       import { createImageCarousel } from "../components/carousel/imageCarousel.js";
       import { navigation } from "../components/navigation/index.js";
       import { initMenuAnimation } from "../components/mobilemenu/menuAnimation.js";
+      import { renderColorChips } from "../data/colorChips.js";
+      import {
+        fetchProduct,
+        fetchSimilarProducts,
+      } from "../components/API/product/productDetailApi.js";
+      import {
+        loadProductInfo,
+        loadSimilarSection,
+        renderDetailLines,
+        renderSpecifications,
+        initDesktopThumbs,
+        renderSimilarProducts,
+      } from "../components/product-detail/productDetailRenderer.js";
+      import {
+        loadAccordion,
+        initAccordion,
+      } from "../components/accordion/accordion.js";
       import { addCartButton } from "../components/product-detail/addCartButton.js";
 
       const BASE_URL = "https://api.fullstackfamily.com/api/gentlelion/v1";
@@ -310,7 +112,18 @@
       const params = new URLSearchParams(window.location.search);
       const productId = params.get("productId");
 
+      const productInfoWrap = document.getElementById("productInfoWrap");
+      const similarSection = document.getElementById("similarSection");
+      const mobileCarouselWrap = document.getElementById("mobileCarouselWrap");
       const desktopBox = document.getElementById("desktopThumbBox");
+
+      await loadProductInfo(productInfoWrap);
+      await loadSimilarSection(similarSection);
+
+      const accordionWrap = document.getElementById("accordionWrap");
+      await loadAccordion(accordionWrap);
+      initAccordion();
+
       const productNameEl = document.getElementById("productName");
       const productPriceEl = document.getElementById("productPrice");
       const colorChipsEl = document.getElementById("colorChips");
@@ -341,138 +154,6 @@
         similarSectionTitle: "유사한 프레임",
       };
 
-      async function fetchProduct() {
-        const res = await fetch(BASE_URL + "/products/" + productId);
-        if (!res.ok) throw new Error("product_not_found");
-        const json = await res.json();
-        return json.data;
-      }
-
-      async function fetchSimilarProducts(category) {
-        const res = await fetch(
-          BASE_URL + "/products?category=" + category + "&limit=6",
-        );
-        if (!res.ok) return [];
-        const json = await res.json();
-
-        return (json.data || [])
-          .filter(function (p) {
-            return String(p.id) !== String(productId);
-          })
-          .slice(0, 5);
-      }
-
-      function renderDetailLines(el, lines) {
-        lines.forEach(function (line) {
-          const p = document.createElement("p");
-          p.textContent = line;
-          p.className = "text-[12px] leading-[17px] text-[#111111]";
-          el.appendChild(p);
-        });
-      }
-
-      function renderColorNames(colors) {
-        if (!colors || colors.length === 0) return;
-        colorTextEl.textContent = colors
-          .map(function (c) {
-            return c.name;
-          })
-          .join(" / ");
-      }
-
-      function renderSpecifications(el, specifications) {
-        if (!specifications) return;
-        const labels = {
-          frameWidth: "프레임 너비",
-          lensHeight: "렌즈 높이",
-          lensWidth: "렌즈 너비",
-          bridgeWidth: "브릿지 너비",
-          templeLength: "템플 길이",
-        };
-        Object.entries(specifications).forEach(function ([key, value]) {
-          const p = document.createElement("p");
-          p.textContent = (labels[key] || key) + ": " + value;
-          p.className = "text-[12px] leading-[17px] text-[#111111]";
-          el.appendChild(p);
-        });
-      }
-
-      function initDesktopThumbs(images, productNameText) {
-        images.forEach(function (src, i) {
-          const wrap = document.createElement("div");
-          wrap.className = "pdp-img-container";
-
-          const img = document.createElement("img");
-          img.src = src;
-          img.alt = productNameText;
-          img.loading = i === 0 ? "eager" : "lazy";
-          wrap.appendChild(img);
-          desktopBox.appendChild(wrap);
-        });
-      }
-
-      function renderSimilarProducts(similarProducts) {
-        if (similarProducts.length === 0) return;
-
-        document.getElementById("similarSection").classList.remove("hidden");
-        similarSectionTitle.textContent = UI_TEXT.similarSectionTitle;
-
-        const grid = document.getElementById("similarGrid");
-
-        similarProducts.forEach(function (p) {
-          const a = document.createElement("a");
-          a.href = "./product-detail.html?productId=" + p.id;
-          a.className = "block no-underline cursor-pointer";
-
-          const imgWrap = document.createElement("div");
-          imgWrap.className = "similar-img-wrap";
-
-          const img = document.createElement("img");
-          img.src = (p.images && p.images[0]) || "";
-          img.alt = p.name;
-          img.loading = "lazy";
-          imgWrap.appendChild(img);
-
-          const info = document.createElement("div");
-          info.className = "pt-[8px]";
-
-          const pName = document.createElement("p");
-          pName.textContent = p.name;
-          pName.className = "text-[11px] leading-[16px] text-[#111111]";
-
-          const pPrice = document.createElement("p");
-          pPrice.textContent = p.price.toLocaleString() + "원";
-          pPrice.className = "text-[11px] leading-[16px] text-[#111111]";
-
-          info.appendChild(pName);
-          info.appendChild(pPrice);
-          a.appendChild(imgWrap);
-          a.appendChild(info);
-          grid.appendChild(a);
-        });
-      }
-
-      document.querySelectorAll(".acc-trigger").forEach(function (btn) {
-        btn.addEventListener("click", function () {
-          const targetId = btn.getAttribute("data-target");
-          const content = document.getElementById(targetId);
-          const icon = btn.querySelector(".acc-icon");
-          const isOpen = content.classList.contains("open");
-
-          document.querySelectorAll(".acc-content").forEach(function (c) {
-            c.classList.remove("open");
-          });
-          document.querySelectorAll(".acc-icon").forEach(function (i) {
-            i.textContent = "+";
-          });
-
-          if (!isOpen) {
-            content.classList.add("open");
-            icon.textContent = "−";
-          }
-        });
-      });
-
       async function init() {
         accDeliveryLabel.textContent = UI_TEXT.accDeliveryLabel;
         accDeliveryDesc.textContent = UI_TEXT.accDeliveryDesc;
@@ -481,7 +162,7 @@
 
         let currentProduct;
         try {
-          currentProduct = await fetchProduct();
+          currentProduct = await fetchProduct(productId);
         } catch {
           productNameEl.textContent = UI_TEXT.productNotFound;
           return;
@@ -492,15 +173,21 @@
           currentProduct.price.toLocaleString() + "원";
 
         const images = currentProduct.images || [];
+
         const carousel = createImageCarousel(images, {
           alt: currentProduct.name,
         });
-        document.querySelector(".product-thumbnail").prepend(carousel);
-        if (window.innerWidth >= 769) {
-          initDesktopThumbs(images, currentProduct.name);
+        mobileCarouselWrap.appendChild(carousel);
+
+        if (window.innerWidth > 768) {
+          initDesktopThumbs(desktopBox, images, currentProduct.name);
         }
 
-        renderColorNames(currentProduct.colors);
+        renderColorChips({
+          colors: currentProduct.colors,
+          chipsEl: colorChipsEl,
+          textEl: colorTextEl,
+        });
 
         renderDetailLines(
           detailsEl,
@@ -525,8 +212,13 @@
 
         const similarProducts = await fetchSimilarProducts(
           currentProduct.category,
+          productId,
         );
-        renderSimilarProducts(similarProducts);
+        renderSimilarProducts(
+          similarProducts,
+          similarSectionTitle,
+          UI_TEXT.similarSectionTitle,
+        );
       }
 
       init();
