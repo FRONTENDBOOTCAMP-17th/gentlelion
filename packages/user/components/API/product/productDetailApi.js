@@ -1,21 +1,17 @@
-const BASE_URL = "https://api.fullstackfamily.com/api/gentlelion/v1";
+import { get } from "@gentlelion/share-api";
 
 export async function fetchProduct(productId) {
-  const res = await fetch(BASE_URL + "/products/" + productId);
-  if (!res.ok) throw new Error("product_not_found");
-  const json = await res.json();
+  const json = await get(`/products/${productId}`);
   return json.data;
 }
 
 export async function fetchSimilarProducts(category, productId) {
-  const res = await fetch(
-    BASE_URL + "/products?category=" + category + "&limit=6",
-  );
-  if (!res.ok) return [];
-  const json = await res.json();
-  return (json.data || [])
-    .filter(function (p) {
-      return String(p.id) !== String(productId);
-    })
-    .slice(0, 5);
+  try {
+    const json = await get(`/products?category=${category}&limit=6`);
+    return (json.data || [])
+      .filter((p) => String(p.id) !== String(productId))
+      .slice(0, 5);
+  } catch {
+    return [];
+  }
 }

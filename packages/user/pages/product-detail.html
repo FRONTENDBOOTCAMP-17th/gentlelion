@@ -6,53 +6,19 @@
     <title>상품 상세 | 젠틀라이온 | 공식 온라인 스토어</title>
     <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="../components/style.css" />
+    <script type="module" src="../layout.js"></script>
     <script type="module" src="../main.js"></script>
+    <script type="module">
+      import { initProductDetail } from "../components/product-detail/init.js";
+      initProductDetail();
+    </script>
   </head>
 
   <body class="font-gentle bg-[#F3F4F6] text-[#111111]" data-theme="light">
     <div
       id="mobileMenu"
       class="fixed opacity-0 pointer-events-none transition-all duration-500 top-0 z-49 left-0 bg-white w-screen h-full"
-    >
-      <aside class="relative top-40 ml-5">
-        <nav>
-          <ul class="font-medium flex flex-col gap-2 mb-3">
-            <li class="menu-animate text-[22px]">
-              <a class="w-max" href="/">선글라스</a>
-            </li>
-            <li class="menu-animate text-[22px]">
-              <a class="w-max" href="/">안경</a>
-            </li>
-            <li class="menu-animate text-[22px]">
-              <a class="w-max" href="/">컬렉션</a>
-            </li>
-          </ul>
-          <ul class="font-medium flex flex-col gap-2">
-            <li class="menu-animate text-[18px]">
-              <a class="w-max" href="/">스토리</a>
-            </li>
-            <li class="menu-animate text-[18px]">
-              <a class="w-max" href="/">서비스</a>
-            </li>
-          </ul>
-        </nav>
-        <div class="mt-35 text-[12px] flex flex-col">
-          <a class="menu-animate w-max" href="/">로그인 / 계정 생성</a>
-          <a class="menu-animate w-max" href="/">주문 추가하기</a>
-        </div>
-        <div class="mt-2 text-[12px] w-max">
-          <a class="menu-animate w-max" href="/">위시리스트<sup>0</sup></a>
-          <p class="menu-animate font-medium mt-11">
-            아직 위시리스트에 추가된 제품이 없습니다.
-          </p>
-        </div>
-        <div class="text-[12px] mt-12 font-medium flex flex-col gap-3">
-          <a class="menu-animate w-max" href="/">고객 서비스</a>
-          <a class="menu-animate w-max" href="/">국가: South Korea</a>
-        </div>
-      </aside>
-    </div>
-
+    ></div>
     <aside class="navigation mx-3 md:px-8 lg:px-15"></aside>
 
     <div class="min-h-screen">
@@ -75,153 +41,5 @@
         class="hidden px-[24px] md:px-[60px] pt-[48px] pb-[60px]"
       ></section>
     </div>
-
-    <script type="module">
-      import { loadHeader } from "../components/header/header.js";
-      import { loadFooter } from "../components/footer/footer.js";
-      import { wishlist } from "../components/wishlist/index.js";
-      import { createImageCarousel } from "../components/carousel/imageCarousel.js";
-      import { navigation } from "../components/navigation/index.js";
-      import { initMenuAnimation } from "../components/mobilemenu/menuAnimation.js";
-      import { renderColorChips } from "../data/colorChips.js";
-      import {
-        fetchProduct,
-        fetchSimilarProducts,
-      } from "../components/API/product/productDetailApi.js";
-      import {
-        loadProductInfo,
-        loadSimilarSection,
-        renderDetailLines,
-        renderSpecifications,
-        initDesktopThumbs,
-        renderSimilarProducts,
-      } from "../components/product-detail/productDetailRenderer.js";
-      import {
-        loadAccordion,
-        initAccordion,
-      } from "../components/accordion/accordion.js";
-      import { addCartButton } from "../components/product-detail/addCartButton.js";
-
-      const BASE_URL = "https://api.fullstackfamily.com/api/gentlelion/v1";
-
-      await loadHeader();
-      await loadFooter();
-      navigation();
-      initMenuAnimation();
-
-      const params = new URLSearchParams(window.location.search);
-      const productId = params.get("productId");
-
-      const productInfoWrap = document.getElementById("productInfoWrap");
-      const similarSection = document.getElementById("similarSection");
-      const mobileCarouselWrap = document.getElementById("mobileCarouselWrap");
-      const desktopBox = document.getElementById("desktopThumbBox");
-
-      await loadProductInfo(productInfoWrap);
-      await loadSimilarSection(similarSection);
-
-      const accordionWrap = document.getElementById("accordionWrap");
-      await loadAccordion(accordionWrap);
-      initAccordion();
-
-      const productNameEl = document.getElementById("productName");
-      const productPriceEl = document.getElementById("productPrice");
-      const colorChipsEl = document.getElementById("colorChips");
-      const colorTextEl = document.getElementById("colorText");
-      const cartBtn = document.getElementById("cartBtn");
-      const bookmarkBtn = document.getElementById("bookmarkBtn");
-      const detailsEl = document.getElementById("productDetails");
-      const sizeEl = document.getElementById("productSize");
-      const similarSectionTitle = document.getElementById(
-        "similarSectionTitle",
-      );
-      const accDeliveryLabel = document.getElementById("accDeliveryLabel");
-      const accDeliveryDesc = document.getElementById("accDeliveryDesc");
-      const accDetailLabel = document.getElementById("accDetailLabel");
-      const accSizeLabel = document.getElementById("accSizeLabel");
-
-      const UI_TEXT = {
-        cartBtn: "쇼핑백에 추가하기",
-        notifyBtn: "알림 받기",
-        cartSuccess: "쇼핑백에 추가되었습니다.",
-        notifySuccess: "재입고 알림이 등록되었습니다.",
-        productNotFound: "존재하지 않는 상품입니다.",
-        accDeliveryLabel: "무료 배송 & 반품",
-        accDeliveryDesc:
-          "젠틀라이온 공식 온라인 스토어는 무료 배송 및 반품 서비스를 제공합니다. 반품은 제품을 수령하신 날로부터 7일 이내에 접수해 주셔야 합니다. 제품은 사용되지 않은 상태여야 하며, 모든 구성품을 포함하고 있어야 합니다.",
-        accDetailLabel: "세부 정보",
-        accSizeLabel: "사이즈 및 핏",
-        similarSectionTitle: "유사한 프레임",
-      };
-
-      async function init() {
-        accDeliveryLabel.textContent = UI_TEXT.accDeliveryLabel;
-        accDeliveryDesc.textContent = UI_TEXT.accDeliveryDesc;
-        accDetailLabel.textContent = UI_TEXT.accDetailLabel;
-        accSizeLabel.textContent = UI_TEXT.accSizeLabel;
-
-        let currentProduct;
-        try {
-          currentProduct = await fetchProduct(productId);
-        } catch {
-          productNameEl.textContent = UI_TEXT.productNotFound;
-          return;
-        }
-
-        productNameEl.textContent = currentProduct.name;
-        productPriceEl.textContent =
-          currentProduct.price.toLocaleString() + "원";
-
-        const images = currentProduct.images || [];
-
-        const carousel = createImageCarousel(images, {
-          alt: currentProduct.name,
-        });
-        mobileCarouselWrap.appendChild(carousel);
-
-        if (window.innerWidth > 768) {
-          initDesktopThumbs(desktopBox, images, currentProduct.name);
-        }
-
-        renderColorChips({
-          colors: currentProduct.colors,
-          chipsEl: colorChipsEl,
-          textEl: colorTextEl,
-        });
-
-        renderDetailLines(
-          detailsEl,
-          currentProduct.description.split("\n").filter(Boolean),
-        );
-
-        renderSpecifications(sizeEl, currentProduct.specifications);
-
-        const isSoldOut = !currentProduct.inStock;
-        cartBtn.textContent = isSoldOut ? UI_TEXT.notifyBtn : UI_TEXT.cartBtn;
-
-        if (!isSoldOut) {
-          addCartButton(currentProduct.id, 1, currentProduct.colors?.[0]?.name);
-        } else {
-          cartBtn.addEventListener("click", function () {
-            alert(UI_TEXT.notifySuccess);
-          });
-        }
-
-        bookmarkBtn.dataset.productId = currentProduct.id;
-        await wishlist();
-
-        const similarProducts = await fetchSimilarProducts(
-          currentProduct.category,
-          productId,
-        );
-        renderSimilarProducts(
-          similarProducts,
-          similarSectionTitle,
-          UI_TEXT.similarSectionTitle,
-        );
-      }
-
-      init();
-    </script>
   </body>
 </html>
