@@ -1,4 +1,5 @@
 import { getProductList } from "../API/product/productListApi.js";
+import { postWishlist } from "../API/wishlist/postWishlistApi.js";
 
 export async function renderArrivals() {
   const wrapper = document.getElementById("arrivals-wrapper");
@@ -33,12 +34,28 @@ export async function renderArrivals() {
           <p class="text-[13px] leading-4.25">₩${item.price.toLocaleString()}</p>
         </div>
         <div class="mt-2 px-5 md:px-0 pointer-events-auto">
-          <button class="text-[12px] underline underline-offset-4 uppercase opacity-100 max-md:hidden">
+          <button class="wishlist-btn text-[12px] underline underline-offset-4 uppercase opacity-100 max-md:hidden" data-product-id="${item.id}">
             위시리스트에 추가하기
           </button>
         </div>
       </div>
     `;
+
+    const wishBtn = slide.querySelector(".wishlist-btn");
+    wishBtn.addEventListener("click", async () => {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        alert("로그인이 필요합니다.");
+        location.href = "/src/components/login/login.html";
+        return;
+      }
+      try {
+        await postWishlist(item.id);
+      } catch (e) {
+        alert(e.message);
+      }
+    });
+
     wrapper.appendChild(slide);
 
     const thumb = document.createElement("div");
