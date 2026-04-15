@@ -9,7 +9,8 @@ export function createSlideElement(item) {
   a.className = "block";
 
   const imgWrapper = document.createElement("div");
-  imgWrapper.className = "relative overflow-hidden w-full aspect-1/2 md:w-180 md:h-180";
+  imgWrapper.className =
+    "relative overflow-hidden w-full aspect-1/2 md:w-180 md:h-180";
 
   const figure = document.createElement("figure");
   figure.className = "absolute inset-0";
@@ -24,7 +25,8 @@ export function createSlideElement(item) {
   a.appendChild(imgWrapper);
 
   const infoDiv = document.createElement("div");
-  infoDiv.className = "arrivals-product-info static mt-4 mb-10 px-5 md:absolute md:bottom-15 md:left-0 md:mt-0 md:mb-0 md:px-0 pointer-events-none";
+  infoDiv.className =
+    "arrivals-product-info static mt-4 mb-10 px-5 md:absolute md:bottom-15 md:left-0 md:mt-0 md:mb-0 md:px-0 pointer-events-none";
 
   const textDiv = document.createElement("div");
   textDiv.className = "px-5 md:px-0";
@@ -44,7 +46,8 @@ export function createSlideElement(item) {
   btnDiv.className = "mt-2 px-5 md:px-0 pointer-events-auto";
 
   const button = document.createElement("button");
-  button.className = "text-[12px] underline underline-offset-4 uppercase opacity-100 max-md:hidden";
+  button.className =
+    "wishlist-btn text-[12px] underline underline-offset-4 uppercase opacity-100 max-md:hidden";
   button.textContent = "위시리스트에 추가하기";
 
   btnDiv.appendChild(button);
