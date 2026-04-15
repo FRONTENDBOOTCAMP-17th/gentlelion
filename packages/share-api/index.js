@@ -23,7 +23,6 @@ async function fetchAPI(
 
   if (!res.ok) {
     const err = await res.json().catch(() => ({}));
-    console.log(err);
     const messages = {
       401: "인증이 필요합니다.",
       403: "권한이 없습니다.",

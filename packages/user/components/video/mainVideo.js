@@ -59,7 +59,7 @@ function loadContent(index) {
 
     videoPlayer.load();
 
-    videoPlayer.play().catch((e) => console.log("재생 대기 중:", e));
+    videoPlayer.play().catch((e) => {});
   } else {
     videoPlayer.pause();
     videoPlayer.classList.add("hidden");

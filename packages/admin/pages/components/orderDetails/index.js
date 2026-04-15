@@ -10,13 +10,14 @@ async function updateOrderDetails() {
 
     const data = await orderDetailsAPI(id);
 
-    renderOrderDetails(data);
-    chaseProductState(data);
-    cancelButton();
-  } catch (error) {
-    if (error.status === 401) {
-      window.location.href = "/admin/pages/login.html";
-      return;
+        renderOrderDetails(data);
+        chaseProductState(data);
+        cancleButton();
+    } catch (error) {
+        if (error.status === 401) {
+            window.location.href = "/pages/login.html";
+            return;
+        }
     }
     console.error(error);
   }

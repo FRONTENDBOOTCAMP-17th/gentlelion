@@ -9,7 +9,6 @@ async function init() {
     const data = await userDetailAPI(id);
 
     if (!data) {
-      console.error("데이터 없음");
       return;
     }
 
