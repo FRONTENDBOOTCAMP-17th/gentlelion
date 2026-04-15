@@ -93,6 +93,7 @@ export async function initProductDetail() {
     colors: currentProduct.colors,
     chipsEl: colorChipsEl,
     textEl: colorTextEl,
+    wishBtn: bookmarkBtn,
   });
 
   renderDetailLines(

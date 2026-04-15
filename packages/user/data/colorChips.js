@@ -13,7 +13,7 @@ const COLOR_MAP = {
   Yellow: "#F5C518",
 };
 
-export function renderColorChips({ colors, chipsEl, textEl }) {
+export function renderColorChips({ colors, chipsEl, textEl, wishBtn }) {
   if (!colors || colors.length === 0) return;
 
   let activeIndex = 0;
@@ -32,10 +32,12 @@ export function renderColorChips({ colors, chipsEl, textEl }) {
       underline.className = "block w-full h-[1px] bg-[#111111] mt-[2px]";
       chip.appendChild(underline);
       textEl.textContent = color.name;
+      if (wishBtn) wishBtn.dataset.color = color.name;
     }
 
     chip.addEventListener("click", function () {
       textEl.textContent = color.name;
+      if (wishBtn) wishBtn.dataset.color = color.name;
 
       chipsEl.querySelectorAll("span").forEach(function (s) {
         s.remove();
