@@ -36,7 +36,7 @@ export function renderOrderRows(tbody, orders) {
       showDetails(
         button,
         item.orderId,
-        (id) => `/admin/pages/order-details.html?orderId=${id}`,
+        (id) => `/pages/order-details.html?orderId=${id}`,
       );
     },
   });

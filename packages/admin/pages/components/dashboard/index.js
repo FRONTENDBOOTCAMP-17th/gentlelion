@@ -30,10 +30,11 @@ async function dashboard() {
     }
 
     renderDashboardRows(tbody, orders);
-    loadSidebar()
+    await loadSidebar();
     toggleMenu();
   } catch (error) {
-    if(error.status === 401){
+    if (error.status === 401) {
+      alert("권한이 없습니다.");
       window.location.href = "/admin/pages/login.html";
       return;
     }

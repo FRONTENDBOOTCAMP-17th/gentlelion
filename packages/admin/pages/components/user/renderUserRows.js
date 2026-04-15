@@ -42,7 +42,7 @@ export function renderUserRows(tbody, users, render) {
       showDetails(
         detailButton,
         item.userId,
-        (id) => `/admin/pages/user-details.html?userId=${id}`,
+        (id) => `/pages/user-details.html?userId=${id}`,
       );
       userDelete(deleteButton, item.userId, render);
     },

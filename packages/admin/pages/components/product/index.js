@@ -43,7 +43,6 @@ async function ProductPage(page = 1) {
 
     if (buttonComponents) {
       buttonComponents.innerHTML = "";
-      console.log("버튼 생성 시도 - totalPages:", totalPages);
 
       paginationButton(
         buttonComponents,

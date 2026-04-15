@@ -4,7 +4,7 @@ export async function loadSidebar() {
   const aside = document.querySelector("aside");
   if (!aside) return;
 
-  const response = await fetch("/admin/pages/components/aside/navigation.html");
+  const response = await fetch("/pages/components/aside/navigation.html");
   const html = await response.text();
   aside.innerHTML = html;
 
