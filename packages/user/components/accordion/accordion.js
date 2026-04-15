@@ -18,7 +18,7 @@ export function initAccordion() {
       const isOpen = content.classList.contains("max-h-[600px]");
 
       document
-        .querySelectorAll("#accDelivery, #accDetail, #accSize")
+        .querySelectorAll("[data-accordion-content]")
         .forEach(function (c) {
           c.classList.remove("max-h-[600px]");
           c.classList.add("max-h-0");

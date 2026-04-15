@@ -1,4 +1,4 @@
 import { post } from "@gentlelion/share-api";
 
-export const postWishlist = (productId) =>
-  post("/wishlist", { productId, color: "Black" });
+export const postWishlist = (productId, color) =>
+  post("/wishlist", { productId, color });

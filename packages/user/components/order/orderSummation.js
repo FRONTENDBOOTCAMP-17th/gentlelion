@@ -4,30 +4,28 @@ export function orderSummation() {
   const chevronDown = "M6 9L12 15L18 9";
   const chevronUp = "M6 15L12 9L18 15";
 
-  buttons.forEach((button, index) => {
+  buttons.forEach(function (button, index) {
     const container = containers[index];
     if (!container) return;
 
-    container.style.maxHeight = "0px";
-    container.style.overflow = "hidden";
-    container.style.transition = "max-height 0.3s ease";
+    container.classList.add(
+      "max-h-0",
+      "overflow-hidden",
+      "transition-all",
+      "duration-300",
+      "ease-in-out",
+    );
 
-    button.addEventListener("click", () => {
-      const isOpen = container.style.maxHeight !== "0px";
+    button.addEventListener("click", function () {
+      const isOpen = !container.classList.contains("max-h-0");
 
       if (isOpen) {
-        container.addEventListener(
-          "transitionend",
-          () => {
-            container.classList.add("hidden");
-          },
-          { once: true },
-        );
-        container.style.maxHeight = "0px";
+        container.classList.remove("max-h-[600px]");
+        container.classList.add("max-h-0");
         button.querySelector("path")?.setAttribute("d", chevronDown);
       } else {
-        container.classList.remove("hidden");
-        container.style.maxHeight = container.scrollHeight + "px";
+        container.classList.remove("max-h-0");
+        container.classList.add("max-h-[600px]");
         button.querySelector("path")?.setAttribute("d", chevronUp);
       }
     });
