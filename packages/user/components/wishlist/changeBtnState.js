@@ -1,6 +1,9 @@
 import { changeSVG } from "./changeSVG";
 
 export async function changeBtnState(data) {
+    if (!data) {
+        return;
+    }
     const wishlistedIds = new Set(data.data.items.map(item => item.productId));
 
     const buttons = document.querySelectorAll(".wishButton");

@@ -19,7 +19,13 @@ async function init() {
     const closeBtn = document.getElementById("closeBtn");
 
     if (closeBtn) {
-      closeBtn.addEventListener("click", () => history.back());
+      closeBtn.addEventListener("click", () => {
+        if (window.opener) {
+          window.close();
+        } else {
+          history.back();
+        }
+      });
     }
 
     if (addPointBtn) {

@@ -10,7 +10,9 @@
       src="../pages/components/orderDetails/index.js"
     ></script>
   </head>
-  <body class="font-gentle border bg-black/60 w-screen h-screen flex justify-center items-center">
+  <body
+    class="font-gentle border bg-black/60 w-screen h-screen flex justify-center items-center"
+  >
     <div class="w-200 h-max bg-(--bg) rounded-2xl">
       <header class="p-6 border-b border-(--border)">
         <h1 class="text-[24px] font-bold">주문 상세 정보</h1>
@@ -33,10 +35,12 @@
             <time id="create_At">2026. 4. 1.오후 7:30:00</time>
           </div>
         </section>
+
         <section class="flex flex-col gap-6">
           <h2 class="text-[18px] font-bold">주문 상품</h2>
           <div id="itemList" class="flex flex-col gap-4 p-4"></div>
         </section>
+
         <section class="flex flex-col gap-6">
           <h2 class="text-[18px] font-bold">배송지 정보</h2>
           <div class="text-[14px]">
@@ -46,12 +50,13 @@
             <p id="phone">010-1234-5678</p>
             <p>주소</p>
             <p>
-              (<span id="zipCode">12345</span>)
+              <span id="zipCode">12345</span>
               <span id="address">서울시 강남구 테헤란로 123</span>
               <span id="addressDetail">456호</span>
             </p>
           </div>
         </section>
+
         <section class="flex flex-col gap-4">
           <h2 class="text-[18px] font-bold">결제 정보</h2>
           <div class="flex flex-col gap-2">
@@ -67,16 +72,18 @@
           <div
             class="text-[18px] font-bold flex justify-between border-t border-(--border)"
           >
-            배송 완료
-          </button>
-        </div>
-      </section>
-      <button
-        id="cancelBtn"
-        class="bg-black text-white h-10 rounded-lg cursor-pointer"
-      >
-        닫기
-      </button>
-    </main>
+            <p>총 결제금액</p>
+            <p id="totalPrice">₩290,000</p>
+          </div>
+        </section>
+
+        <button
+          id="exitBtn"
+          class="bg-black text-white h-10 rounded-lg cursor-pointer"
+        >
+          닫기
+        </button>
+      </main>
+    </div>
   </body>
 </html>

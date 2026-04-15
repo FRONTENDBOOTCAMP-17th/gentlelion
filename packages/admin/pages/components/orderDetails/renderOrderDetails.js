@@ -64,7 +64,12 @@ export function renderOrderDetails(data) {
     orderPreset.recipientName.textContent = addr.recipientName;
     orderPreset.phone.textContent = addr.phone;
     orderPreset.address.textContent = addr.address;
-    orderPreset.zipCode.textContent = addr.zipCode;
+    if (!addr.zipCode) {
+        orderPreset.zipCode.textContent = "";
+    }
+    else {
+        orderPreset.zipCode.textContent = `(${addr.zipCode})`;
+    }
     orderPreset.addressDetail.textContent = addr.addressDetail;
 
     orderPreset.price.textContent = "₩" + d.finalPrice.toLocaleString();

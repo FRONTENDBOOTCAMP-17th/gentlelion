@@ -6,6 +6,6 @@ export function showDetails(button, id, getUrl) {
   }
 
   button.addEventListener("click", () => {
-    window.open(getUrl(id), "_blank");
+    location.href = getUrl(id);
   });
 }
