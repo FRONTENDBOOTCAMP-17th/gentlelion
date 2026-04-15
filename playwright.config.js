@@ -1,43 +1,45 @@
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
-  testDir: './tests',
+  testDir: "./tests",
   fullyParallel: true,
   retries: 0,
-  reporter: 'html',
+  reporter: "html",
 
   use: {
-    trace: 'on-first-retry',
+    screenshot: "only-on-failure",
+    video: "retain-on-failure",
+    trace: "on-first-retry",
   },
 
   projects: [
     {
-      name: 'user',
+      name: "user",
       use: {
-        ...devices['Desktop Chrome'],
-        baseURL: 'http://localhost:5173',
+        ...devices["Desktop Chrome"],
+        baseURL: "http://localhost:5173",
       },
-      testMatch: 'tests/user/**/*.spec.js',
+      testMatch: "tests/user/**/*.spec.js",
     },
     {
-      name: 'admin',
+      name: "admin",
       use: {
-        ...devices['Desktop Chrome'],
-        baseURL: 'http://localhost:5174',
+        ...devices["Desktop Chrome"],
+        baseURL: "http://localhost:5174",
       },
-      testMatch: 'tests/admin/**/*.spec.js',
+      testMatch: "tests/admin/**/*.spec.js",
     },
   ],
 
   webServer: [
     {
-      command: 'npm run dev:user',
-      url: 'http://localhost:5173',
+      command: "npm run dev:user",
+      url: "http://localhost:5173",
       reuseExistingServer: true,
     },
     {
-      command: 'npm run dev:admin',
-      url: 'http://localhost:5174',
+      command: "npm run dev:admin",
+      url: "http://localhost:5174",
       reuseExistingServer: true,
     },
   ],
