@@ -13,7 +13,7 @@ import {
   renderSpecifications,
   initDesktopThumbs,
   renderSimilarProducts,
-} from "./productDetailRenderer.js";
+} from "./Productdetailrenderer.js";
 import { loadAccordion, initAccordion } from "../accordion/accordion.js";
 import { addCartButton } from "./addCartButton.js";
 
