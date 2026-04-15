@@ -30,7 +30,6 @@ export default defineConfig({
         sunglasses: resolve(root, 'pages/sunglasses.html'),
         glasses: resolve(root, 'pages/glasses.html'),
         collection: resolve(root, 'pages/collection.html'),
-        order: resolve(root, 'pages/order.html'),
         productDetail: resolve(root, 'pages/product-detail.html'),
         // components - login
         login: resolve(root, 'components/login/login.html'),
