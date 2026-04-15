@@ -30,6 +30,7 @@ export default defineConfig({
         productEdit: resolve(__dirname, 'pages/productEdit.html'),
         users: resolve(__dirname, 'pages/users.html'),
         userDetails: resolve(__dirname, 'pages/user-details.html'),
+        navigation: resolve(__dirname, 'pages/components/aside/navigation.html'),
       }
     }
   }
