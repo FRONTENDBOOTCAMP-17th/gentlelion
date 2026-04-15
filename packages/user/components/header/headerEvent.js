@@ -3,6 +3,7 @@ export function headerEvent() {
   const btn = document.getElementById("menu-btn");
   const line1 = document.getElementById("line1");
   const line2 = document.getElementById("line2");
+  if (!btn || !line1 || !line2) return;
 
   btn.addEventListener("click", () => {
     line1.classList.toggle("translate-y-[2.5px]");

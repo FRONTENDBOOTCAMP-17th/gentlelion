@@ -11,6 +11,8 @@ function imageUpload() {
   const previewImg = document.getElementById("imagePreview");
   const placeholder = document.getElementById("uploadPlaceholder");
   const imageUrlInput = document.getElementById("imageUrlInput");
+  if (!uploadBtn || !fileInput || !previewImg || !placeholder || !imageUrlInput)
+    return;
 
   fileInput.multiple = true;
   uploadBtn.addEventListener("click", () => fileInput.click());
