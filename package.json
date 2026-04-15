@@ -8,9 +8,12 @@
     "dev:user": "npm -w packages/user run dev",
     "dev:admin": "npm -w packages/admin run dev",
     "build:user": "npm -w packages/user run build",
-    "build:admin": "npm -w packages/admin run build"
+    "build:admin": "npm -w packages/admin run build",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui"
   },
   "devDependencies": {
+    "@playwright/test": "^1.59.1",
     "autoprefixer": "^10.4.27",
     "postcss": "^8.5.8",
     "tailwindcss": "^4.2.2",
