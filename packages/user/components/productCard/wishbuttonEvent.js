@@ -10,6 +10,7 @@ export async function wishbuttonEvent(data) {
       if (!data) {
         alert("로그인이 필요한 기능입니다.");
         window.location.href = "/components/login/login.html";
+        return;
       }
       const productId = Number(button.dataset.productId);
       const isWishlisted = button.dataset.wishlist === "1";
