@@ -2,6 +2,13 @@ import { getWishlist } from "../API/wishlist/wishlistApi";
 import { getProfileApi } from "../API/profile/getProfileApi";
 
 export async function createMobileMenu() {
+  const mobileMenu = document.getElementById("mobileMenu");
+  if (!mobileMenu) return;
+
+  mobileMenu.className =
+    "fixed opacity-0 pointer-events-none transition-all duration-500 top-0 z-49 left-0 bg-white w-screen h-full";
+  mobileMenu.innerHTML = "";
+
   let wishCount = 0;
   let hasItems = false;
   let userName = null;
@@ -45,11 +52,6 @@ export async function createMobileMenu() {
     ],
   };
 
-  const mobileMenu = document.createElement("div");
-  mobileMenu.id = "mobileMenu";
-  mobileMenu.className =
-    "fixed opacity-0 pointer-events-none transition-all duration-500 top-0 z-49 left-0 bg-white w-screen h-full";
-
   const aside = document.createElement("aside");
   aside.className = "relative top-40 ml-5";
 
@@ -89,7 +91,6 @@ export async function createMobileMenu() {
 
   aside.append(nav, accountDiv, wishlistDiv, utilDiv);
   mobileMenu.appendChild(aside);
-  document.body.prepend(mobileMenu);
 }
 
 function createNavList(items, textClass, extraClass = "") {
