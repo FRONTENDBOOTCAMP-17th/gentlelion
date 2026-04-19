@@ -146,6 +146,8 @@ HTML 템플릿을 `fetch`로 불러와 DOM에 주입하는 방식으로 헤더, 
 
 <img src="docs/image/user-admin-flow.svg" width="700" />
 
+<br />
+
 ## 🗂️ 프로젝트 구조
 
 ```
@@ -222,6 +224,8 @@ npm run dev:admin --workspace=packages/admin
 | `design`   | UI/스타일 수정   |
 | `refactor` | 코드 리팩토링    |
 | `chore`    | 빌드, 설정 변경  |
+
+<br />
 
 ## 🔥 트러블슈팅
 
