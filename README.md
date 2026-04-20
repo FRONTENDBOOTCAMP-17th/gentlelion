@@ -63,7 +63,7 @@ HTML 템플릿을 `fetch`로 불러와 DOM에 주입하는 방식으로 헤더, 
 | :------------------------------------------: | :------------------------------------------: | :------------------------------------------: |
 | <img src="docs/image/kim.webp" width="200"/> | <img src="docs/image/choi.jpg" width="200"/> | <img src="docs/image/jang.jpg" width="200"/> |
 |                   [김도혁]                   |                   [최유종]                   |                   [장종호]                   |
-|                                              |           ujjong39@gmail.com            |       francesco980912@gmail.com        |
+|             clzlsdlwhgdk12@gmail.com         |           ujjong39@gmail.com            |       francesco980912@gmail.com        |
 
 </div>
 
